@@ -13,10 +13,11 @@ namespace ComicDefender
     class Player
     {
         private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";     //Директроия для тексутры
-        public float w, h, dx, dy, x, y;                              //
-                                                                      // public int dir, playerScore, health;
+        private float w, h, dx, dy, x, y;
+        private float rotation;
+        // public int dir, playerScore, health;
         private Texture texture;
-        public Sprite sprite;
+        private Sprite sprite;
         private Image image;
         private String File;
 
@@ -40,10 +41,6 @@ namespace ComicDefender
             sprite.Position = new Vector2f(x, y);
             sprite.Scale = new Vector2f(0.4F, 0.4F);
         }
-        public void Move(float offsetX, float offsetY)
-        {
-            sprite.Position = new Vector2f(sprite.Position.X + offsetX, sprite.Position.Y + offsetY);
-        }
 
 
         public void Update(float time)
@@ -52,16 +49,12 @@ namespace ComicDefender
             Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна
             float dX = pos.X - x;//вектор , колинеарный прямой, которая пересекает спрайт и курсор
             float dY = pos.Y - y;//он же, координата y
-
-            float rotation = (float)(((Math.Atan2((double)dY, (double)dX)) * 180 / 3.14159265) - 90);//получаем угол в радианах и переводим его в градусы
+            rotation = (float)(((Math.Atan2((double)dY, (double)dX)) * 180 / 3.14159265) - 90);//получаем угол в радианах и переводим его в градусы
             sprite.Rotation = rotation;
             float distance = (float)Math.Sqrt(((pos.X - x) * (pos.X - x) + (pos.Y - y) * (pos.Y - y)));
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
-                float dX2 = pos.X - x;//вектор , колинеарный прямой, которая пересекает спрайт и курсор
-                float dY2 = pos.Y - y;//он же, координата y
-                float rotation2 = (float)(((Math.Atan2((double)dY2, (double)dX2)) * 180 / 3.14159265) - 90);//получаем угол в радианах и переводим его в градусы
                 deltaX = (float)((speed * time * (pos.X - x)) / distance);
                 deltaY = (float)((speed * time * (pos.Y - y)) / distance);
             }
@@ -75,8 +68,6 @@ namespace ComicDefender
                 deltaX = deltaXmax;
             if (deltaX < deltaXmin)
                 deltaX = deltaXmin;
-
-
             if (deltaY < speed)
                 deltaY += speed * time;
             if (deltaY > -speed)
@@ -93,6 +84,16 @@ namespace ComicDefender
                 y += deltaY * time;
                 sprite.Position = new Vector2f(x, y);
             }
+
+            //
+            /*       Если вылетает за предел окна       */
+            //
+            if (x > Program.WindowWidth) x = 0;
+            if (x < 0) x = Program.WindowWidth;
+
+            if (y > Program.WindowHeight) y = 0;
+            if (y < 0) y = Program.WindowHeight;
+
 
             Program.Window.Draw(sprite);
         }

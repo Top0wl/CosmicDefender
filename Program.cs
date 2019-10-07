@@ -13,8 +13,8 @@ namespace ComicDefender
     class Program
     {
         //Const
-        const int WindowWidth = 1280;
-        const int WindowHeight = 720;
+        public const int WindowWidth = 1280;
+        public const int WindowHeight = 720;
         public static RenderWindow Window;
         static void Main(string[] args)
         {
@@ -43,6 +43,7 @@ namespace ComicDefender
                 Window.Display();                                                   //Выводит всё на дисплей
             }      
         }
+
 
         private static void Win_Resized(object sender, SizeEventArgs e)
         {

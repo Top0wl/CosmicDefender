@@ -16,22 +16,19 @@ namespace ComicDefender
         const int WindowWidth = 1280;
         const int WindowHeight = 720;
         public static RenderWindow Window;
-        float dX = 0;
-        float dY = 0;
         static void Main(string[] args)
         {
-            //Создание окна
-            Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), "CosmicDefender");
+           //Создание окна
+           Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), "CosmicDefender");
             
-            //Добавим событие на закрытие окна
-            Window.Closed += Window_Closed;
-            Window.Resized += Win_Resized;
+           //Добавим событие на закрытие окна
+           Window.Closed += Window_Closed;
+           Window.Resized += Win_Resized;
 
-           Content.Load();
-           Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);
+           Content.Load();                                                          //Загружаем в память текстуры
+           Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
 
-           Clock clock = new Clock();
-
+           Clock clock = new Clock();       
             while (Window.IsOpen)
             {
                 float time = clock.ElapsedTime.AsMicroseconds();
@@ -44,7 +41,6 @@ namespace ComicDefender
                 Window.Draw(Content.GetTextureLevel1());                            //Прорисовываем уровень
                 Ship.Update(time);                                                  //Прорисовываем корабль
                 Window.Display();                                                   //Выводит всё на дисплей
-
             }      
         }
 

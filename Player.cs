@@ -93,7 +93,7 @@ namespace ComicDefender
 
             if (y > Program.WindowHeight) y = 0;
             if (y < 0) y = Program.WindowHeight;
-
+            //
 
             Program.Window.Draw(sprite);
         }

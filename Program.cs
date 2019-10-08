@@ -41,6 +41,8 @@ namespace ComicDefender
                 Window.Draw(Content.GetTextureLevel1());                            //Прорисовываем уровень
                 Ship.Update(time);                                                  //Прорисовываем корабль
                 Window.Display();                                                   //Выводит всё на дисплей
+
+                Window.Display();
             }      
         }
 

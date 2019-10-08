@@ -36,7 +36,7 @@ namespace ComicDefender
                 time = time / 800;
                 //clock.Restart(); //перезагружает время
 
-                Window.DispatchEvents();                                            //Cобираем ивенты
+                Window.DispatchEvents();    //Cобираем ивенты
                 Window.Clear();                                                     //Чистим экран
                 Window.Draw(Content.GetTextureLevel1());                            //Прорисовываем уровень
                 Ship.Update(time);                                                  //Прорисовываем корабль

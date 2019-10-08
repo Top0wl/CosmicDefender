@@ -13,7 +13,7 @@ namespace ComicDefender
     class Player
     {
         private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";     //Директроия для тексутры
-        private float w, h, dx, dy, x, y;
+        private float w, h, x, y;
         private float rotation;
         // public int dir, playerScore, health;
         private Texture texture;

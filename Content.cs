@@ -31,11 +31,7 @@ namespace ComicDefender
             Texture0_Level1 = new Texture(CONTENT_DIRICTORY + "Level1.jpg");
             Texture0_Level1.Smooth = true;
 
-            //Ship1 = new Player("SpaceShip1.png", 500, 500, 106, 80);
-
-
             sBackground = new Sprite(Texture0_Level1);
-
 
             cursorSprite = new Sprite(Texture0_Cursor);
   

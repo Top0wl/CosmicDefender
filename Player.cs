@@ -23,7 +23,7 @@ namespace ComicDefender
 
         float deltaX = 0;
         float deltaY = 0;
-        float speed = 0.3f;
+        float speed = 0.09f;
         float deltaXmax = 0.09f;
         float deltaYmax = 0.09f;
         float deltaXmin = -0.09f;
@@ -55,45 +55,79 @@ namespace ComicDefender
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
-                deltaX = (float)((speed * time * (pos.X - x)) / distance);
-                deltaY = (float)((speed * time * (pos.Y - y)) / distance);
+                deltaX = (float)((speed * (pos.X - x)) / distance);
+                deltaY = (float)((speed * (pos.Y - y)) / distance);
             }
 
             if (deltaX < speed)
-                deltaX += speed * time;
-            if (deltaX > -speed)
-                deltaX -= speed * time;
-            deltaX *= (float)(1 - Math.Min(time * 0.0001, 1));
-            if (deltaX > deltaXmax)
-                deltaX = deltaXmax;
-            if (deltaX < deltaXmin)
-                deltaX = deltaXmin;
-            if (deltaY < speed)
-                deltaY += speed * time;
-            if (deltaY > -speed)
-                deltaY -= speed * time;
-            deltaY *= (float)(1 - Math.Min(time * 0.0001, 1));
-            if (deltaY > deltaYmax)
-                deltaY = deltaYmax;
-            if (deltaY < deltaYmin)
-                deltaY = deltaYmin;
-
-            if (distance > 2)
             {
-                x += deltaX * time;
-                y += deltaY * time;
-                sprite.Position = new Vector2f(x, y);
+                deltaX += speed * time;
+                if (deltaX > -speed)
+                {
+                    float a = speed * time;
+                    deltaX = deltaX - a;
+                }
+                deltaX *= (float)(1 - Math.Min(time * 0.0001, 1));
             }
+            else if (deltaX > -speed)
+            {
+                deltaX -= speed * time;
+                if (deltaX < speed)
+                {
+                    deltaX += speed * time;
+                }
+                deltaX *= (float)(1 - Math.Min(time * 0.0001, 1));
+            }
+            if (deltaY < speed)
+            {
+                deltaY += speed * time;
+                if (deltaY > -speed)
+                {
+                    float a = speed * time;
+                    deltaY = deltaY - a;
+                }
+                deltaY *= (float)(1 - Math.Min(time * 0.0003, 1));
+            }
+            else
+            if (deltaY > -speed)
+            {
+                deltaY -= speed * time;
+                if (deltaY < speed)
+                {
+                    deltaY += speed * time;
+                }
+                deltaY *= (float)(1 - Math.Min(time * 0.0003, 1));
+            }
+
 
             //
             /*       Если вылетает за предел окна       */
             //
-            if (x > Program.WindowWidth) x = 0;
-            if (x < 0) x = Program.WindowWidth;
 
-            if (y > Program.WindowHeight) y = 0;
-            if (y < 0) y = Program.WindowHeight;
-            //
+
+            x += deltaX * time;
+            if (x > 1280)
+            {
+                x = 0;
+            }
+            if (x < 0)
+            {
+                x = 1280;
+            }
+
+            y += deltaY * time;
+            if (y > 720)
+            {
+                y = 0;
+            }
+            if (y < 0)
+            {
+                y = 720;
+            }
+
+      
+
+            sprite.Position = new Vector2f(x, y);
 
             Program.Window.Draw(sprite);
         }

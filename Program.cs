@@ -27,6 +27,24 @@ namespace ComicDefender
 
            Content.Load();                                                          //Загружаем в память текстуры
            Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
+            List<Entity> entities = new List<Entity>();
+            //List<Entity> entities;
+            Random rdn = new Random(DateTime.Now.Millisecond);
+
+            for (int i = 0; i < 15; i++)
+            { 
+                    int a1 = rdn.Next(1, WindowWidth);
+                    int a2 = rdn.Next(1, WindowHeight);
+                    int a3 = rdn.Next(1, 360);
+                    float speed = rdn.Next(100, 1000);
+
+                Asteroid a = new Asteroid("Asteroid1.png", 43, 43, speed);
+
+
+                a.Settings(Asteroid.sprite, a1, a2, a3, 10);
+                entities.Add(a);
+            }
+
 
            Clock clock = new Clock();       
             while (Window.IsOpen)
@@ -35,10 +53,21 @@ namespace ComicDefender
                 clock.Restart();
                 time = time / 800;
                 //clock.Restart(); //перезагружает время
-
                 Window.DispatchEvents();    //Cобираем ивенты
+
+
                 Window.Clear();                                                     //Чистим экран
-                Window.Draw(Content.GetTextureLevel1());                            //Прорисовываем уровень
+                Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));  //Прорисовываем уровень
+
+                foreach (Entity entity in entities)
+                {
+                    
+                    entity.Update();
+                    entity.Draw();
+                  //  Window.Display();
+                }
+
+
                 Ship.Update(time);                                                  //Прорисовываем корабль
                 Window.Display();                                                   //Выводит всё на дисплей
 

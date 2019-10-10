@@ -61,6 +61,7 @@
     <Compile Include="Asteroid.cs" />
     <Compile Include="Bullet.cs" />
     <Compile Include="Content.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

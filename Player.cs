@@ -17,17 +17,13 @@ namespace ComicDefender
         private float rotation;
         // public int dir, playerScore, health;
         private Texture texture;
-        private Sprite sprite;
+        public Sprite sprite;
         private Image image;
         private String File;
 
         float deltaX = 0;
         float deltaY = 0;
         float speed = 0.09f;
-        float deltaXmax = 0.09f;
-        float deltaYmax = 0.09f;
-        float deltaXmin = -0.09f;
-        float deltaYmin = -0.09f;
 
         public Player(String F, float X, float Y, float W, float H)
         {

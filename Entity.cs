@@ -61,7 +61,7 @@ namespace ComicDefender
         }
         public float GetDy()
         {
-            return Dx;
+            return Dy;
         }
         public string GetName()
         {

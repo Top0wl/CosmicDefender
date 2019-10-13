@@ -28,10 +28,14 @@ namespace ComicDefender
             sprite = new Sprite(texture);
             sprite.Origin = new Vector2f(w / 2, h / 2);
             sprite.Scale = new Vector2f(0.4F, 0.4F);
-            Random rnd = new Random();
-            
-            SetDx((float)rnd.Next(1,5)/speed);
-            SetDy((float)rnd.Next(1,5)/speed);
+            Random rnd = new Random(DateTime.Now.Millisecond);
+
+            float a1 = (float)rnd.Next(-5, 5) / speed;
+
+            float a2 = (float)rnd.Next(-5, 5) / speed;
+
+            SetDx(a1);
+            SetDy(a2);
             SetName("Asteroid");
         }
 

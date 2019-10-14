@@ -29,7 +29,7 @@ namespace ComicDefender
             sprite.Origin = new Vector2f(w / 2, h / 2);
             sprite.Scale = new Vector2f(0.4F, 0.4F);
             Random rnd = new Random(DateTime.Now.Millisecond);
-
+           
             float a1 = (float)rnd.Next(-5, 5) / speed;
 
             float a2 = (float)rnd.Next(-5, 5) / speed;
@@ -54,6 +54,11 @@ namespace ComicDefender
             if (GetX() < 0) SetX(Program.WindowWidth);
             if (GetY() > Program.WindowHeight) SetY(0);
             if (GetY() < 0) SetY(Program.WindowHeight);
+        }
+        public override void Draw()
+        {
+            sprite.Position = new Vector2f(GetX(), GetY());
+            Program.Window.Draw(Asteroid.sprite);
         }
     }
 }

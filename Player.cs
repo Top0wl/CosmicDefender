@@ -13,8 +13,8 @@ namespace ComicDefender
     class Player
     {
         private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";     //Директроия для тексутры
-        private float w, h, x, y;
-        private float rotation;
+        private static float w, h, x, y;
+        private static float rotation;
         // public int dir, playerScore, health;
         private Texture texture;
         public Sprite sprite;
@@ -32,8 +32,8 @@ namespace ComicDefender
             texture = new Texture(CONTENT_DIRICTORY + File);
             texture.Smooth = true;
             sprite = new Sprite(texture);
-            x = X; y = Y;
             sprite.Origin = new Vector2f(w / 2, h / 2);
+            x = X; y = Y;
             sprite.Position = new Vector2f(x, y);
             sprite.Scale = new Vector2f(0.4F, 0.4F);
         }
@@ -45,7 +45,7 @@ namespace ComicDefender
             Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна
             float dX = pos.X - x;//вектор , колинеарный прямой, которая пересекает спрайт и курсор
             float dY = pos.Y - y;//он же, координата y
-            rotation = (float)(((Math.Atan2((double)dY, (double)dX)) * 180 / 3.14159265) - 90);//получаем угол в радианах и переводим его в градусы
+            rotation = (float)(((Math.Atan2((double)dY, (double)dX)) * 180 / Math.PI) - 90);//получаем угол в радианах и переводим его в градусы
             sprite.Rotation = rotation;
             float distance = (float)Math.Sqrt(((pos.X - x) * (pos.X - x) + (pos.Y - y) * (pos.Y - y)));
 
@@ -121,11 +121,25 @@ namespace ComicDefender
                 y = 720;
             }
 
-      
 
             sprite.Position = new Vector2f(x, y);
 
             Program.Window.Draw(sprite);
+
+        }
+
+
+        public static float GetX()
+        {
+            return x;
+        }
+        public static float GetY()
+        {
+            return y;
+        }
+        public static float GetRotation()
+        {
+            return rotation;
         }
     }
 }

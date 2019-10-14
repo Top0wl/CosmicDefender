@@ -20,11 +20,11 @@ namespace ComicDefender
             life = true;
         }
 
-        public void Settings(Sprite obj, int x, int y, float rotation, int radius)
+        public void Settings(Sprite obj, float x, float y, float rotation, int radius)
         {
             X = x;
             Y = y;
-            Rotation = rotation;
+           // Rotation = rotation;
         }
         public void SetX(float x)
         {
@@ -41,10 +41,6 @@ namespace ComicDefender
         public void SetDy(float dy)
         {
             Dy = dy;
-        }
-        public void SetName(string name)
-        {
-            Name = name;
         }
         public float GetX()
         {
@@ -67,14 +63,30 @@ namespace ComicDefender
         {
             return Name;
         }
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+        public float GetRotation()
+        {
+            return Rotation;
+        }
+        public void SetRotation(float _Rotation)
+        {
+            Rotation = _Rotation;
+        }
+        public bool GetLife()
+        {
+            return life;
+        }
+        public void SetLife(bool _Life)
+        {
+            life = _Life;
+        }
 
         public virtual void Update() { }
 
-        public void Draw()
-        {
-            Asteroid.sprite.Position = new Vector2f(X, Y);
-            Program.Window.Draw(Asteroid.sprite);
-        }
+        public virtual void Draw() { }
 
     }
 }

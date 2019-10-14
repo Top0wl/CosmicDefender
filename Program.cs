@@ -16,6 +16,7 @@ namespace ComicDefender
         public const int WindowWidth = 1280;
         public const int WindowHeight = 720;
         public static RenderWindow Window;
+        public static List<Entity> entities = new List<Entity>();
         static void Main(string[] args)
         {
            //Создание окна
@@ -27,11 +28,9 @@ namespace ComicDefender
 
            Content.Load();                                                          //Загружаем в память текстуры
            Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
-            List<Entity> entities = new List<Entity>(); 
-            //List<Entity> entities;
            Random rdn = new Random(DateTime.Now.Millisecond);
 
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 1; i++)
             { 
                     int a1 = rdn.Next(1, WindowWidth);
                     int a2 = rdn.Next(1, WindowHeight);
@@ -42,36 +41,53 @@ namespace ComicDefender
 
                 a.Settings(Asteroid.sprite, a1, a2, a3, 10);
                 entities.Add(a);
+
+                if (a.GetLife() == false)
+                {
+                    entities.RemoveAt(i);
+                    a = null;
+                }
             }
 
-
-           Clock clock = new Clock();    
-            
-
-
+            Clock clock = new Clock();
+            Clock bullet_clock = new Clock();
+            float bullet_cooldown;
 
             while (Window.IsOpen)
             {
+                bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
                 float time = clock.ElapsedTime.AsMicroseconds();
                 clock.Restart();
                 time = time / 800;
-                //clock.Restart();                                                  //перезагружает время
                 Window.DispatchEvents();                                            //Cобираем ивенты
                 Window.Clear();                                                      //Чистим экран
                 Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));                  //Прорисовываем уровень
 
+                int shooting_ready = 0;
 
-                
+                if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                {
+                    shooting_ready = 1;
+                }
+
+                if (shooting_ready == 1 && bullet_cooldown >= .2f)
+                {
+                    bullet_clock.Restart();
+                    Bullet b = new Bullet("Bullet.png",32,128);
+                        b.Settings(Bullet.sprite, Player.GetX(), Player.GetY(), Player.GetRotation(), 10);
+                        Program.entities.Add(b);
+                        shooting_ready = 0;
+                }
+
                 foreach (Entity entity in entities)
                 {
-                    //if (entity.GetLife() == false)
-                    //    entity.delete;
-
+                    if (entities.Count() > 100)
+                    {
+                        entities.Count();
+                    }
                     entity.Update();
                     entity.Draw();
                 }
-
-
 
                 Ship.Update(time);                                                  //Прорисовываем корабль
                 Window.Display();                                                   //Выводит всё на дисплей

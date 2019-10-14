@@ -12,31 +12,27 @@ namespace ComicDefender
     {
         private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
         private float w, h;
-        public static Sprite sprite;
+       // public static Sprite sprite;
         private Texture texture;
         private float rotation;
         private String File;
 
+        Random rdn = new Random(DateTime.Now.Millisecond);
 
-
-        public Asteroid(String F, float W, float H, float speed)
+        public Asteroid()
         {
-            File = F;
-            w = W; h = H;
-            texture = new Texture(CONTENT_DIRICTORY + File);
-            texture.Smooth = true;
-            sprite = new Sprite(texture);
-            sprite.Origin = new Vector2f(w / 2, h / 2);
-            sprite.Scale = new Vector2f(0.4F, 0.4F);
-            Random rnd = new Random(DateTime.Now.Millisecond);
-           
-            float a1 = (float)rnd.Next(-5, 5) / speed;
 
-            float a2 = (float)rnd.Next(-5, 5) / speed;
-
-            SetDx(a1);
-            SetDy(a2);
-            SetName("Asteroid");
+            int a1 = rdn.Next(1, Program.WindowWidth);
+            int a2 = rdn.Next(1, Program.WindowHeight);
+            int a3 = rdn.Next(1, 360);
+            float speed = (rdn.Next(50, 300));
+            speed = speed / 10000;
+            Settings("Asteroid1.png", "Asteroid", a1, a2, a3, 0.4F, speed);
+            //float a4 = (float)rdn.Next(-10, 10) / (speed * 100000);
+            // float a5 = (float)rdn.Next(-10, 10) / (speed * 100000);
+            // SetDx(a4);
+            //SetDy(a5);
+            //  SetName("Asteroid");
         }
 
 
@@ -58,7 +54,7 @@ namespace ComicDefender
         public override void Draw()
         {
             sprite.Position = new Vector2f(GetX(), GetY());
-            Program.Window.Draw(Asteroid.sprite);
+            Program.Window.Draw(sprite);
         }
     }
 }

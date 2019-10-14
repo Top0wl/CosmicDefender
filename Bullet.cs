@@ -11,34 +11,27 @@ namespace ComicDefender
 {
     class Bullet: Entity
     {
-        private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
-        private float speed = 4f;
-        public static Sprite sprite;
+        //public static Sprite sprite;
         private Texture texture;
         private float rot;
-        public Bullet(string file, float w, float h)
+        
+        public Bullet()
         {
-            texture = new Texture(CONTENT_DIRICTORY + file);
-            texture.Smooth = true;
-            sprite = new Sprite(texture);
-            sprite.Scale = new Vector2f(0.3F, 0.3F);
-            sprite.Origin = new Vector2f(w / 2, h / 2);
-            //sprite.Rotation = 0;
-            SetName("Bullet");
-            Vector2i pixelPos = Mouse.GetPosition(Program.Window);//забираем коорд курсора
-            Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна
-            float dX = pos.X - Player.GetX();//вектор , колинеарный прямой, которая пересекает спрайт и курсор
-            float dY = pos.Y - Player.GetY();//он же, координата y
-            float rotation = (float)(((Math.Atan2((double)dY, (double)dX)) * 180 / Math.PI) - 90);//получаем угол в радианах и переводим его в градусы
+            this.Settings("Bullet.png","Bullet", Player.GetX(), Player.GetY(), Player.GetRotation(), 0.2F, 0.5f);
+
+            Vector2i pixelPos = Mouse.GetPosition(Program.Window);                                  //забираем коорд курсора
+            Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);                               //переводим их в игровые (уходим от коорд окна
+            float dX = pos.X - Player.GetX();                                                       //вектор , колинеарный прямой, которая пересекает спрайт и курсор
+            float dY = pos.Y - Player.GetY();                                                       //он же, координата y
+            float rotation = (float)(((Math.Atan2((double)dY, (double)dX)) * 180 / Math.PI) - 90);  //получаем угол в радианах и переводим его в градусы
             rot = rotation;
             sprite.Rotation = rotation;
-            float distance = (float)Math.Sqrt(((pos.X - GetX()) * (pos.X - GetX()) + (pos.Y - GetY()) * (pos.Y - GetY())));
 
-            float deltaX = (float)Math.Cos(Math.PI * (rotation-90) / 180.0f)  * -1 * 0.5f;
-            float deltaY = (float)Math.Sin(Math.PI * (rotation-90) / 180.0f)  * -1 * 0.5f;
+          //  float deltaX = (float)Math.Cos(Math.PI * (rotation-90) / 180.0f)  * -1 * 0.5f;
+          //  float deltaY = (float)Math.Sin(Math.PI * (rotation-90) / 180.0f)  * -1 * 0.5f;
 
-            SetDx(deltaX);
-            SetDy(deltaY);
+           // SetDx(deltaX);
+           // SetDy(deltaY);
         }
 
         public override void Update()

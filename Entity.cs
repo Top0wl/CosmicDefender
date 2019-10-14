@@ -10,9 +10,19 @@ namespace ComicDefender
 {
     class Entity
     {
-        private float X,Y,Dx,Dy,Rotation;
-        private bool life;
-        private string Name;
+        //Константы
+        protected const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
+        //
+        private float X, Y;                 //Координаты объекта
+        private float Dx, Dy;               //Скорость объекта
+        private float Rotation;             //Направление объекта
+        private float Size;                 //Размер объекта
+        private bool life;                  //Жив ли объект
+        private string Name;                //Имя объекта
+        private float Speed;                //Скорость объекта
+        protected static Sprite sprite;
+        private Texture texture;
+        protected Image image;
 
 
         public Entity()
@@ -20,12 +30,34 @@ namespace ComicDefender
             life = true;
         }
 
-        public void Settings(Sprite obj, float x, float y, float rotation, int radius)
+        //Настройки объекта
+        public void Settings(string file, string _name, float x, float y, float rotation, float size, float _speed)
         {
+            image = new Image(CONTENT_DIRICTORY + file);
+            texture = new Texture(image);
+            texture.Smooth = true;
+            sprite = new Sprite(texture);
+            sprite.Scale = new Vector2f(size, size);
+            sprite.Origin = new Vector2f(image.Size.X / 2, image.Size.Y / 2);
+            Name = _name;
             X = x;
             Y = y;
-           // Rotation = rotation;
+            Rotation = rotation;
+            Size = size;
+            Speed = _speed;
+            float deltaX = (float)Math.Cos(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
+            float deltaY = (float)Math.Sin(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
+            Dx = deltaX;
+            Dy = deltaY;
+
         }
+
+
+        //Виртуальные функции
+        public virtual void Update() { }
+        public virtual void Draw() { }
+
+        //Геттеры и Сеттеры
         public void SetX(float x)
         {
             X = x;
@@ -50,7 +82,6 @@ namespace ComicDefender
         {
             return Y;
         }
-
         public float GetDx()
         {
             return Dx;
@@ -83,10 +114,13 @@ namespace ComicDefender
         {
             life = _Life;
         }
-
-        public virtual void Update() { }
-
-        public virtual void Draw() { }
-
+        public float GetSize()
+        {
+            return Size;
+        }
+        public void SetSize(float _size)
+        {
+            Size = _size;
+        }
     }
 }

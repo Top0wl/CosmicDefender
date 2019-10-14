@@ -28,18 +28,18 @@ namespace ComicDefender
 
            Content.Load();                                                          //Загружаем в память текстуры
            Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
-           Random rdn = new Random(DateTime.Now.Millisecond);
+          // Random rdn = new Random(DateTime.Now.Millisecond);
 
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 100; i++)
             { 
-                    int a1 = rdn.Next(1, WindowWidth);
-                    int a2 = rdn.Next(1, WindowHeight);
-                    int a3 = rdn.Next(1, 360);
-                    float speed = rdn.Next(100, 800);
+              //  int a1 = rdn.Next(1, WindowWidth);
+              //  int a2 = rdn.Next(1, WindowHeight);
+              //  int a3 = rdn.Next(1, 360);
+              //  float speed = (rdn.Next(100, 500) / 10000);
 
-                Asteroid a = new Asteroid("Asteroid1.png", 43, 43, speed);
+                Asteroid a = new Asteroid();
 
-                a.Settings(Asteroid.sprite, a1, a2, a3, 10);
+               // a.Settings("Asteroid1.png","Asteroid", a1, a2, a3, 0.4F, speed);
                 entities.Add(a);
 
                 if (a.GetLife() == false)
@@ -73,8 +73,8 @@ namespace ComicDefender
                 if (shooting_ready == 1 && bullet_cooldown >= .2f)
                 {
                     bullet_clock.Restart();
-                    Bullet b = new Bullet("Bullet.png",32,128);
-                        b.Settings(Bullet.sprite, Player.GetX(), Player.GetY(), Player.GetRotation(), 10);
+                    Bullet b = new Bullet(/*"Bullet.png",32,128*/);
+                        //b.Settings(Bullet.sprite, Player.GetX(), Player.GetY(), Player.GetRotation(), 10);
                         Program.entities.Add(b);
                         shooting_ready = 0;
                 }

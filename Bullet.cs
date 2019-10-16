@@ -17,7 +17,7 @@ namespace ComicDefender
         
         public Bullet()
         {
-            this.Settings("Bullet.png","Bullet", Player.GetX(), Player.GetY(), Player.GetRotation(), 0.2F, 0.5f);
+            this.Settings("Bullet.png","Bullet", Player.GetX(), Player.GetY(), Player.GetRotation(), 0.2F, 20f);
             Vector2i pixelPos = Mouse.GetPosition(Program.Window);                                  //забираем коорд курсора
             Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);                               //переводим их в игровые (уходим от коорд окна
             float dX = pos.X - Player.GetX();                                                       //вектор , колинеарный прямой, которая пересекает спрайт и курсор
@@ -26,7 +26,7 @@ namespace ComicDefender
             sprite.Rotation = rotation;
         }
 
-        public override void Update()
+        public override void Update(float time)
         {
             float _x = GetX();
             float _y = GetY();

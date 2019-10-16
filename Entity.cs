@@ -54,7 +54,7 @@ namespace ComicDefender
 
 
         //Виртуальные функции
-        public virtual void Update() { }
+        public virtual void Update(float time) { }
         public virtual void Draw() { }
 
         //Геттеры и Сеттеры

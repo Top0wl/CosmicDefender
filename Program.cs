@@ -21,6 +21,7 @@ namespace ComicDefender
         {
            //Создание окна
            Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), "CosmicDefender");
+            Window.SetVerticalSyncEnabled(true);
             
            //Добавим событие на закрытие окна
            Window.Closed += Window_Closed;
@@ -28,20 +29,13 @@ namespace ComicDefender
 
            Content.Load();                                                          //Загружаем в память текстуры
            Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
-          // Random rdn = new Random(DateTime.Now.Millisecond);
 
             for (int i = 0; i < 100; i++)
             { 
-              //  int a1 = rdn.Next(1, WindowWidth);
-              //  int a2 = rdn.Next(1, WindowHeight);
-              //  int a3 = rdn.Next(1, 360);
-              //  float speed = (rdn.Next(100, 500) / 10000);
-
                 Asteroid a = new Asteroid();
-
                // a.Settings("Asteroid1.png","Asteroid", a1, a2, a3, 0.4F, speed);
-                entities.Add(a);
 
+                entities.Add(a);
                 if (a.GetLife() == false)
                 {
                     entities.RemoveAt(i);
@@ -85,7 +79,7 @@ namespace ComicDefender
                     {
                         entities.Count();
                     }
-                    entity.Update();
+                    entity.Update(time);
                     entity.Draw();
                 }
 

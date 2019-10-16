@@ -25,8 +25,8 @@ namespace ComicDefender
             int a1 = rdn.Next(1, Program.WindowWidth);
             int a2 = rdn.Next(1, Program.WindowHeight);
             int a3 = rdn.Next(1, 360);
-            float speed = (rdn.Next(50, 300));
-            speed = speed / 10000;
+            float speed = (rdn.Next(10,100));
+            speed = speed / 100;
             Settings("Asteroid1.png", "Asteroid", a1, a2, a3, 0.4F, speed);
             //float a4 = (float)rdn.Next(-10, 10) / (speed * 100000);
             // float a5 = (float)rdn.Next(-10, 10) / (speed * 100000);
@@ -36,7 +36,7 @@ namespace ComicDefender
         }
 
 
-        public override void Update()
+        public override void Update(float time)
         {
             float _x = GetX();
             float _y = GetY();

@@ -17,31 +17,42 @@ namespace ComicDefender
         public const int WindowHeight = 720;
         public static RenderWindow Window;
         public static List<Entity> entities = new List<Entity>();
+        private static int CountAsteroids = 0;
+
+        static Random rnd2 = new Random();
         static void Main(string[] args)
         {
-           //Создание окна
-           Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), "CosmicDefender");
+            //Создание окна
+            Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), "CosmicDefender");
             Window.SetVerticalSyncEnabled(true);
+
+            //Добавим событие на закрытие окна
+            Window.Closed += Window_Closed;
+            Window.Resized += Win_Resized;
+
+            Game Logic = new Game();
+
+            Logic.CreateParticles(100);
+
+           // Logic.CreateParticles(1000);
+            Content.Load();                                                          //Загружаем в память текстуры
+
             
-           //Добавим событие на закрытие окна
-           Window.Closed += Window_Closed;
-           Window.Resized += Win_Resized;
+            
+            /*  for (int i = 0; i < 1000; i++)
+              {
+                  Particle a = new Particle();
+                  entities.Add(a);
+                  if (a.GetLife() == false)
+                  {
+                      entities.RemoveAt(i);
+                      a = null;
+                  }
+              }
+              */
 
-           Content.Load();                                                          //Загружаем в память текстуры
-           Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
+            Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
 
-            for (int i = 0; i < 100; i++)
-            { 
-                Asteroid a = new Asteroid();
-               // a.Settings("Asteroid1.png","Asteroid", a1, a2, a3, 0.4F, speed);
-
-                entities.Add(a);
-                if (a.GetLife() == false)
-                {
-                    entities.RemoveAt(i);
-                    a = null;
-                }
-            }
 
             Clock clock = new Clock();
             Clock bullet_clock = new Clock();
@@ -49,6 +60,7 @@ namespace ComicDefender
 
             while (Window.IsOpen)
             {
+                CreateAsteroid(100);
                 bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
                 float time = clock.ElapsedTime.AsMicroseconds();
                 clock.Restart();
@@ -68,9 +80,9 @@ namespace ComicDefender
                 {
                     bullet_clock.Restart();
                     Bullet b = new Bullet(/*"Bullet.png",32,128*/);
-                        //b.Settings(Bullet.sprite, Player.GetX(), Player.GetY(), Player.GetRotation(), 10);
-                        Program.entities.Add(b);
-                        shooting_ready = 0;
+                    //b.Settings(Bullet.sprite, Player.GetX(), Player.GetY(), Player.GetRotation(), 10);
+                    Program.entities.Add(b);
+                    shooting_ready = 0;
                 }
 
                 foreach (Entity entity in entities)
@@ -86,18 +98,38 @@ namespace ComicDefender
                 Ship.Update(time);                                                  //Прорисовываем корабль
                 Window.Display();                                                   //Выводит всё на дисплей
 
-            }      
+            }
         }
 
 
         private static void Win_Resized(object sender, SizeEventArgs e)
         {
-           //Window.SetView(new View(new FloatRect(0, 0, e.Width, e.Height)));
+            //Window.SetView(new View(new FloatRect(0, 0, e.Width, e.Height)));
         }
 
         private static void Window_Closed(object sender, EventArgs e)
         {
             Window.Close();
+        }
+
+        private static void CreateAsteroid(int count)
+        {
+            int b = rnd2.Next(1, 100);
+            if (b == 1)
+            {
+                if (CountAsteroids != count)
+                {
+                    Asteroid a = new Asteroid();
+                    entities.Add(a);
+                    // if (a.GetLife() == false)
+                    //  {
+                    //      entities.RemoveAt(i);
+                    //      a = null;
+                    //  }
+                    CountAsteroids++;
+
+                }
+            }
         }
     }
 }

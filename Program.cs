@@ -32,7 +32,7 @@ namespace ComicDefender
 
             Game Logic = new Game();
 
-            Logic.CreateParticles(100);
+            Logic.CreateParticles(1000);
 
            // Logic.CreateParticles(1000);
             Content.Load();                                                          //Загружаем в память текстуры

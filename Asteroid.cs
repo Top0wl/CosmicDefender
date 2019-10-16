@@ -21,18 +21,12 @@ namespace ComicDefender
 
         public Asteroid()
         {
-
             int a1 = rdn.Next(1, Program.WindowWidth);
             int a2 = rdn.Next(1, Program.WindowHeight);
             int a3 = rdn.Next(1, 360);
             float speed = (rdn.Next(10,100));
             speed = speed / 100;
             Settings("Asteroid1.png", "Asteroid", a1, a2, a3, 0.4F, speed);
-            //float a4 = (float)rdn.Next(-10, 10) / (speed * 100000);
-            // float a5 = (float)rdn.Next(-10, 10) / (speed * 100000);
-            // SetDx(a4);
-            //SetDy(a5);
-            //  SetName("Asteroid");
         }
 
 

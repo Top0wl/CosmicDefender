@@ -20,9 +20,9 @@ namespace ComicDefender
         private bool life;                  //Жив ли объект
         private string Name;                //Имя объекта
         private float Speed;                //Скорость объекта
-        protected static Sprite sprite;
+        protected Sprite sprite;
         private Texture texture;
-        protected Image image;
+        private Image image;
 
 
         public Entity()

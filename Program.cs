@@ -18,13 +18,14 @@ namespace ComicDefender
         public static RenderWindow Window;
         public static List<Entity> entities = new List<Entity>();
         private static int CountAsteroids = 0;
-
+        static Game Logic = new Game();
         static Random rnd2 = new Random();
         static void Main(string[] args)
         {
             //Создание окна
             Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), "CosmicDefender");
             Window.SetVerticalSyncEnabled(true);
+            Window.SetFramerateLimit(60);
 
             //Добавим событие на закрытие окна
             Window.Closed += Window_Closed;
@@ -32,24 +33,16 @@ namespace ComicDefender
 
             Game Logic = new Game();
 
-            Logic.CreateParticles(1000);
+            //Logic.CreateParticles(1000);
 
-           // Logic.CreateParticles(1000);
+            //dynamic particles = ParticleSystem(1000);
+            ParticleSystem particles = new ParticleSystem(5000);
+
+            //Logic.CreateParticles(1000);
             Content.Load();                                                          //Загружаем в память текстуры
 
-            
-            
-            /*  for (int i = 0; i < 1000; i++)
-              {
-                  Particle a = new Particle();
-                  entities.Add(a);
-                  if (a.GetLife() == false)
-                  {
-                      entities.RemoveAt(i);
-                      a = null;
-                  }
-              }
-              */
+
+    
 
             Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
 
@@ -65,9 +58,12 @@ namespace ComicDefender
                 float time = clock.ElapsedTime.AsMicroseconds();
                 clock.Restart();
                 time = time / 800;
-                Window.DispatchEvents();                                            //Cобираем ивенты
-                Window.Clear();                                                      //Чистим экран
+                Window.DispatchEvents();       //Cобираем ивенты
+
+                Window.Clear();                                                 //Чистим экран  
                 Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));                  //Прорисовываем уровень
+                particles.Update();
+                Window.Draw(particles);
 
                 int shooting_ready = 0;
 
@@ -79,8 +75,7 @@ namespace ComicDefender
                 if (shooting_ready == 1 && bullet_cooldown >= .2f)
                 {
                     bullet_clock.Restart();
-                    Bullet b = new Bullet(/*"Bullet.png",32,128*/);
-                    //b.Settings(Bullet.sprite, Player.GetX(), Player.GetY(), Player.GetRotation(), 10);
+                    Bullet b = new Bullet();
                     Program.entities.Add(b);
                     shooting_ready = 0;
                 }
@@ -97,7 +92,6 @@ namespace ComicDefender
 
                 Ship.Update(time);                                                  //Прорисовываем корабль
                 Window.Display();                                                   //Выводит всё на дисплей
-
             }
         }
 
@@ -119,6 +113,7 @@ namespace ComicDefender
             {
                 if (CountAsteroids != count)
                 {
+                    //Logic.CreateParticles(100);
                     Asteroid a = new Asteroid();
                     entities.Add(a);
                     // if (a.GetLife() == false)

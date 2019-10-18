@@ -8,13 +8,6 @@ namespace ComicDefender
 {
     class Game
     {
-        public void CreateParticles(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                Particle a = new Particle();
-                Program.entities.Add(a);
-            }
-        }
+       
     }
 }

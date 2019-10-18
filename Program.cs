@@ -36,7 +36,7 @@ namespace ComicDefender
             //Logic.CreateParticles(1000);
 
             //dynamic particles = ParticleSystem(1000);
-            ParticleSystem particles = new ParticleSystem(5000);                     //кол-во частиц
+            ParticleSystem particles = new ParticleSystem(5000);
 
             //Logic.CreateParticles(1000);
             Content.Load();                                                          //Загружаем в память текстуры

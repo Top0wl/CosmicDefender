@@ -17,11 +17,11 @@ namespace ComicDefender
         
         public Bullet()
         {
-            this.Settings("Bullet.png","Bullet", Player.GetX(), Player.GetY(), Player.GetRotation(), 0.2F, 20f);
+            this.Settings("Bullet.png","Bullet", Ship.GetX(), Ship.GetY(), Ship.GetRotation(), 0.2F, 20f);
             Vector2i pixelPos = Mouse.GetPosition(Program.Window);                                  //забираем коорд курсора
             Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);                               //переводим их в игровые (уходим от коорд окна
-            float dX = pos.X - Player.GetX();                                                       //вектор , колинеарный прямой, которая пересекает спрайт и курсор
-            float dY = pos.Y - Player.GetY();                                                       //он же, координата y
+            float dX = pos.X - Ship.GetX();                                                       //вектор , колинеарный прямой, которая пересекает спрайт и курсор
+            float dY = pos.Y - Ship.GetY();                                                       //он же, координата y
             float rotation = (float)(((Math.Atan2((double)dY, (double)dX)) * 180 / Math.PI) - 90);  //получаем угол в радианах и переводим его в градусы
             sprite.Rotation = rotation;
         }

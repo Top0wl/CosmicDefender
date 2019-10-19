@@ -12,10 +12,14 @@ namespace ComicDefender
     class Ship
     {
         private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
-        private Vector2f location = new Vector2f(0, 0);
+        private float x, y;
+        private static Vector2f location = new Vector2f(0, 0);
         private Vector2f velocity = new Vector2f(0, 0);
+        private Vector2f velocity2 = new Vector2f(0, 0);
         private Vector2f direction = new Vector2f(0, 0);
         private Vector2f Rotate = new Vector2f(0, 0);
+        private static float rotat;
+        private float VectorSpeed; //Cкорость корабля
         public Sprite sprite;
         private Texture texture;
         private Image image;
@@ -31,6 +35,7 @@ namespace ComicDefender
             location = new Vector2f(X, Y);
             sprite.Position = location;
             sprite.Scale = new Vector2f(0.4F, 0.4F);
+            VectorSpeed = 2;
         }
 
 
@@ -42,7 +47,8 @@ namespace ComicDefender
             Vector2f Rotate = pos - location;
             Rotate = Normalization(Rotate, pos.X, pos.Y);
             direction = Rotate;
-            float rotat = (float)((Math.Atan2(Rotate.Y, Rotate.X) * 180 / Math.PI) - 90);
+            float v = 0.3f;
+            rotat = (float)((Math.Atan2(Rotate.Y, Rotate.X) * 180 / Math.PI) - 90);
             sprite.Rotation = rotat;
 
             sprite.Position = location;
@@ -54,7 +60,8 @@ namespace ComicDefender
 
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
-
+                float max = 2;
+                /*
                 if ((float)Math.Sqrt((velocity.X) * (velocity.X) + (velocity.Y) * (velocity.Y)) < 2)
                 {
                     velocity += Rotate; //Мы двигаемся
@@ -73,6 +80,40 @@ namespace ComicDefender
                         velocity -= Rotate;
                     }
                 }
+                */
+                    
+                velocity += v * direction;
+
+                float constanta = (float)Math.Sqrt( (VectorSpeed* VectorSpeed) / ( velocity.X * velocity.X + velocity.Y * velocity.Y));
+
+                velocity2 = velocity * constanta;
+
+                float Dvelocity = (float)Math.Sqrt((velocity.X) * (velocity.X) + (velocity.Y) * (velocity.Y));
+                float Dvelocity2 = (float)Math.Sqrt((velocity2.X) * (velocity2.X) + (velocity2.Y) * (velocity2.Y));
+
+                if (Dvelocity > Dvelocity2)
+                {
+                    velocity = velocity2;
+                }
+
+                    //Velocity : x =0.01 , y = 0.05
+
+                    //Velocity2 x, y d = 2;
+                    // 2 = sqrt (x^2 + y^2)
+                    // 2 = sqrt (0.01^2 * const^2 + 0.05^2 * const^2)
+                    // 4 = const^2(0.01^2 + 0.05^2)
+                    // (4 / 0.01^2 + 0.05^2) = const^2
+                    //const = sqrt (4 / 0.01^2 + 0.05^2)
+
+
+
+                    
+               // if ((float)Math.Sqrt((velocity.X) * (velocity.X) + (velocity.Y) * (velocity.Y)) > max)
+                   // velocity = max;
+
+
+
+
             }
 
             if (location.X > 1280)
@@ -93,6 +134,9 @@ namespace ComicDefender
                 location.Y = 720;
             }
 
+            x = location.X;
+            y = location.Y;
+
             Program.Window.Draw(sprite);
         }
 
@@ -111,6 +155,18 @@ namespace ComicDefender
             float d = (float)Math.Sqrt((vec.X) * (vec.X) + (vec.Y) * (vec.Y));
             vec = vec / (10*d);
             return vec;
+        }
+        public static float GetX()
+        {
+            return location.X;
+        }
+        public static float GetY()
+        {
+            return location.Y;
+        }
+        public static float GetRotation()
+        {
+            return rotat;
         }
     }
 }

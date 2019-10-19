@@ -79,6 +79,7 @@ namespace ComicDefender
                     Program.entities.Add(b);
                     shooting_ready = 0;
                     
+                    
                 }
 
                 foreach (Entity entity in entities.ToList())
@@ -97,7 +98,7 @@ namespace ComicDefender
                         }
                     }
 
-                foreach (Entity a in entities)
+               /* foreach (Entity a in entities)
                 {
                     foreach (Entity b in entities)
                     {
@@ -108,6 +109,25 @@ namespace ComicDefender
                             }
                     }
                 }
+                */
+
+
+                for (int i = 0; i < entities.Count; i++)
+                {
+                    for (int j = 0; j < entities.Count; j++)
+                    {
+                        if (entities[i].GetName() == "Asteroid" && entities[j].GetName() == "Bullet") 
+                            if (IsCollide(entities[i].sprite, entities[j].sprite))
+                            {
+                                entities[i].SetLife(false); entities[j].SetLife(false);
+                            }
+                    }
+
+                }
+
+
+
+                
 
                 //Ship.Update(time);                                                  //Прорисовываем корабль
                 Ship.Update();
@@ -147,12 +167,49 @@ namespace ComicDefender
             }
         }
 
-       private static bool IsCollide(Entity a, Entity b)
+       /*private static bool IsCollide(Entity a, Entity b)
         {
-            return((b.GetX() - a.GetX())*(b.GetX() - a.GetX()) +
+            float bX = b.GetX();
+            float aX = a.GetX();
+            float bY = b.GetY();
+            float aY = a.GetY();
+            float bS = b.GetSize();
+            float aS = a.GetSize();
+
+            float q = ((bX - aX) * (bX - aX)) + ((bY - aY) * (bY - aY));
+            float size = (bS + aS) * (bS + aS);
+            if (q < size)
+            {
+                return true;
+            }
+            else return false;
+                
+
+
+            return ((b.GetX() - a.GetX())*(b.GetX() - a.GetX()) +
                 (b.GetY() - a.GetY())*(b.GetY() - a.GetY()) <
                 (b.GetSize() + a.GetSize())*(b.GetSize() + a.GetSize()));
             
+        }     
+        */
+       
+
+        private static bool IsCollide(Sprite first, Sprite second)
+        {
+            Vector2f firstRect = new Vector2f(first.TextureRect.Width, first.TextureRect.Width);
+            firstRect.X *= first.Scale.X;
+            firstRect.Y *= first.Scale.Y;
+
+            Vector2f secondRect = new Vector2f(second.TextureRect.Width, second.TextureRect.Width);
+            secondRect.X *= second.Scale.X;
+            secondRect.Y *= second.Scale.Y;
+
+            float r1 = (firstRect.X + firstRect.Y) / 4;
+            float r2 = (secondRect.X + secondRect.Y) / 4;
+            float xd = first.Position.X - second.Position.X;
+            float yd = first.Position.Y - second.Position.Y;
+
+            return (Math.Sqrt(xd* xd + yd* yd) <= r1 + r2);
         }
-    }
+}
 }

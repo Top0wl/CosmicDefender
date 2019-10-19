@@ -22,6 +22,7 @@ namespace ComicDefender
         private static Sprite sPlayer;
         private static Sprite cursorSprite;
         private static Sprite sAsteroid;
+        public static Animation animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
 
         // public static Player Ship1;
 
@@ -34,7 +35,6 @@ namespace ComicDefender
             Texture0_Level1.Smooth = true;
             sBackground = new Sprite(Texture0_Level1);
             cursorSprite = new Sprite(Texture0_Cursor);
-
             Texture0_Asteroid = new Texture(CONTENT_DIRICTORY + "Asteroid1.png");
             Texture0_Asteroid.Smooth = true;
             sAsteroid = new Sprite(Texture0_Asteroid);

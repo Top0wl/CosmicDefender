@@ -52,7 +52,7 @@ namespace ComicDefender
             int a3 = rdn.Next(1, 360);
             float speed = (rdn.Next(10,100));
             speed = speed / 100;
-            Settings("Asteroid1.png", "Asteroid", a1, a2, a3, 0.4F, speed);
+            Settings(Content.animAsteroid, "Asteroid", a1, a2, a3, 0.4F, speed);
         }
 
 
@@ -73,8 +73,8 @@ namespace ComicDefender
         }
         public override void Draw()
         {
-            sprite.Position = new Vector2f(GetX(), GetY());
-            Program.Window.Draw(sprite);
+            animation.sprite.Position = new Vector2f(GetX(), GetY());
+            Program.Window.Draw(animation.sprite);
         }
     }
 }

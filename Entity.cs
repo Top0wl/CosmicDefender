@@ -23,7 +23,7 @@ namespace ComicDefender
         public Sprite sprite;
         protected Texture texture;
         protected Image image;
-
+        public Animation animation;
 
         public Entity()
         {
@@ -51,6 +51,24 @@ namespace ComicDefender
             Dy = deltaY;
 
         }
+
+        public void Settings(Animation a, string _name, float x, float y, float rotation, float size, float _speed)
+        {
+            a.sprite.Scale = new Vector2f(size, size);
+            Name = _name;
+            X = x;
+            Y = y;
+            Rotation = rotation;
+            Size = size;
+            Speed = _speed;
+            float deltaX = (float)Math.Cos(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
+            float deltaY = (float)Math.Sin(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
+            Dx = deltaX;
+            Dy = deltaY;
+            animation = a;
+
+        }
+
 
 
         //Виртуальные функции

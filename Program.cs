@@ -31,12 +31,18 @@ namespace ComicDefender
             Window.Closed += Window_Closed;
             Window.Resized += Win_Resized;
 
+            
+
+            //Animation animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
+            //animAsteroid.sprite.Position = new Vector2f(400, 400);
+
+
             Game Logic = new Game();
 
             //Logic.CreateParticles(1000);
 
             //dynamic particles = ParticleSystem(1000);
-            ParticleSystem particles = new ParticleSystem(50000);
+            ParticleSystem particles = new ParticleSystem(5000);
 
             //Logic.CreateParticles(1000);
             Content.Load();                                                          //Загружаем в память текстуры
@@ -127,12 +133,14 @@ namespace ComicDefender
 
 
 
-                
+
 
                 //Ship.Update(time);                                                  //Прорисовываем корабль
+                Content.animAsteroid.update();
                 Ship.Update(time);
                 Window.Display();                                                   //Выводит всё на дисплей
             }
+
         }
 
 

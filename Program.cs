@@ -136,7 +136,7 @@ namespace ComicDefender
 
 
                 //Ship.Update(time);                                                  //Прорисовываем корабль
-                Content.animAsteroid.update();
+                //Content.animAsteroid.update();
                 Ship.Update(time);
                 Window.Display();                                                   //Выводит всё на дисплей
             }

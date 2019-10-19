@@ -44,12 +44,13 @@ namespace ComicDefender
 
         public void update()
         {
+
             Frame += speed;
             int n = frames.Count;
             if (Frame >= n) Frame -= n;
             if (n > 0) sprite.TextureRect = frames[(int)Frame];
 
-            Program.Window.Draw(sprite);
+           // Program.Window.Draw(sprite);
         }
 
         public bool isEnd()

@@ -58,7 +58,7 @@ namespace ComicDefender
             Name = _name;
             X = x;
             Y = y;
-            Rotation = rotation;
+            a.sprite.Rotation = rotation;
             Size = size;
             Speed = _speed;
             float deltaX = (float)Math.Cos(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;

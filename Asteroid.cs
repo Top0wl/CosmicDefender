@@ -10,17 +10,17 @@ namespace ComicDefender
 {
     class Asteroid : Entity
     {
-        private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
         private float w, h;
-       // public static Sprite sprite;
-        private Texture texture;
-        private float rotation;
-        private String File;
+        private Animation animAsteroid;
+        // public static Sprite sprite;
+
 
         Random rdn = new Random(DateTime.Now.Millisecond);
 
         public Asteroid()
         {
+            animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
+
             int Choose1, Choose2, a1, a2;
             Choose1 = rdn.Next(0, 1);
             if (Choose1 == 1)
@@ -52,7 +52,7 @@ namespace ComicDefender
             int a3 = rdn.Next(1, 360);
             float speed = (rdn.Next(10,100));
             speed = speed / 100;
-            Settings(Content.animAsteroid, "Asteroid", a1, a2, a3, 0.4F, speed);
+            Settings(animAsteroid, "Asteroid", a1, a2, a3, 0.4F, speed);
         }
 
 
@@ -70,11 +70,14 @@ namespace ComicDefender
             if (GetX() < 0) SetX(Program.WindowWidth);
             if (GetY() > Program.WindowHeight) SetY(0);
             if (GetY() < 0) SetY(Program.WindowHeight);
+            sprite = animAsteroid.sprite;
+            animAsteroid.update();
+
         }
         public override void Draw()
         {
             animation.sprite.Position = new Vector2f(GetX(), GetY());
-            Program.Window.Draw(animation.sprite);
+            Program.Window.Draw(sprite);
         }
     }
 }

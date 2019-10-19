@@ -78,16 +78,32 @@ namespace ComicDefender
                     Bullet b = new Bullet();
                     Program.entities.Add(b);
                     shooting_ready = 0;
+                    
                 }
 
+                int i = 0;
                 foreach (Entity entity in entities)
                 {
-                    if (entities.Count() > 100)
-                    {
-                        entities.Count();
-                    }
                     entity.Update(time);
                     entity.Draw();
+
+                   if (entity.GetLife() == false)
+                {
+                    entities.RemoveAt(i);
+                }
+                   i++;
+                }
+
+                foreach (Entity a in entities)
+                {
+                    foreach (Entity b in entities)
+                    {
+                        if(a.GetName() == "Asteroid" && b.GetName() == "Bullet")
+                            if(IsCollide(a,b))
+                            {
+                                a.SetLife(false);  b.SetLife(false);
+                            }
+                    }
                 }
 
                 //Ship.Update(time);                                                  //Прорисовываем корабль
@@ -126,6 +142,14 @@ namespace ComicDefender
 
                 }
             }
+        }
+
+       private static bool IsCollide(Entity a, Entity b)
+        {
+            return((b.GetX() - a.GetX())*(b.GetX() - a.GetX()) +
+                (b.GetY() - a.GetY())*(b.GetY() - a.GetY()) <
+                (b.GetSize() + a.GetSize())*(b.GetSize() + a.GetSize()));
+            
         }
     }
 }

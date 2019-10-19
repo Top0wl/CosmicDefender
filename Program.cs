@@ -81,18 +81,21 @@ namespace ComicDefender
                     
                 }
 
-                int i = 0;
-                foreach (Entity entity in entities)
-                {
-                    entity.Update(time);
-                    entity.Draw();
+                foreach (Entity entity in entities.ToList())
+                    {
+                        if (entities.Count() > 100)
+                        {
+                            entities.Count();
+                        }
+                        entity.Update(time);
+                        entity.Draw();
 
-                   if (entity.GetLife() == false)
-                {
-                    entities.RemoveAt(i);
-                }
-                   i++;
-                }
+                        if (entity.GetLife() == false)
+                        {
+                            entities.Remove(entity);
+                            //a = null;
+                        }
+                    }
 
                 foreach (Entity a in entities)
                 {

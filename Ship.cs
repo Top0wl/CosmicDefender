@@ -39,7 +39,7 @@ namespace ComicDefender
         }
 
 
-        public void Update()
+        public void Update(float time)
         {
 
             Vector2i pixelPos = Mouse.GetPosition(Program.Window);//забираем коорд курсора
@@ -53,7 +53,7 @@ namespace ComicDefender
 
             sprite.Position = location;
 
-            location += velocity; // Где находится корабль
+            location += velocity * time; // Где находится корабль
             
 
 

@@ -36,7 +36,7 @@ namespace ComicDefender
             //Logic.CreateParticles(1000);
 
             //dynamic particles = ParticleSystem(1000);
-            ParticleSystem particles = new ParticleSystem(5000);
+            ParticleSystem particles = new ParticleSystem(50000);
 
             //Logic.CreateParticles(1000);
             Content.Load();                                                          //Загружаем в память текстуры
@@ -57,7 +57,7 @@ namespace ComicDefender
                 bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
                 float time = clock.ElapsedTime.AsMicroseconds();
                 clock.Restart();
-                time = time / 800;
+                time = time / 10000;
                 Window.DispatchEvents();       //Cобираем ивенты
 
                 Window.Clear();                                                 //Чистим экран  
@@ -130,7 +130,7 @@ namespace ComicDefender
                 
 
                 //Ship.Update(time);                                                  //Прорисовываем корабль
-                Ship.Update();
+                Ship.Update(time);
                 Window.Display();                                                   //Выводит всё на дисплей
             }
         }

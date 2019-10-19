@@ -42,10 +42,10 @@ namespace ComicDefender
             Content.Load();                                                          //Загружаем в память текстуры
 
 
-    
 
-            Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
 
+            //Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
+            Ship Ship = new Ship("SpaceShip1.png", 500, 500, 106, 80);
 
             Clock clock = new Clock();
             Clock bullet_clock = new Clock();
@@ -90,7 +90,8 @@ namespace ComicDefender
                     entity.Draw();
                 }
 
-                Ship.Update(time);                                                  //Прорисовываем корабль
+                //Ship.Update(time);                                                  //Прорисовываем корабль
+                Ship.Update();
                 Window.Display();                                                   //Выводит всё на дисплей
             }
         }

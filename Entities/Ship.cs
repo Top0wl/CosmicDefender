@@ -9,37 +9,40 @@ using SFML.Window;
 
 namespace ComicDefender
 {
-    class Ship
+    class Ship : Entity
     {
-        private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
-        private float x, y;
-        private static Vector2f location = new Vector2f(0, 0);
-        private Vector2f velocity = new Vector2f(0, 0);
-        private Vector2f velocity2 = new Vector2f(0, 0);
-        private Vector2f direction = new Vector2f(0, 0);
-        private Vector2f Rotate = new Vector2f(0, 0);
+        protected static Vector2f location = new Vector2f(0, 0);
+        protected Vector2f velocity = new Vector2f(0, 0);
+        protected Vector2f velocity2 = new Vector2f(0, 0);
+        protected Vector2f direction = new Vector2f(0, 0);
+        protected Vector2f Rotate = new Vector2f(0, 0);
         private static float rotat;
-        private float VectorSpeed; //Cкорость корабля
-        public Sprite sprite;
-        private Texture texture;
-        private Image image;
+        private Clock bullet_clock = new Clock();
+        //
+        public int shooting_ready = 0;
+        protected float VectorSpeed;                                  //Максимальная Cкорость корабля
+        protected float bullet_cooldown_max = .2f;                     //Скоростельность
+        private float bullet_cooldown;
 
-        public Ship(String F, float X, float Y, float W, float H)
+
+        public Ship(String F, float _X, float _Y, float W, float H)
         {
+            Name = "PlayerShip";
             string File = F;
             float w = W; float h = H;
             texture = new Texture(CONTENT_DIRICTORY + File);
             texture.Smooth = true;
             sprite = new Sprite(texture);
             sprite.Origin = new Vector2f(w / 2, h / 2);
-            location = new Vector2f(X, Y);
+            location = new Vector2f(_X, _Y);
             sprite.Position = location;
             sprite.Scale = new Vector2f(0.4F, 0.4F);
-            VectorSpeed = 2;
+            VectorSpeed = 1.5f;
+            X = _X;
+            Y = _Y;
         }
 
-
-        public void Update(float time)
+        public override void Update(float time)
         {
 
             Vector2i pixelPos = Mouse.GetPosition(Program.Window);//забираем коорд курсора
@@ -50,70 +53,21 @@ namespace ComicDefender
             float v = 0.3f;
             rotat = (float)((Math.Atan2(Rotate.Y, Rotate.X) * 180 / Math.PI) - 90);
             sprite.Rotation = rotat;
-
             sprite.Position = location;
-
             location += velocity * time; // Где находится корабль
-            
 
-
-
+            #region MoveShip
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
             {
-                float max = 2;
-                /*
-                if ((float)Math.Sqrt((velocity.X) * (velocity.X) + (velocity.Y) * (velocity.Y)) < 2)
-                {
-                    velocity += Rotate; //Мы двигаемся
-                }
-                else  // длинна больше 2
-                {
-
-                    velocity += Rotate;
-
-                    if ((float)Math.Sqrt((velocity.X) * (velocity.X) + (velocity.Y) * (velocity.Y)) < 2)
-                    {
-
-                    }
-                    else
-                    {
-                        velocity -= Rotate;
-                    }
-                }
-                */
-                    
                 velocity += v * direction;
-
                 float constanta = (float)Math.Sqrt( (VectorSpeed* VectorSpeed) / ( velocity.X * velocity.X + velocity.Y * velocity.Y));
-
                 velocity2 = velocity * constanta;
-
                 float Dvelocity = (float)Math.Sqrt((velocity.X) * (velocity.X) + (velocity.Y) * (velocity.Y));
                 float Dvelocity2 = (float)Math.Sqrt((velocity2.X) * (velocity2.X) + (velocity2.Y) * (velocity2.Y));
-
                 if (Dvelocity > Dvelocity2)
                 {
                     velocity = velocity2;
                 }
-
-                    //Velocity : x =0.01 , y = 0.05
-
-                    //Velocity2 x, y d = 2;
-                    // 2 = sqrt (x^2 + y^2)
-                    // 2 = sqrt (0.01^2 * const^2 + 0.05^2 * const^2)
-                    // 4 = const^2(0.01^2 + 0.05^2)
-                    // (4 / 0.01^2 + 0.05^2) = const^2
-                    //const = sqrt (4 / 0.01^2 + 0.05^2)
-
-
-
-                    
-               // if ((float)Math.Sqrt((velocity.X) * (velocity.X) + (velocity.Y) * (velocity.Y)) > max)
-                   // velocity = max;
-
-
-
-
             }
 
             if (location.X > 1280)
@@ -134,24 +88,36 @@ namespace ComicDefender
                 location.Y = 720;
             }
 
-            x = location.X;
-            y = location.Y;
+            X = location.X;
+            Y = location.Y;
 
+            #endregion
+
+
+            #region Shoot
+
+            bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
+            shooting_ready = 0;
+
+            if (Mouse.IsButtonPressed(Mouse.Button.Left))
+            {
+                shooting_ready = 1;
+            }
+            if (shooting_ready == 1 && bullet_cooldown >= .2f)
+            {
+                bullet_clock.Restart();
+                Bullet b = new Bullet(Ship.GetX(), Ship.GetY(), Ship.GetRotation(), 0.2f, 20f);
+                Program.entities.Add(b);
+                shooting_ready = 0;
+            }
+
+            #endregion
+          
             Program.Window.Draw(sprite);
         }
 
-        public Vector2f Normalization(Vector2f vec, float X, float Y)
+        private Vector2f Normalization(Vector2f vec, float X, float Y)
         {
-            /*float x1 = location.X;
-            float x2 = vec.X;
-            float y1 = location.Y;
-            float y2 = vec.Y;
-            float d = (float)Math.Sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
-            float norm_x = vec.X / (10*d);
-            float norm_y = vec.Y / (10*d);
-            return new Vector2f(norm_x, norm_y);
-            */
-   
             float d = (float)Math.Sqrt((vec.X) * (vec.X) + (vec.Y) * (vec.Y));
             vec = vec / (10*d);
             return vec;

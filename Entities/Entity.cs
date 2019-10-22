@@ -13,12 +13,12 @@ namespace ComicDefender
         //Константы
         protected const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
         //
-        private float X, Y;                 //Координаты объекта
+        protected float X, Y;                 //Координаты объекта
         private float Dx, Dy;               //Скорость объекта
         private float Rotation;             //Направление объекта
         private float Size;                 //Размер объекта
-        private bool life;                  //Жив ли объект
-        private string Name;                //Имя объекта
+        protected bool life;                  //Жив ли объект
+        protected string Name;                //Имя объекта
         private float Speed;                //Скорость объекта
         public Sprite sprite;
         protected Texture texture;
@@ -49,22 +49,28 @@ namespace ComicDefender
             float deltaY = (float)Math.Sin(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
             Dx = deltaX;
             Dy = deltaY;
-
+             X += Dx/3;
+             Y += Dy/3;
         }
 
         public void Settings(Animation a, string _name, float x, float y, float rotation, float size, float _speed)
         {
             a.sprite.Scale = new Vector2f(size, size);
             Name = _name;
+            animation = a;
             X = x;
             Y = y;
-            a.sprite.Rotation = rotation;
+            animation.X = x;
+            animation.Y = y;
+            animation.sprite.Rotation = rotation;
             Size = size;
             Speed = _speed;
             float deltaX = (float)Math.Cos(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
             float deltaY = (float)Math.Sin(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
             Dx = deltaX;
             Dy = deltaY;
+          //  X += 3 * Dx;
+           // Y += 3 * Dy;
             animation = a;
 
         }

@@ -12,6 +12,7 @@ namespace ComicDefender
     {
         private float w, h;
         private Animation animAsteroid;
+        private Animation animExplosion;
         // public static Sprite sprite;
 
 

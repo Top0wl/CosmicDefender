@@ -22,7 +22,15 @@ namespace ComicDefender
         private static Sprite sPlayer;
         private static Sprite cursorSprite;
         private static Sprite sAsteroid;
+
+
+        public static Sprite sExplosion;
+        public static Image iExplosion;
+        public static Texture tExplosion;
+
         public static Animation animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
+
+
 
         // public static Player Ship1;
 
@@ -39,6 +47,21 @@ namespace ComicDefender
             Texture0_Asteroid.Smooth = true;
             sAsteroid = new Sprite(Texture0_Asteroid);
 
+
+            iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");
+            tExplosion = new Texture(iExplosion);
+            tExplosion.Smooth = true;
+            sExplosion = new Sprite(tExplosion);
+            sExplosion.Origin = new Vector2f(iExplosion.Size.X / 2, iExplosion.Size.Y / 2);
+
+
+
+
+
+
+
+
+            //AnimationExplosive1 = new Animation("Explosive\\type_B.png", 0, 0, 192, 192, 64, 0.1f, 0);
         }
 
         public static Sprite GetTextureLevel1(float a, float b)

@@ -59,17 +59,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
-    <Compile Include="Asteroid.cs" />
-    <Compile Include="Bullet.cs" />
+    <Compile Include="Entities\Asteroid.cs" />
+    <Compile Include="Entities\Bullet.cs" />
     <Compile Include="Content.cs" />
-    <Compile Include="Entity.cs" />
+    <Compile Include="Content2.cs" />
+    <Compile Include="Entities\EnemyShip.cs" />
+    <Compile Include="Entities\Entity.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="ParticleSystem.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Particle.cs" />
-    <Compile Include="Ship.cs" />
+    <Compile Include="Entities\Ship.cs" />
+    <Compile Include="Rand.cs" />
     <Compile Include="View.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -17,9 +17,12 @@ namespace ComicDefender
         public const int WindowHeight = 720;
         public static RenderWindow Window;
         public static List<Entity> entities = new List<Entity>();
-        private static int CountAsteroids = 0;
+        public static Content2 content;
+        public static Ship Ship;
+
+
         static Game Logic = new Game();
-        static Random rnd2 = new Random();
+
         static void Main(string[] args)
         {
             //Создание окна
@@ -31,113 +34,43 @@ namespace ComicDefender
             Window.Closed += Window_Closed;
             Window.Resized += Win_Resized;
 
-            
-
-            //Animation animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
-            //animAsteroid.sprite.Position = new Vector2f(400, 400);
-
-
             Game Logic = new Game();
-
-            //Logic.CreateParticles(1000);
-
-            //dynamic particles = ParticleSystem(1000);
             ParticleSystem particles = new ParticleSystem(5000);
-
-            //Logic.CreateParticles(1000);
-            Content.Load();                                                          //Загружаем в память текстуры
-
-
-
-
-            //Player Ship = new Player("SpaceShip1.png", 500, 500, 106, 80);           //Загружаем корабль
-            Ship Ship = new Ship("SpaceShip1.png", 500, 500, 106, 80);
-
+            content = new Content2();
+            content.Load();                                                          //Загружаем в память текстуры
+            Content.Load();
+            Ship = new Ship("SpaceShip1.png", 500, 500, 106, 80);                  //Загружаем корабль
+            entities.Add(Ship);
             Clock clock = new Clock();
-            Clock bullet_clock = new Clock();
-            float bullet_cooldown;
 
             while (Window.IsOpen)
             {
-                CreateAsteroid(100);
-                bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
+                #region Time
                 float time = clock.ElapsedTime.AsMicroseconds();
                 clock.Restart();
                 time = time / 10000;
+                #endregion
+
                 Window.DispatchEvents();       //Cобираем ивенты
 
-                Window.Clear();                                                 //Чистим экран  
+                Window.Clear();                                                     //Чистим экран  
+
                 Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));                  //Прорисовываем уровень
+
+                #region Particles
                 particles.Update();
                 Window.Draw(particles);
+                #endregion
 
-                int shooting_ready = 0;
-
-                if (Mouse.IsButtonPressed(Mouse.Button.Left))
-                {
-                    shooting_ready = 1;
-                }
-
-                if (shooting_ready == 1 && bullet_cooldown >= .2f)
-                {
-                    bullet_clock.Restart();
-                    Bullet b = new Bullet();
-                    Program.entities.Add(b);
-                    shooting_ready = 0;
-                    
-                    
-                }
-
-                foreach (Entity entity in entities.ToList())
-                    {
-                        if (entities.Count() > 100)
-                        {
-                            entities.Count();
-                        }
-                        entity.Update(time);
-                        entity.Draw();
-
-                        if (entity.GetLife() == false)
-                        {
-                            entities.Remove(entity);
-                            //a = null;
-                        }
-                    }
-
-               /* foreach (Entity a in entities)
-                {
-                    foreach (Entity b in entities)
-                    {
-                        if(a.GetName() == "Asteroid" && b.GetName() == "Bullet")
-                            if(IsCollide(a,b))
-                            {
-                                a.SetLife(false);  b.SetLife(false);
-                            }
-                    }
-                }
-                */
-
-
-                for (int i = 0; i < entities.Count; i++)
-                {
-                    for (int j = 0; j < entities.Count; j++)
-                    {
-                        if (entities[i].GetName() == "Asteroid" && entities[j].GetName() == "Bullet") 
-                            if (IsCollide(entities[i].sprite, entities[j].sprite))
-                            {
-                                entities[i].SetLife(false); entities[j].SetLife(false);
-                            }
-                    }
-
-                }
-
-
-
+                #region Logic
+                Logic.Update(Ship, entities);
+                Logic.CreateAsteroid(entities, 100);
+                Logic.Enemy(entities, 10);
+                #endregion
 
 
                 //Ship.Update(time);                                                  //Прорисовываем корабль
-                //Content.animAsteroid.update();
-                Ship.Update(time);
+
                 Window.Display();                                                   //Выводит всё на дисплей
             }
 
@@ -154,7 +87,7 @@ namespace ComicDefender
             Window.Close();
         }
 
-        private static void CreateAsteroid(int count)
+       /* private static void CreateAsteroid(int count)
         {
             int b = rnd2.Next(1, 100);
             if (b == 1)
@@ -174,6 +107,7 @@ namespace ComicDefender
                 }
             }
         }
+        */
 
        /*private static bool IsCollide(Entity a, Entity b)
         {
@@ -202,7 +136,7 @@ namespace ComicDefender
         */
        
 
-        private static bool IsCollide(Sprite first, Sprite second)
+       /* private static bool IsCollide(Sprite first, Sprite second)
         {
             Vector2f firstRect = new Vector2f(first.TextureRect.Width, first.TextureRect.Width);
             firstRect.X *= first.Scale.X;
@@ -219,5 +153,6 @@ namespace ComicDefender
 
             return (Math.Sqrt(xd* xd + yd* yd) <= r1 + r2);
         }
+       */
 }
 }

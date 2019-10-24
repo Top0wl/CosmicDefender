@@ -32,7 +32,7 @@ namespace ComicDefender
             _y += GetDy();
             SetY(_y);
 
-            if (GetX() > Program.WindowWidth || GetX() < 0 || GetY() > Program.WindowHeight || GetY() < 0) SetLife(false);
+            if (GetX() > Program.WindowWidth || GetX() < 0 || GetY() > Program.WindowHeight || GetY() < 0) SetHealth(0);
 
         }
         public override void Draw()

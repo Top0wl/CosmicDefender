@@ -337,3 +337,6 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/bin/Debug/ComicDefender.vshost.exe
+/bin/Debug/ComicDefender.vshost.exe.config
+/bin/Debug/ComicDefender.vshost.exe.manifest

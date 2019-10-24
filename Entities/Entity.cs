@@ -17,7 +17,7 @@ namespace ComicDefender
         private float Dx, Dy;               //Скорость объекта
         private float Rotation;             //Направление объекта
         private float Size;                 //Размер объекта
-        protected bool life;                  //Жив ли объект
+        protected int health;                  //Здоровье
         protected string Name;                //Имя объекта
         private float Speed;                //Скорость объекта
         public Sprite sprite;
@@ -27,8 +27,15 @@ namespace ComicDefender
 
         public Entity()
         {
-            life = true;
+            health = 100;
         }
+
+        public Entity(int _health)
+        {
+            health = _health;
+        }
+
+
 
         //Настройки объекта
         public void Settings(string file, string _name, float x, float y, float rotation, float size, float _speed)
@@ -75,6 +82,11 @@ namespace ComicDefender
 
         }
 
+        //Урон предмету
+        public void damage(int _damage)
+        {
+            health -= _damage;
+        }
 
 
         //Виртуальные функции
@@ -130,13 +142,13 @@ namespace ComicDefender
         {
             Rotation = _Rotation;
         }
-        public bool GetLife()
+        public int GetHealth()
         {
-            return life;
+            return health;
         }
-        public void SetLife(bool _Life)
+        public void SetHealth(int _health)
         {
-            life = _Life;
+            health = _health;
         }
         public float GetSize()
         {

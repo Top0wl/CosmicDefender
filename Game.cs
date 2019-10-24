@@ -37,20 +37,20 @@ namespace ComicDefender
                     {
                         entity.animation.update();
                         entity.animation.Draw();
-                        if (entity.animation.isEnd()) entity.SetLife(false);
+                        if (entity.animation.isEnd()) entity.SetHealth(0);
                     }
                    // entity.animation.update();
                    // entity.animation.Draw();
                 }
                 entity.Draw();
-                if (entity.GetName() == "PlayerShip" && entity.GetLife() == false)
+                if (entity.GetName() == "PlayerShip" && entity.GetHealth() <= 0)
                 {
                     Ship Ship = new Ship("SpaceShip1.png", 500, 500, 106, 80);                  //Загружаем корабль
                     entities.Add(Ship);
                 }
 
 
-                if (entity.GetLife() == false)
+                if (entity.GetHealth() <= 0)
                 {
                     entities.Remove(entity);
                 }
@@ -72,7 +72,7 @@ namespace ComicDefender
                             //
                             //
 
-                            entities[i].SetLife(false); entities[j].SetLife(false);
+                            entities[i].damage(Program.Ship.GetDamage()); entities[j].SetHealth(0);
                         }
                     if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "EnemyShip" || entities[j].GetName() == "Asteroid")) 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
@@ -81,7 +81,7 @@ namespace ComicDefender
                             Entity e = new Entity();
                             e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
                             entities.Add(e);
-                            entities[i].SetLife(false); entities[j].SetLife(false);
+                            entities[i].damage(50); entities[j].SetHealth(0);                             //Урон при столкновении нашему кораблю 50!!!!!! Можно изменить
                         }
 
 

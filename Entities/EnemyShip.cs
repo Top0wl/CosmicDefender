@@ -77,7 +77,12 @@ namespace ComicDefender
             else shooting_ready = 0;
 
 
-            Program.Window.Draw(sprite);
+            if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 200)
+            {
+                velocity = new Vector2f(0,0);
+            }
+
+                Program.Window.Draw(sprite);
         }
 
         private Vector2f Normalization(Vector2f vec, float X, float Y)

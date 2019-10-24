@@ -39,6 +39,8 @@ namespace ComicDefender
         //Метод для загрузки текстуры
         public static void Load()
         {
+
+
             Texture0_Level1 = new Texture(CONTENT_DIRICTORY + "Level1.jpg");
             Texture0_Level1.Smooth = true;
             sBackground = new Sprite(Texture0_Level1);
@@ -46,6 +48,7 @@ namespace ComicDefender
             Texture0_Asteroid = new Texture(CONTENT_DIRICTORY + "Asteroid1.png");
             Texture0_Asteroid.Smooth = true;
             sAsteroid = new Sprite(Texture0_Asteroid);
+
 
 
             iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");

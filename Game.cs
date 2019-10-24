@@ -63,7 +63,7 @@ namespace ComicDefender
                     if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "EnemyShip" || entities[i].GetName() == "PlayerShip"))
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
-                            Animation AnimationExplosive1 = new Animation(Program.content.sExplosion, 0, 0, 192, 192, 64, 0.8f);
+                            Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
                             Entity e = new Entity();
                             e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
                             entities.Add(e);
@@ -77,7 +77,7 @@ namespace ComicDefender
                     if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "EnemyShip" || entities[j].GetName() == "Asteroid")) 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
-                            Animation AnimationExplosive1 = new Animation(Program.content.sExplosion, 0, 0, 192, 192, 64, 0.8f);
+                            Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
                             Entity e = new Entity();
                             e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
                             entities.Add(e);
@@ -158,7 +158,7 @@ namespace ComicDefender
                         }
                     }
 
-                    EnemyShip a = new EnemyShip(Program.content.sEnemy,a1,a2,0.5f);
+                    EnemyShip a = new EnemyShip(Program.content.GetsEnemy(),a1,a2,0.5f);
                     entities.Add(a);
                     CountEnemies++;
                 }

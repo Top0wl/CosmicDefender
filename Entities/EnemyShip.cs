@@ -22,7 +22,7 @@ namespace ComicDefender
         //
         public int shooting_ready = 0;
         protected float VectorSpeed;                                  //Максимальная Cкорость корабля
-        protected float bullet_cooldown_max = 2.0f;                     //Скоростельность
+        protected float bullet_cooldown_max = 0.5f;                     //Скоростельность
         private float bullet_cooldown;
 
 

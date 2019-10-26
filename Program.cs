@@ -25,14 +25,25 @@ namespace ComicDefender
 
         static void Main(string[] args)
         {
+            #region Create Window
             //Создание окна
             Window = new RenderWindow(new SFML.Window.VideoMode(WindowWidth, WindowHeight), "CosmicDefender");
             Window.SetVerticalSyncEnabled(true);
             Window.SetFramerateLimit(60);
+            #endregion
+
+            #region События
 
             //Добавим событие на закрытие окна
             Window.Closed += Window_Closed;
             Window.Resized += Win_Resized;
+
+            #endregion
+
+            #region Initialization Start Components
+
+            Menu menu = new Menu();
+            Level1 level1 = new Level1();
 
             Game Logic = new Game();
             ParticleSystem particles = new ParticleSystem(5000);
@@ -43,6 +54,8 @@ namespace ComicDefender
             entities.Add(Ship);
             Clock clock = new Clock();
 
+            #endregion
+
             while (Window.IsOpen)
             {
                 #region Time
@@ -51,12 +64,24 @@ namespace ComicDefender
                 time = time / 10000;
                 #endregion
 
-                Window.DispatchEvents();       //Cобираем ивенты
+                Window.DispatchEvents();                                            //Cобираем ивенты
 
                 Window.Clear();                                                     //Чистим экран  
 
-                Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));                  //Прорисовываем уровень
+                // Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));               //Прорисовываем уровень
 
+
+                if (menu.IsOpen == true)
+                {
+
+                    Window.Draw(content.GetMenuTextBar1());
+                    Window.Draw(content.GetMenu());                                 //Прорисовываем уровень
+                }
+
+                if (level1.IsOpen == true)
+                { 
+
+                    Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));
                 #region Particles
                 particles.Update();
                 Window.Draw(particles);
@@ -67,6 +92,7 @@ namespace ComicDefender
                 Logic.CreateAsteroid(entities, 50);
                 Logic.Enemy(entities, 10);
                 #endregion
+                }
 
 
                 //Ship.Update(time);                                                  //Прорисовываем корабль

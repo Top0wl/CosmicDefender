@@ -66,6 +66,9 @@
     <Compile Include="Entities\EnemyShip.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="Level1.cs" />
+    <Compile Include="Levels.cs" />
+    <Compile Include="Levels\Menu.cs" />
     <Compile Include="ParticleSystem.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

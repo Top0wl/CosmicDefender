@@ -30,6 +30,8 @@ namespace ComicDefender
         private Sprite sTypeA;
         private Sprite sTypeB;
         private Sprite sTypeC;
+        private Sprite sMenu;
+        private Sprite sMenuTextBar1;
 
         private Texture tExplosion;
         private Texture tLevel1;
@@ -50,7 +52,8 @@ namespace ComicDefender
         private Texture tTypeA;
         private Texture tTypeB;
         private Texture tTypeC;
-
+        private Texture tMenu;
+        private Texture tMenuTextBar1;
 
         private Image iEnemy;
         private Image iExplosion;
@@ -70,8 +73,8 @@ namespace ComicDefender
         private Image iTypeA;
         private Image iTypeB;
         private Image iTypeC;
-
-
+        private Image iMenu;
+        private Image iMenuTextBar1;
 
         public void Load()
         {
@@ -229,8 +232,25 @@ namespace ComicDefender
 
             #endregion
 
+            #region Menu
+
+            iMenu = new Image(CONTENT_DIRICTORY + "Levels\\Menu.png");
+            tMenu = new Texture(iMenu);
+            tMenu.Smooth = true;
+            sMenu = new Sprite(tMenu);
+            sMenu.Scale = new Vector2f(0.7F, 0.7F);
+            sMenu.Position = new Vector2f(270F, 0F);
+
+            iMenuTextBar1 = new Image(CONTENT_DIRICTORY + "Levels\\Menu\\TextBar1.png");
+            tMenuTextBar1 = new Texture(iMenuTextBar1);
+            tMenuTextBar1.Smooth = true;
+            sMenuTextBar1 = new Sprite(tMenuTextBar1);
+            sMenuTextBar1.Scale = new Vector2f(0.7F, 1.5F);
+            sMenuTextBar1.Position = new Vector2f(270, 0);
 
 
+
+            #endregion  //Хуета
 
 
 
@@ -326,6 +346,15 @@ namespace ComicDefender
         public Sprite GetShip9()
         {
             return sShip9;
+        }
+
+        public Sprite GetMenu()
+        {
+            return sMenu;
+        }
+        public Sprite GetMenuTextBar1()
+        {
+            return sMenuTextBar1;
         }
 
         #endregion

@@ -10,6 +10,9 @@ namespace ComicDefender
 {
     class Content2
     {
+        private Font font;
+        private Text TextPlay;
+        private RectangleShape RectangleHp1;
         private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
         private Sprite sExplosion;
         private Sprite sBackground;
@@ -30,8 +33,17 @@ namespace ComicDefender
         private Sprite sTypeA;
         private Sprite sTypeB;
         private Sprite sTypeC;
-        private Sprite sMenu;
-        private Sprite sMenuTextBar1;
+        private Sprite sMenuLevels;
+        private Sprite sMenuShips;
+        private Sprite sMenuTable;
+        private Sprite sMenuButton;
+        private Sprite sCircle1;
+        private Sprite sCircle2;
+        private Sprite sCircle3;
+        private Sprite sCircle4;
+        public Sprite[] sMenuRectHp = new Sprite[3];
+        public Sprite[] sMenuRectDmg = new Sprite[3];
+        public Sprite[] sMenuRectSpd = new Sprite[3];
 
         private Texture tExplosion;
         private Texture tLevel1;
@@ -52,8 +64,17 @@ namespace ComicDefender
         private Texture tTypeA;
         private Texture tTypeB;
         private Texture tTypeC;
-        private Texture tMenu;
-        private Texture tMenuTextBar1;
+        private Texture tMenuLevels;
+        private Texture tMenuShips;
+        private Texture tMenuTable;
+        private Texture tMenuButton;
+        private Texture tCircle1;
+        private Texture tCircle2;
+        private Texture tCircle3;
+        private Texture tCircle4;
+        private Texture tMenuRectBlue;
+        private Texture tMenuRectRed;
+
 
         private Image iEnemy;
         private Image iExplosion;
@@ -73,11 +94,22 @@ namespace ComicDefender
         private Image iTypeA;
         private Image iTypeB;
         private Image iTypeC;
-        private Image iMenu;
-        private Image iMenuTextBar1;
+        private Image iMenuLevels;
+        private Image iMenuShips;
+        private Image iMenuTable;
+        private Image iMenuButton;
+        private Image iCircle1;
+        private Image iCircle2;
+        private Image iCircle3;
+        private Image iCircle4;
+        private Image iMenuRectBlue;
+        private Image iMenuRectRed;
 
         public void Load()
         {
+
+            font = new Font(@"..\Content\Textures\Font\eng.ttf");
+
             #region Animation Explosive Asteroid
 
             iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");
@@ -232,25 +264,104 @@ namespace ComicDefender
 
             #endregion
 
+
             #region Menu
 
-            iMenu = new Image(CONTENT_DIRICTORY + "Levels\\Menu.png");
-            tMenu = new Texture(iMenu);
-            tMenu.Smooth = true;
-            sMenu = new Sprite(tMenu);
-            sMenu.Scale = new Vector2f(0.7F, 0.7F);
-            sMenu.Position = new Vector2f(270F, 0F);
 
-            iMenuTextBar1 = new Image(CONTENT_DIRICTORY + "Levels\\Menu\\TextBar1.png");
-            tMenuTextBar1 = new Texture(iMenuTextBar1);
-            tMenuTextBar1.Smooth = true;
-            sMenuTextBar1 = new Sprite(tMenuTextBar1);
-            sMenuTextBar1.Scale = new Vector2f(0.7F, 1.5F);
-            sMenuTextBar1.Position = new Vector2f(270, 0);
+            this.iMenuLevels = new Image(@"..\Content\Textures\Interface\form_levels.png");
+            this.tMenuLevels = new Texture(this.iMenuLevels);
+            this.tMenuLevels.Smooth = true;
+            this.sMenuLevels = new Sprite(this.tMenuLevels);
+            this.sMenuLevels.Position = new Vector2f(0f, 0f);
+            this.iMenuShips = new Image(@"..\Content\Textures\Interface\form_ships.png");
+            this.tMenuShips = new Texture(this.iMenuShips);
+            this.tMenuShips.Smooth = true;
+            this.sMenuShips = new Sprite(this.tMenuShips);
+            this.sMenuShips.Position = new Vector2f(980f, 0f);
+            this.iMenuTable = new Image(@"..\Content\Textures\Interface\form_table.png");
+            this.tMenuTable = new Texture(this.iMenuTable);
+            this.tMenuTable.Smooth = true;
+            this.sMenuTable = new Sprite(this.tMenuTable);
+            this.sMenuTable.Position = new Vector2f(540f, 280f);
+            this.iCircle1 = new Image(@"..\Content\Textures\Interface\circle1.png");
+            this.iCircle2 = new Image(@"..\Content\Textures\Interface\circle2.png");
+            this.iCircle3 = new Image(@"..\Content\Textures\Interface\circle3.png");
+            this.iCircle4 = new Image(@"..\Content\Textures\Interface\circle4.png");
+            this.tCircle1 = new Texture(this.iCircle1);
+            this.tCircle2 = new Texture(this.iCircle2);
+            this.tCircle3 = new Texture(this.iCircle3);
+            this.tCircle4 = new Texture(this.iCircle4);
+            this.tCircle1.Smooth = true;
+            this.tCircle2.Smooth = true;
+            this.tCircle3.Smooth = true;
+            this.tCircle4.Smooth = true;
+            this.sCircle1 = new Sprite(this.tCircle1);
+            this.sCircle2 = new Sprite(this.tCircle2);
+            this.sCircle3 = new Sprite(this.tCircle3);
+            this.sCircle4 = new Sprite(this.tCircle4);
+            this.sCircle1.Position = new Vector2f(740f, 200f);
+            this.sCircle2.Position = new Vector2f(740f, 450f);
+            this.sCircle3.Position = new Vector2f(470f, 450f);
+            this.sCircle4.Position = new Vector2f(470f, 200f);
+            this.iMenuButton = new Image(@"..\Content\Textures\Interface\form_play.png");
+            this.tMenuButton = new Texture(this.iMenuButton);
+            this.tMenuButton.Smooth = true;
+            this.sMenuButton = new Sprite(this.tMenuButton);
+            this.sMenuButton.Position = (new Vector2f(560f, 600f));
+            this.TextPlay = new Text();
+            this.TextPlay.Font = this.font;
+            this.TextPlay.DisplayedString = "Play";
+            this.TextPlay.CharacterSize = 18;
+            this.TextPlay.FillColor = Color.Red;
+            this.TextPlay.Style = Text.Styles.Bold;
+            this.TextPlay.Position = new Vector2f(600f, 635f);
+            this.iMenuRectBlue = new Image(@"..\Content\Textures\Interface\RectBlue.png");
+            this.iMenuRectRed = new Image(@"..\Content\Textures\Interface\RectRed.png");
+            this.tMenuRectBlue = new Texture(this.iMenuRectBlue);
+            this.tMenuRectRed = new Texture(this.iMenuRectRed);
+            this.tMenuRectBlue.Smooth = true;
+            this.tMenuRectRed.Smooth = true;
+            int index = 0;
+            int num2 = 0;
+            while (true)
+            {
+                if (index >= this.sMenuRectHp.Length)
+                {
+                    int num3 = 0;
+                    int num4 = 0;
+                    while (true)
+                    {
+                        if (num3 >= this.sMenuRectDmg.Length)
+                        {
+                            int num5 = 0;
+                            int num6 = 0;
+                            while (num5 < this.sMenuRectSpd.Length)
+                            {
+                                this.sMenuRectSpd[num5] = new Sprite(this.tMenuRectBlue);
+                                this.sMenuRectSpd[num5].Scale = new Vector2f(0.95f, 1f);
+                                this.sMenuRectSpd[num5].Position = new Vector2f(794f, (float)(0x11d + num6));
+                                num6 += 50;
+                                num5++;
+                            }
+                            return;
+                        }
+                        this.sMenuRectDmg[num3] = new Sprite(this.tMenuRectBlue);
+                        Sprite sprite1 = this.sMenuRectDmg[num3];
+                        sprite1.Rotation = (float)(sprite1.Rotation + 90f);
+                        this.sMenuRectDmg[num3].Scale = new Vector2f(0.95f, 1f);
+                        this.sMenuRectDmg[num3].Position = new Vector2f((float)(0x25b + num4), 201f);
+                        num4 += 60;
+                        num3++;
+                    }
+                }
+                this.sMenuRectHp[index] = new Sprite(this.tMenuRectRed);
+                this.sMenuRectHp[index].Scale = new Vector2f(0.95f, 1f);
+                this.sMenuRectHp[index].Position = new Vector2f(471f, (float)(0x11d + num2));
+                num2 += 50;
+                index++;
+            }
 
-
-
-            #endregion  //Хуета
+            #endregion
 
 
 
@@ -348,14 +459,61 @@ namespace ComicDefender
             return sShip9;
         }
 
-        public Sprite GetMenu()
+        #region Menu
+        public Sprite GetCircle1()
         {
-            return sMenu;
+            return this.sCircle1;
         }
-        public Sprite GetMenuTextBar1()
+
+        public Sprite GetCircle2()
         {
-            return sMenuTextBar1;
+            return this.sCircle2;
         }
+
+        public Sprite GetCircle3()
+        {
+            return this.sCircle3;
+        }
+
+        public Sprite GetCircle4()
+        {
+            return this.sCircle4;
+        }
+        public Sprite GetMenuButton()
+        {
+            return this.sMenuButton;
+        }
+
+        public Sprite GetMenuLevels()
+        {
+            return this.sMenuLevels;
+        }
+
+        public Sprite GetMenuRectBlue()
+        {
+            return this.sMenuRectHp[0];
+        }
+
+        public Sprite GetMenuShips()
+        {
+            return this.sMenuShips;
+        }
+
+        public Sprite GetMenuTable()
+        {
+            return this.sMenuTable;
+        }
+
+        public RectangleShape GetRectangleHp1()
+        {
+            return this.RectangleHp1;
+        }
+
+        public Text GetTextPlay()
+        {
+            return this.TextPlay;
+        }
+        #endregion
 
         #endregion
 

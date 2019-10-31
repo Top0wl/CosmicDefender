@@ -74,9 +74,25 @@ namespace ComicDefender
                 if (menu.IsOpen == true)
                 {
 
-                    Window.Draw(content.GetMenuTextBar1());
-                    Window.Draw(content.GetMenu());                                 //Прорисовываем уровень
+                    Window.Draw(content.GetMenuLevels());
+                    Window.Draw(content.GetMenuShips());
+                    Window.Draw(content.GetMenuTable());
+                    Window.Draw(content.GetCircle1());
+                    Window.Draw(content.GetCircle2());
+                    Window.Draw(content.GetCircle3());
+                    Window.Draw(content.GetCircle4());
+                    Window.Draw(content.GetMenuButton());
+                    Window.Draw(content.GetTextPlay());
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        Window.Draw(content.sMenuRectHp[i]);
+                        Window.Draw(content.sMenuRectDmg[i]);
+                        Window.Draw(content.sMenuRectSpd[i]);
+                    }
                 }
+
+
 
                 if (level1.IsOpen == true)
                 { 

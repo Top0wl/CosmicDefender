@@ -32,6 +32,26 @@ namespace ComicDefender
         private Sprite sTypeC;
         private Sprite sMenu;
         private Sprite sMenuTextBar1;
+        private Sprite sShip1_lock;
+        private Sprite sShip2_lock;
+        private Sprite sShip3_lock;
+        private Sprite sShip4_lock;
+        private Sprite sShip5_lock;
+        private Sprite sShip6_lock;
+        private Sprite sShip7_lock;
+        private Sprite sShip8_lock;
+        private Sprite sShip9_lock;
+        private Sprite sShip1_unlock;
+        private Sprite sShip2_unlock;
+        private Sprite sShip3_unlock;
+        private Sprite sShip4_unlock;
+        private Sprite sShip5_unlock;
+        private Sprite sShip6_unlock;
+        private Sprite sShip7_unlock;
+        private Sprite sShip8_unlock;
+        private Sprite sShip9_unlock;
+
+
 
         private Texture tExplosion;
         private Texture tLevel1;
@@ -54,6 +74,25 @@ namespace ComicDefender
         private Texture tTypeC;
         private Texture tMenu;
         private Texture tMenuTextBar1;
+        private Texture tShip1_lock;
+        private Texture tShip2_lock;
+        private Texture tShip3_lock;
+        private Texture tShip4_lock;
+        private Texture tShip5_lock;
+        private Texture tShip6_lock;
+        private Texture tShip7_lock;
+        private Texture tShip8_lock;
+        private Texture tShip9_lock;
+        private Texture tShip1_unlock;
+        private Texture tShip2_unlock;
+        private Texture tShip3_unlock;
+        private Texture tShip4_unlock;
+        private Texture tShip5_unlock;
+        private Texture tShip6_unlock;
+        private Texture tShip7_unlock;
+        private Texture tShip8_unlock;
+        private Texture tShip9_unlock;
+
 
         private Image iEnemy;
         private Image iExplosion;
@@ -75,6 +114,26 @@ namespace ComicDefender
         private Image iTypeC;
         private Image iMenu;
         private Image iMenuTextBar1;
+        private Image iShip1_lock;
+        private Image iShip2_lock;
+        private Image iShip3_lock;
+        private Image iShip4_lock;
+        private Image iShip5_lock;
+        private Image iShip6_lock;
+        private Image iShip7_lock;
+        private Image iShip8_lock;
+        private Image iShip9_lock;
+        private Image iShip1_unlock;
+        private Image iShip2_unlock;
+        private Image iShip3_unlock;
+        private Image iShip4_unlock;
+        private Image iShip5_unlock;
+        private Image iShip6_unlock;
+        private Image iShip7_unlock;
+        private Image iShip8_unlock;
+        private Image iShip9_unlock;
+
+
 
         public void Load()
         {
@@ -252,6 +311,168 @@ namespace ComicDefender
 
             #endregion  //Хуета
 
+            #region Ship1_lock
+
+            iShip1_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship1_lock.png");
+            tShip1_lock = new Texture(iShip1_lock);
+            tShip1_lock.Smooth = true;
+            sShip1_lock = new Sprite(tShip1_lock);
+
+            #endregion
+
+            #region Ship2_lock
+
+            iShip2_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship2_lock.png");
+            tShip2_lock = new Texture(iShip2_lock);
+            tShip2_lock.Smooth = true;
+            sShip2_lock = new Sprite(tShip2_lock);
+
+            #endregion
+
+            #region Ship3_lock
+
+            iShip3_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship3_lock.png");
+            tShip3_lock = new Texture(iShip3_lock);
+            tShip3_lock.Smooth = true;
+            sShip3_lock = new Sprite(tShip3_lock);
+
+            #endregion
+
+            #region Ship4_lock
+
+            iShip4_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship4_lock.png");
+            tShip4_lock = new Texture(iShip4_lock);
+            tShip4_lock.Smooth = true;
+            sShip4_lock = new Sprite(tShip4_lock);
+
+            #endregion
+
+            #region Ship5_lock
+
+            iShip5_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship5_lock.png");
+            tShip5_lock = new Texture(iShip5_lock);
+            tShip5_lock.Smooth = true;
+            sShip5_lock = new Sprite(tShip5_lock);
+
+            #endregion
+
+            #region Ship6_lock
+
+            iShip6_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship6_lock.png");
+            tShip6_lock = new Texture(iShip6_lock);
+            tShip6_lock.Smooth = true;
+            sShip6_lock = new Sprite(tShip6_lock);
+
+            #endregion
+
+            #region Ship7_lock
+
+            iShip7_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship7_lock.png");
+            tShip7_lock = new Texture(iShip7_lock);
+            tShip7_lock.Smooth = true;
+            sShip7_lock = new Sprite(tShip7_lock);
+
+            #endregion
+
+            #region Ship8_lock
+
+            iShip8_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship8_lock.png");
+            tShip8_lock = new Texture(iShip8_lock);
+            tShip8_lock.Smooth = true;
+            sShip8_lock = new Sprite(tShip8_lock);
+
+            #endregion
+
+            #region Ship9_lock
+
+            iShip9_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship9_lock.png");
+            tShip9_lock = new Texture(iShip9_lock);
+            tShip9_lock.Smooth = true;
+            sShip9_lock = new Sprite(tShip9_lock);
+
+            #endregion
+
+            #region Ship1_unlock
+
+            iShip1_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship1_unlock.png");
+            tShip1_unlock = new Texture(iShip1_unlock);
+            tShip1_unlock.Smooth = true;
+            sShip1_unlock = new Sprite(tShip1_unlock);
+
+            #endregion
+
+            #region Ship2_unlock
+
+            iShip2_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship2_unlock.png");
+            tShip2_unlock = new Texture(iShip2_unlock);
+            tShip2_unlock.Smooth = true;
+            sShip2_unlock = new Sprite(tShip2_unlock);
+
+            #endregion
+
+            #region Ship3_unlock
+
+            iShip3_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship3_unlock.png");
+            tShip3_unlock = new Texture(iShip3_unlock);
+            tShip3_unlock.Smooth = true;
+            sShip3_unlock = new Sprite(tShip3_unlock);
+
+            #endregion
+
+            #region Ship4_unlock
+
+            iShip4_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship4_unlock.png");
+            tShip4_unlock = new Texture(iShip4_unlock);
+            tShip4_unlock.Smooth = true;
+            sShip4_unlock = new Sprite(tShip4_unlock);
+
+            #endregion
+
+            #region Ship5_unlock
+
+            iShip5_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship5_unlock.png");
+            tShip5_unlock = new Texture(iShip5_unlock);
+            tShip5_unlock.Smooth = true;
+            sShip5_unlock = new Sprite(tShip5_unlock);
+
+            #endregion
+
+            #region Ship6_unlock
+
+            iShip6_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship6_unlock.png");
+            tShip6_unlock = new Texture(iShip6_unlock);
+            tShip6_unlock.Smooth = true;
+            sShip6_unlock = new Sprite(tShip6_unlock);
+
+            #endregion
+
+            #region Ship7_unlock
+
+            iShip7_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship7_unlock.png");
+            tShip7_unlock = new Texture(iShip7_unlock);
+            tShip7_unlock.Smooth = true;
+            sShip7_unlock = new Sprite(tShip7_unlock);
+
+            #endregion
+
+            #region Ship8_unlock
+
+            iShip8_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship8_unlock.png");
+            tShip8_unlock = new Texture(iShip8_unlock);
+            tShip8_unlock.Smooth = true;
+            sShip8_unlock = new Sprite(tShip8_unlock);
+
+            #endregion
+
+            #region Ship9_unlock
+
+            iShip9_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship9_unlock.png");
+            tShip9_unlock = new Texture(iShip9_unlock);
+            tShip9_unlock.Smooth = true;
+            sShip9_unlock = new Sprite(tShip9_unlock);
+
+            #endregion
+
 
 
         }
@@ -356,6 +577,79 @@ namespace ComicDefender
         {
             return sMenuTextBar1;
         }
+        public Sprite GetShip1_lock()
+        {
+            return sShip1_lock;
+        }
+        public Sprite GetShip2_lock()
+        {
+            return sShip2_lock;
+        }
+        public Sprite GetShip3_lock()
+        {
+            return sShip3_lock;
+        }
+        public Sprite GetShip4_lock()
+        {
+            return sShip4_lock;
+        }
+        public Sprite GetShip5_lock()
+        {
+            return sShip5_lock;
+        }
+        public Sprite GetShip6_lock()
+        {
+            return sShip6_lock;
+        }
+        public Sprite GetShip7_lock()
+        {
+            return sShip7_lock;
+        }
+        public Sprite GetShip8_lock()
+        {
+            return sShip8_lock;
+        }
+        public Sprite GetShip9_lock()
+        {
+            return sShip9_lock;
+        }
+        public Sprite GetShip1_unlock()
+        {
+            return sShip1_unlock;
+        }
+        public Sprite GetShip2_unlock()
+        {
+            return sShip2_unlock;
+        }
+        public Sprite GetShip3_unlock()
+        {
+            return sShip3_unlock;
+        }
+        public Sprite GetShip4_unlock()
+        {
+            return sShip4_unlock;
+        }
+        public Sprite GetShip5_unlock()
+        {
+            return sShip5_unlock;
+        }
+        public Sprite GetShip6_unlock()
+        {
+            return sShip6_unlock;
+        }
+        public Sprite GetShip7_unlock()
+        {
+            return sShip7_unlock;
+        }
+        public Sprite GetShip8_unlock()
+        {
+            return sShip8_unlock;
+        }
+        public Sprite GetShip9_unlock()
+        {
+            return sShip9_unlock;
+        }
+
 
         #endregion
 

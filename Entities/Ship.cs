@@ -23,7 +23,7 @@ namespace ComicDefender
         protected float VectorSpeed;                                  //Максимальная Cкорость корабля
         protected float bullet_cooldown_max = .2f;                     //Скоростельность
         private float bullet_cooldown;
-        private int damage;
+        private int dmg;
 
 
         public Ship(String F, float _X, float _Y, float W, float H)
@@ -39,7 +39,7 @@ namespace ComicDefender
             sprite.Position = location;
             sprite.Scale = new Vector2f(0.4F, 0.4F);
             VectorSpeed = 1.5f;
-            damage = 25;                                               //изменить попозже ????????????????????????????????????????
+            dmg = 25;                                               //изменить попозже ????????????????????????????????????????
             X = _X;
             Y = _Y;
         }
@@ -139,7 +139,7 @@ namespace ComicDefender
 
         public int GetDamage()
         {
-            return damage;
+            return dmg;
         }
     }
 }

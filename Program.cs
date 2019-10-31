@@ -71,9 +71,20 @@ namespace ComicDefender
                 // Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));               //Прорисовываем уровень
 
 
+                //Debug
+
+                //Menu
+                menu.IsOpen = true;
+
+
+                //Level1
+                //level1.IsOpen = true;
+               //menu.IsOpen = false;
+                //
+
+
                 if (menu.IsOpen == true)
                 {
-
                     Window.Draw(content.GetMenuLevels());
                     Window.Draw(content.GetMenuShips());
                     Window.Draw(content.GetMenuTable());
@@ -83,6 +94,7 @@ namespace ComicDefender
                     Window.Draw(content.GetCircle4());
                     Window.Draw(content.GetMenuButton());
                     Window.Draw(content.GetTextPlay());
+                    Window.Draw(content.GetShip1_lock());
 
                     for (int i = 0; i < 3; i++)
                     {

@@ -24,9 +24,6 @@ namespace ComicDefender
             clock.Restart();
             time = time / 10000;
 
-
-            
-      
             foreach (Entity entity in entities.ToList())
             {
 
@@ -60,17 +57,20 @@ namespace ComicDefender
             {
                 for (int j = 0; j < entities.Count; j++)
                 {
-                    if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "EnemyShip" || entities[i].GetName() == "PlayerShip"))
+                    if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "EnemyShip" |entities[i].GetName() == "PlayerShip"))
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
                             Entity e = new Entity();
-                            e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
+                            e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.1F, 0.15f);
                             entities.Add(e);
+
+
 
                             //Новый астероид
                             //
                             //
+
 
                             entities[i].damage(Program.Ship.GetDamage()); entities[j].SetHealth(0);
                         }
@@ -107,6 +107,7 @@ namespace ComicDefender
             return (Math.Sqrt(xd * xd + yd * yd) <= r1 + r2);
         }
 
+
         public void CreateAsteroid(List<Entity> entities, int count)
         {
             int b = rnd2.Next(1, 100);
@@ -121,6 +122,9 @@ namespace ComicDefender
                 }
             }
         }
+
+
+
         public void Enemy(List<Entity> entities, int count)
         {
             
@@ -158,7 +162,14 @@ namespace ComicDefender
                         }
                     }
 
-                    EnemyShip a = new EnemyShip(Program.content.GetsEnemy(),a1,a2,0.5f);
+
+                    //Теория вер
+                    //Если a = 1; стрелок Name = "Стрелок"
+                    //Если камикадзе
+
+
+
+                    EnemyShip a = new EnemyShip(Program.content.GetsEnemy(),a1,a2,0.5f); // нейм
                     entities.Add(a);
                     CountEnemies++;
                 }

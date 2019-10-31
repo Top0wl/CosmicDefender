@@ -26,14 +26,14 @@ namespace ComicDefender
         private float bullet_cooldown;
 
 
-        public EnemyShip(Sprite _sprite, float _X, float _Y, float MaxSpeed)
+        public EnemyShip(Sprite _sprite, float _X, float _Y, float MaxSpeed) // Параметр Name
         {
             sprite = new Sprite(_sprite);
             location = new Vector2f(_X, _Y);
             sprite.Position = location;
             sprite.Scale = new Vector2f(0.4F, 0.4F);
             VectorSpeed = MaxSpeed;
-            Name = "EnemyShip";
+            Name = "EnemyShip"; //  $$$$
             X = _X;
             Y = _Y;
         }
@@ -62,7 +62,7 @@ namespace ComicDefender
             X = location.X;
             Y = location.Y;
 
-            if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 500)
+            if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 500) // ... и это корабль стрелок
             {
                 bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
                 shooting_ready = 1;
@@ -76,8 +76,8 @@ namespace ComicDefender
             }
             else shooting_ready = 0;
 
-
-            if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 200)
+            //Stop
+            if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 200) // ... и это корабль стрелок
             {
                 velocity = new Vector2f(0,0);
             }

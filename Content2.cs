@@ -44,8 +44,6 @@ namespace ComicDefender
         public Sprite[] sMenuRectHp = new Sprite[3];
         public Sprite[] sMenuRectDmg = new Sprite[3];
         public Sprite[] sMenuRectSpd = new Sprite[3];
-        private Sprite sMenu;
-        private Sprite sMenuTextBar1;
         private Sprite sShip1_lock;
         private Sprite sShip2_lock;
         private Sprite sShip3_lock;
@@ -96,8 +94,6 @@ namespace ComicDefender
         private Texture tCircle4;
         private Texture tMenuRectBlue;
         private Texture tMenuRectRed;
-        private Texture tMenu;
-        private Texture tMenuTextBar1;
         private Texture tShip1_lock;
         private Texture tShip2_lock;
         private Texture tShip3_lock;
@@ -146,8 +142,6 @@ namespace ComicDefender
         private Image iCircle4;
         private Image iMenuRectBlue;
         private Image iMenuRectRed;
-        private Image iMenu;
-        private Image iMenuTextBar1;
         private Image iShip1_lock;
         private Image iShip2_lock;
         private Image iShip3_lock;
@@ -328,10 +322,8 @@ namespace ComicDefender
 
             #endregion
 
-
             #region Menu
-
-
+           
             this.iMenuLevels = new Image(@"..\Content\Textures\Interface\form_levels.png");
             this.tMenuLevels = new Texture(this.iMenuLevels);
             this.tMenuLevels.Smooth = true;
@@ -385,44 +377,29 @@ namespace ComicDefender
             this.tMenuRectRed = new Texture(this.iMenuRectRed);
             this.tMenuRectBlue.Smooth = true;
             this.tMenuRectRed.Smooth = true;
-            int index = 0;
-            int num2 = 0;
-            while (true)
+
+            for (int index = 0, num2 = 0; index < sMenuRectHp.Length; index++)
             {
-                if (index >= this.sMenuRectHp.Length)
-                {
-                    int num3 = 0;
-                    int num4 = 0;
-                    while (true)
-                    {
-                        if (num3 >= this.sMenuRectDmg.Length)
-                        {
-                            int num5 = 0;
-                            int num6 = 0;
-                            while (num5 < this.sMenuRectSpd.Length)
-                            {
-                                this.sMenuRectSpd[num5] = new Sprite(this.tMenuRectBlue);
-                                this.sMenuRectSpd[num5].Scale = new Vector2f(0.95f, 1f);
-                                this.sMenuRectSpd[num5].Position = new Vector2f(794f, (float)(0x11d + num6));
-                                num6 += 50;
-                                num5++;
-                            }
-                            return;
-                        }
-                        this.sMenuRectDmg[num3] = new Sprite(this.tMenuRectBlue);
-                        Sprite sprite1 = this.sMenuRectDmg[num3];
-                        sprite1.Rotation = (float)(sprite1.Rotation + 90f);
-                        this.sMenuRectDmg[num3].Scale = new Vector2f(0.95f, 1f);
-                        this.sMenuRectDmg[num3].Position = new Vector2f((float)(0x25b + num4), 201f);
-                        num4 += 60;
-                        num3++;
-                    }
-                }
                 this.sMenuRectHp[index] = new Sprite(this.tMenuRectRed);
                 this.sMenuRectHp[index].Scale = new Vector2f(0.95f, 1f);
                 this.sMenuRectHp[index].Position = new Vector2f(471f, (float)(0x11d + num2));
                 num2 += 50;
-                index++;
+            }
+            for (int num5 = 0, num6 = 0; num5 < sMenuRectSpd.Length; num5++)
+            {
+                this.sMenuRectSpd[num5] = new Sprite(this.tMenuRectBlue);
+                this.sMenuRectSpd[num5].Scale = new Vector2f(0.95f, 1f);
+                this.sMenuRectSpd[num5].Position = new Vector2f(794f, (float)(0x11d + num6));
+                num6 += 50;
+            }
+            for (int num3 = 0, num4 = 0; num3 < sMenuRectDmg.Length; num3++)
+            {
+                this.sMenuRectDmg[num3] = new Sprite(this.tMenuRectBlue);
+                Sprite sprite1 = this.sMenuRectDmg[num3];
+                sprite1.Rotation = (float)(sprite1.Rotation + 90f);
+                this.sMenuRectDmg[num3].Scale = new Vector2f(0.95f, 1f);
+                this.sMenuRectDmg[num3].Position = new Vector2f((float)(0x25b + num4), 201f);
+                num4 += 60;
             }
 
             #endregion
@@ -433,6 +410,10 @@ namespace ComicDefender
             tShip1_lock = new Texture(iShip1_lock);
             tShip1_lock.Smooth = true;
             sShip1_lock = new Sprite(tShip1_lock);
+
+            sShip1_lock.Scale = new Vector2f(1f, 0.9f);
+
+            sShip1_lock.Position = new Vector2f(1000, 40);
 
             #endregion
 
@@ -590,7 +571,6 @@ namespace ComicDefender
             #endregion
 
 
-
         }
         #region Getters
 
@@ -638,7 +618,6 @@ namespace ComicDefender
         {
             return sTypeC;
         }
-
 
         public Sprite GetShip1()
         {
@@ -812,9 +791,10 @@ namespace ComicDefender
             return sShip9_unlock;
         }
 
-
         #endregion
 
+
+        #endregion
 
     }
 }

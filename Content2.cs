@@ -19,7 +19,8 @@ namespace ComicDefender
         private Sprite cursorSprite;
         private Sprite sAsteroid1;
         private Sprite sAsteroid2;
-        private Sprite sEnemy;
+        private Sprite sShootShip;
+        private Sprite sBomber;
         private Sprite sBullet;
         private Sprite sShip1;
         private Sprite sShip2;
@@ -70,7 +71,8 @@ namespace ComicDefender
         private Texture tAsteroid2;
         private Texture tAsteroid1;
         private Texture tCursor;
-        private Texture tEnemy;
+        private Texture tShootShip;
+        private Texture tBomber;
         private Texture tBullet;
         private Texture tShip1;
         private Texture tShip2;
@@ -114,7 +116,8 @@ namespace ComicDefender
         private Texture tShip9_unlock;
 
 
-        private Image iEnemy;
+        private Image iShootShip;
+        private Image iBomber;
         private Image iExplosion;
         private Image iAsteroid2;
         private Image iAsteroid1;
@@ -179,11 +182,19 @@ namespace ComicDefender
             #endregion
 
             #region Enemy Ship
-            iEnemy = new Image(CONTENT_DIRICTORY + "Enemy\\EnemyShip1_green.png");
-            tEnemy = new Texture(iEnemy);
-            tEnemy.Smooth = true;
-            sEnemy = new Sprite(tEnemy);
-            sEnemy.Origin = new Vector2f(iEnemy.Size.X / 2, iEnemy.Size.Y / 2);
+            iShootShip = new Image(CONTENT_DIRICTORY + "Enemy\\EnemyShip1_green.png");
+            tShootShip = new Texture(iShootShip);
+            tShootShip.Smooth = true;
+            sShootShip = new Sprite(tShootShip);
+            sShootShip.Origin = new Vector2f(iShootShip.Size.X / 2, iShootShip.Size.Y / 2);
+            #endregion
+
+            #region Bomber Ship
+            iBomber = new Image(CONTENT_DIRICTORY + "Enemy\\playerShip3_red.png");
+            tBomber = new Texture(iBomber);
+            tBomber.Smooth = true;
+            sBomber = new Sprite(tBomber);
+            sBomber.Origin = new Vector2f(iBomber.Size.X / 2, iBomber.Size.Y / 2);
             #endregion
 
             #region Level
@@ -579,9 +590,15 @@ namespace ComicDefender
             return sExplosion;
         }
 
-        public Sprite GetsEnemy()
+        public Sprite GetsShootShip()
         {
-            return sEnemy;
+            return sShootShip;
+        }
+
+      //Спрайт бомбера
+        public Sprite GetsBomber()
+        {
+            return sBomber;
         }
 
         public Sprite GetLevel1()

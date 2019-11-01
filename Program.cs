@@ -74,12 +74,12 @@ namespace ComicDefender
                 //Debug
 
                 //Menu
-                menu.IsOpen = true;
+                //menu.IsOpen = true;
 
 
                 //Level1
-                //level1.IsOpen = true;
-               //menu.IsOpen = false;
+                level1.IsOpen = true;
+               menu.IsOpen = false;
                 //
 
 

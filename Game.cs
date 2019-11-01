@@ -57,7 +57,10 @@ namespace ComicDefender
             {
                 for (int j = 0; j < entities.Count; j++)
                 {
-                    if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "EnemyShip" |entities[i].GetName() == "PlayerShip"))
+                    if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "ShootShip" ||
+                        entities[i].GetName() == "Bomber" | entities[i].GetName() == "PlayerShip"))                                        //Найден косяк, урон для пули общий - урон нашего корабля.
+                                                                                                                                           //Если потом добавлять других врагов с уроном побольше, чем у обычных, то произойдёт бан
+
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
@@ -74,14 +77,20 @@ namespace ComicDefender
 
                             entities[i].damage(Program.Ship.GetDamage()); entities[j].SetHealth(0);
                         }
-                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "EnemyShip" || entities[j].GetName() == "Asteroid")) 
+                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber")) 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
                             Entity e = new Entity();
                             e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
                             entities.Add(e);
-                            entities[i].damage(50); entities[j].SetHealth(0);                             //Урон при столкновении нашему кораблю 50!!!!!! Можно изменить
+
+                            if(entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid")
+                            entities[i].damage(50); entities[j].SetHealth(0);                                    //Урон при столкновении нашему кораблю 50!!!!!! Можно изменить
+
+                            if (entities[j].GetName() == "Bomber")
+                                entities[i].damage(100); entities[j].SetHealth(0);
+
                         }
 
 
@@ -162,14 +171,25 @@ namespace ComicDefender
                         }
                     }
 
+                    b = rnd.Next(1, 10);
+                    string name;
+                    if (b >= 1 && b <= 3)
+                        name = "Bomber";
+                    else 
+                        name = "ShootShip";
 
-                    //Теория вер
-                    //Если a = 1; стрелок Name = "Стрелок"
-                    //Если камикадзе
+                    EnemyShip a = new EnemyShip();
 
+                    if (name == "ShootShip")
+                    {
+                         a = new EnemyShip(Program.content.GetsShootShip(), a1, a2, 0.5f, name);
+                    }
 
+                    if (name == "Bomber")
+                    { 
+                        a = new EnemyShip(Program.content.GetsBomber(), a1, a2, 1.8f, name);
+                    }
 
-                    EnemyShip a = new EnemyShip(Program.content.GetsEnemy(),a1,a2,0.5f); // нейм
                     entities.Add(a);
                     CountEnemies++;
                 }

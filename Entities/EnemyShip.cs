@@ -43,7 +43,7 @@ namespace ComicDefender
             Y = _Y;
         }
 
-ww
+
         public override void Update(float time)
         {
             Vector2f pos = new Vector2f(Ship.GetX(), Ship.GetY());

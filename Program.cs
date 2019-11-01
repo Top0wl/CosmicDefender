@@ -19,7 +19,7 @@ namespace ComicDefender
         public static List<Entity> entities = new List<Entity>();
         public static Content2 content;
         public static Ship Ship;
-
+        public static Menu menu;
 
         static Game Logic = new Game();
 
@@ -42,13 +42,14 @@ namespace ComicDefender
 
             #region Initialization Start Components
 
-            Menu menu = new Menu();
+            content = new Content2();
+            menu = new Menu();
+            content.Load();
+            menu.Load();
             Level1 level1 = new Level1();
 
             Game Logic = new Game();
-            ParticleSystem particles = new ParticleSystem(5000);
-            content = new Content2();
-            content.Load();                                                          //Загружаем в память текстуры
+            ParticleSystem particles = new ParticleSystem(5000);                                                         //Загружаем в память текстуры
             Content.Load();
             Ship = new Ship("SpaceShip1.png", 500, 500, 106, 80);                  //Загружаем корабль
             entities.Add(Ship);
@@ -78,30 +79,14 @@ namespace ComicDefender
 
 
                 //Level1
-                level1.IsOpen = true;
-               menu.IsOpen = false;
+                //level1.IsOpen = true;
+                //menu.IsOpen = false;
                 //
 
 
                 if (menu.IsOpen == true)
                 {
-                    Window.Draw(content.GetMenuLevels());
-                    Window.Draw(content.GetMenuShips());
-                    Window.Draw(content.GetMenuTable());
-                    Window.Draw(content.GetCircle1());
-                    Window.Draw(content.GetCircle2());
-                    Window.Draw(content.GetCircle3());
-                    Window.Draw(content.GetCircle4());
-                    Window.Draw(content.GetMenuButton());
-                    Window.Draw(content.GetTextPlay());
-                    Window.Draw(content.GetShip1_lock());
-
-                    for (int i = 0; i < 3; i++)
-                    {
-                        Window.Draw(content.sMenuRectHp[i]);
-                        Window.Draw(content.sMenuRectDmg[i]);
-                        Window.Draw(content.sMenuRectSpd[i]);
-                    }
+                    menu.Update();
                 }
 
 

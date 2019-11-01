@@ -164,8 +164,6 @@ namespace ComicDefender
         private Image iShip8_unlock;
         private Image iShip9_unlock;
 
-
-
         public void Load()
         {
 
@@ -415,6 +413,13 @@ namespace ComicDefender
 
             #endregion
 
+            #region Test View ScrollBar
+
+
+           // sShip1.
+
+            #endregion
+
             #region Ship1_lock
 
             iShip1_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship1_lock.png");
@@ -422,8 +427,10 @@ namespace ComicDefender
             tShip1_lock.Smooth = true;
             sShip1_lock = new Sprite(tShip1_lock);
 
-            sShip1_lock.Scale = new Vector2f(1f, 0.9f);
+            MenuRectShips Ship1Rect = new MenuRectShips(sShip1_lock, sShip1, "Ship1");
+            Program.menu.RectShips.Add(Ship1Rect);
 
+           // sShip1_lock.Scale = new Vector2f(1f, 0.9f);
             sShip1_lock.Position = new Vector2f(1000, 40);
 
             #endregion
@@ -435,6 +442,11 @@ namespace ComicDefender
             tShip2_lock.Smooth = true;
             sShip2_lock = new Sprite(tShip2_lock);
 
+            sShip2_lock.Position = new Vector2f(1000, 150);
+
+            MenuRectShips Ship2Rect = new MenuRectShips(sShip2_lock, sShip2, "Ship2");
+            Program.menu.RectShips.Add(Ship2Rect);
+
             #endregion
 
             #region Ship3_lock
@@ -443,6 +455,8 @@ namespace ComicDefender
             tShip3_lock = new Texture(iShip3_lock);
             tShip3_lock.Smooth = true;
             sShip3_lock = new Sprite(tShip3_lock);
+
+            sShip3_lock.Position = new Vector2f(1000, 260);
 
             #endregion
 
@@ -453,6 +467,7 @@ namespace ComicDefender
             tShip4_lock.Smooth = true;
             sShip4_lock = new Sprite(tShip4_lock);
 
+            sShip4_lock.Position = new Vector2f(1000, 370);
             #endregion
 
             #region Ship5_lock
@@ -461,6 +476,8 @@ namespace ComicDefender
             tShip5_lock = new Texture(iShip5_lock);
             tShip5_lock.Smooth = true;
             sShip5_lock = new Sprite(tShip5_lock);
+
+            sShip5_lock.Position = new Vector2f(1000, 480);
 
             #endregion
 
@@ -471,6 +488,8 @@ namespace ComicDefender
             tShip6_lock.Smooth = true;
             sShip6_lock = new Sprite(tShip6_lock);
 
+            sShip6_lock.Position = new Vector2f(1000, 800);
+
             #endregion
 
             #region Ship7_lock
@@ -479,6 +498,8 @@ namespace ComicDefender
             tShip7_lock = new Texture(iShip7_lock);
             tShip7_lock.Smooth = true;
             sShip7_lock = new Sprite(tShip7_lock);
+
+           // sShip7_lock.Position = new Vector2f(1000, 640);
 
             #endregion
 

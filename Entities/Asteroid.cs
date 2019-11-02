@@ -10,17 +10,12 @@ namespace ComicDefender
 {
     class Asteroid : Entity
     {
-        private float w, h;
         private Animation animAsteroid;
-        private Animation animExplosion;
-        // public static Sprite sprite;
-
-
         Random rdn = new Random(DateTime.Now.Millisecond);
 
         public Asteroid()
         {
-            animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
+            animAsteroid = new Animation(Program.content.GetsAnimAsteroid1(), 0, 0, 85, 100, 6, 5, 0.15f);
 
             int Choose1, Choose2, a1, a2;
             Choose1 = rdn.Next(0, 1);

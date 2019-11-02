@@ -21,7 +21,8 @@ namespace ComicDefender
         private Clock bullet_clock = new Clock();
         //
         public int shooting_ready = 0;
-        protected float VectorSpeed;                                  //Максимальная Cкорость корабля
+        private int BulletToShip;                                       //Длина от корабля до спавна пули
+        protected float VectorSpeed;                                    //Максимальная Cкорость корабля
         protected float bullet_cooldown_max = 0.5f;                     //Скоростельность
         protected float bullet_cooldown_max_miniBoss = 0.4f;
         private float bullet_cooldown;
@@ -80,7 +81,7 @@ namespace ComicDefender
                     if (shooting_ready == 1 && bullet_cooldown >= bullet_cooldown_max)
                     {
                         bullet_clock.Restart();
-                        Bullet b = new Bullet((location.X + 300 * Rotate.X), (location.Y + 300 * Rotate.Y), rotat + 180, 0.2f, 2f);
+                        Bullet b = new Bullet((location.X + 300  * Rotate.X), (location.Y + 300 * Rotate.Y), rotat + 180, 0.2f, 2f);
                         Program.entities.Add(b);
                         shooting_ready = 0;
                     }

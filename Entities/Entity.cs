@@ -17,7 +17,7 @@ namespace ComicDefender
         private float Dx, Dy;               //Скорость объекта
         private float Rotation;             //Направление объекта
         private float Size;                 //Размер объекта
-        protected int health;                  //Здоровье
+        protected int Health;                  //Здоровье
         protected string Name;                //Имя объекта
         private float Speed;                //Скорость объекта
         public Sprite sprite;
@@ -27,25 +27,22 @@ namespace ComicDefender
 
         public Entity()
         {
-            health = 100;
+            Health = 100;
         }
 
         public Entity(int _health)
         {
-            health = _health;
+            Health = _health;
         }
 
 
 
         //Настройки объекта
-        public void Settings(string file, string _name, float x, float y, float rotation, float size, float _speed)
+        public void Settings(Sprite _sprite, string _name, float x, float y, float rotation, float size, float _speed)
         {
-            image = new Image(CONTENT_DIRICTORY + file);
-            texture = new Texture(image);
-            texture.Smooth = true;
-            sprite = new Sprite(texture);
+            sprite = new Sprite(_sprite);
             sprite.Scale = new Vector2f(size, size);
-            sprite.Origin = new Vector2f(image.Size.X / 2, image.Size.Y / 2);
+            sprite.Origin = new Vector2f(sprite.Texture.Size.X/2, sprite.Texture.Size.Y / 2);
             Name = _name;
             X = x;
             Y = y;
@@ -56,8 +53,8 @@ namespace ComicDefender
             float deltaY = (float)Math.Sin(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
             Dx = deltaX;
             Dy = deltaY;
-             X += Dx/3;
-             Y += Dy/3;
+            X += Dx/3;
+            Y += Dy/3;
         }
 
         public void Settings(Animation a, string _name, float x, float y, float rotation, float size, float _speed)
@@ -85,7 +82,7 @@ namespace ComicDefender
         //Урон предмету
         public void damage(int _damage)
         {
-            health -= _damage;
+            Health -= _damage;
         }
 
 
@@ -144,11 +141,11 @@ namespace ComicDefender
         }
         public int GetHealth()
         {
-            return health;
+            return Health;
         }
         public void SetHealth(int _health)
         {
-            health = _health;
+            Health = _health;
         }
         public float GetSize()
         {

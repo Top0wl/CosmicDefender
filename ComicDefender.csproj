@@ -69,7 +69,10 @@
     <Compile Include="Game.cs" />
     <Compile Include="Level1.cs" />
     <Compile Include="Levels.cs" />
-    <Compile Include="Levels\Menu.cs" />
+    <Compile Include="Levels\Menu\Menu.cs" />
+    <Compile Include="Levels\Menu\MenuRectShips.cs" />
+    <Compile Include="Levels\Menu\MenuRectButtons.cs" />
+    <Compile Include="Levels\Menu\MenuRectMainShip.cs" />
     <Compile Include="ParticleSystem.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
@@ -77,7 +80,6 @@
     <Compile Include="Particle.cs" />
     <Compile Include="Entities\Ship.cs" />
     <Compile Include="Rand.cs" />
-    <Compile Include="View.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

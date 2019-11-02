@@ -720,10 +720,6 @@ namespace ComicDefender
         {
             return sAnimAsteroid1;
         }
-        public Animation GetAnimAsteroid1()
-        {
-            
-        }
 
         public Sprite GetsExplosion()
         {

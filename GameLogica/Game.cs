@@ -42,7 +42,9 @@ namespace ComicDefender
                 entity.Draw();
                 if (entity.GetName() == "PlayerShip" && entity.GetHealth() <= 0)
                 {
-                    Ship Ship = new Ship("SpaceShip1.png", 500, 500, 106, 80);                  //Загружаем корабль
+                    Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, Program.menu.MainShip.Damage, Program.menu.MainShip.Speed, Program.menu.MainShip.Shoot_speed, Program.menu.MainShip.Health);
+                    //Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, 25, 1.5f, .2f, 100);                  //Загружаем корабль
+
                     entities.Add(Ship);
                 }
 
@@ -63,9 +65,9 @@ namespace ComicDefender
 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
-                            Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
+                            Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 2f);
                             Entity e = new Entity();
-                            e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.1F, 0.15f);
+                            e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.15F, 0.15f);
                             entities.Add(e);
 
 
@@ -74,8 +76,17 @@ namespace ComicDefender
                             //
                             //
 
-
                             entities[i].damage(Program.Ship.GetDamage()); entities[j].SetHealth(0);
+
+                            if (entities[i].GetHealth() <= 0)
+                            {
+                                Animation AnimationExplosive2 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
+                                Entity q = new Entity();
+                                q.Settings(AnimationExplosive2, "Explosion", entities[j].GetX(), entities[j].GetY(), 0, 0.4F, 0.15f);
+                                entities.Add(q);
+                            }
+
+
                         }
                     if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber" || entities[j].GetName() == "MiniBoss")) 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))

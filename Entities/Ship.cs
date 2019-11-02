@@ -21,32 +21,49 @@ namespace ComicDefender
         //
         public int shooting_ready = 0;
         protected float VectorSpeed;                                  //Максимальная Cкорость корабля
-        protected float bullet_cooldown_max = .2f;                     //Скоростельность
+        protected float bullet_cooldown_max;                     //Скоростельность (была .2f)
         private float bullet_cooldown;
         private int dmg;
 
+        public Ship()
+        { 
+        }
 
-        public Ship(String F, float _X, float _Y, float W, float H)
+        public Ship(Sprite _sprite , float _X, float _Y, int damage, float speed, float shoot_speed, int health)
         {
             Name = "PlayerShip";
-            string File = F;
-            float w = W; float h = H;
-            texture = new Texture(CONTENT_DIRICTORY + File);
-            texture.Smooth = true;
-            sprite = new Sprite(texture);
-            sprite.Origin = new Vector2f(w / 2, h / 2);
+            sprite = new Sprite(_sprite);
+            sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2, sprite.Texture.Size.Y / 2);
             location = new Vector2f(_X, _Y);
             sprite.Position = location;
             sprite.Scale = new Vector2f(0.4F, 0.4F);
-            VectorSpeed = 1.5f;
-            dmg = 25;                                               //изменить попозже ????????????????????????????????????????
+            bullet_cooldown_max = shoot_speed;
+            VectorSpeed = speed;
+            dmg = damage;                                               //изменить попозже ????????????????????????????????????????
+            Health = health;
+            X = _X;
+            Y = _Y;
+        }
+        public void Settings(Sprite _sprite, float _X, float _Y, int damage, float speed, float shoot_speed, int health)
+        {
+            Name = "PlayerShip";
+            sprite = new Sprite(_sprite);
+            sprite.Origin = new Vector2f(sprite.Texture.Size.X / 2, sprite.Texture.Size.Y / 2);
+            location = new Vector2f(_X, _Y);
+            sprite.Position = location;
+            sprite.Scale = new Vector2f(0.4F, 0.4F);
+            bullet_cooldown_max = shoot_speed;
+            VectorSpeed = speed;
+            dmg = damage;                                                   //изменить попозже ????????????????????????????????????????
+            Health = health;
             X = _X;
             Y = _Y;
         }
 
+
+
         public override void Update(float time)
         {
-
             Vector2i pixelPos = Mouse.GetPosition(Program.Window);//забираем коорд курсора
             Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна
             Vector2f Rotate = pos - location;
@@ -95,7 +112,6 @@ namespace ComicDefender
 
             #endregion
 
-
             #region Shoot
 
             bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
@@ -108,7 +124,7 @@ namespace ComicDefender
             if (shooting_ready == 1 && bullet_cooldown >= .2f)
             {
                 bullet_clock.Restart();
-                Bullet b = new Bullet(Ship.GetX(), Ship.GetY(), Ship.GetRotation(), 0.2f, 20f);
+                Bullet b = new Bullet(GetX() + sprite.Texture.Size.X * Rotate.X / 2, GetY() + sprite.Texture.Size.X * Rotate.Y / 2, GetRotation(), 0.2f, 20f);
                 Program.entities.Add(b);
                 shooting_ready = 0;
             }

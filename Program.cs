@@ -12,7 +12,8 @@ namespace ComicDefender
 {
     class Program
     {
-        //Const
+
+        #region Vars and Consts
         public const int WindowWidth = 1280;
         public const int WindowHeight = 720;
         public static RenderWindow Window;
@@ -21,8 +22,8 @@ namespace ComicDefender
         public static Ship Ship;
         public static Menu menu;
         public static Level1 level1;
-
         static Game Logic = new Game();
+        #endregion
 
         static void Main(string[] args)
         {
@@ -43,19 +44,33 @@ namespace ComicDefender
 
             #region Initialization Start Components
 
+            #region Content and Menu Load
+
             content = new Content2();
             menu = new Menu();
             content.Load();
             menu.Load();
+
+            #endregion
+
+            #region Levels
+
             level1 = new Level1();
 
-            Game Logic = new Game();
-            ParticleSystem particles = new ParticleSystem(5000);                                                         //Загружаем в память текстуры
-            Content.Load();
-            Ship = new Ship(content.GetShip1(), 500, 500);                  //Загружаем корабль
-            
+            #endregion
 
-            entities.Add(Ship);
+            #region Game Logic and Particles
+            Game Logic = new Game();                                            //Логика
+
+            ParticleSystem particles = new ParticleSystem(5000);                //ParticleSystem
+
+            Content.Load();                                                     //Content
+
+            #endregion
+
+            Ship = new Ship(content.GetShip1(), 500, 500);                      //Загружаем корабль
+            entities.Add(Ship);                                                 //Добавляем его в лист объектов
+
             Clock clock = new Clock();
 
             #endregion
@@ -63,41 +78,32 @@ namespace ComicDefender
             while (Window.IsOpen)
             {
                 #region Time
+
                 float time = clock.ElapsedTime.AsMicroseconds();
                 clock.Restart();
                 time = time / 10000;
+
                 #endregion
 
-                Window.DispatchEvents();                                            //Cобираем ивенты
 
+                Window.DispatchEvents();                                            //Cобираем ивенты
                 Window.Clear();                                                     //Чистим экран  
 
-                // Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));               //Прорисовываем уровень
-
-
-                //Debug
-
-                //Menu
-                //menu.IsOpen = true;
-
-
-                //Level1
-                //level1.IsOpen = true;
-                //menu.IsOpen = false;
-                //
-
+                #region If Open Menu
 
                 if (menu.IsOpen == true)
                 {
                     menu.Update();
                 }
 
+                #endregion
 
+                #region If Open LVL 1
 
                 if (level1.IsOpen == true)
                 { 
+                Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));
 
-                    Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));
                 #region Particles
                 particles.Update();
                 Window.Draw(particles);
@@ -110,8 +116,7 @@ namespace ComicDefender
                 #endregion
                 }
 
-
-                //Ship.Update(time);                                                  //Прорисовываем корабль
+                #endregion
 
                 Window.Display();                                                   //Выводит всё на дисплей
             }
@@ -129,72 +134,6 @@ namespace ComicDefender
             Window.Close();
         }
 
-       /* private static void CreateAsteroid(int count)
-        {
-            int b = rnd2.Next(1, 100);
-            if (b == 1)
-            {
-                if (CountAsteroids != count)
-                {
-                    //Logic.CreateParticles(100);
-                    Asteroid a = new Asteroid();
-                    entities.Add(a);
-                    // if (a.GetLife() == false)
-                    //  {
-                    //      entities.RemoveAt(i);
-                    //      a = null;
-                    //  }
-                    CountAsteroids++;
-
-                }
-            }
-        }
-        */
-
-       /*private static bool IsCollide(Entity a, Entity b)
-        {
-            float bX = b.GetX();
-            float aX = a.GetX();
-            float bY = b.GetY();
-            float aY = a.GetY();
-            float bS = b.GetSize();
-            float aS = a.GetSize();
-
-            float q = ((bX - aX) * (bX - aX)) + ((bY - aY) * (bY - aY));
-            float size = (bS + aS) * (bS + aS);
-            if (q < size)
-            {
-                return true;
-            }
-            else return false;
-                
-
-
-            return ((b.GetX() - a.GetX())*(b.GetX() - a.GetX()) +
-                (b.GetY() - a.GetY())*(b.GetY() - a.GetY()) <
-                (b.GetSize() + a.GetSize())*(b.GetSize() + a.GetSize()));
-            
-        }     
-        */
-       
-
-       /* private static bool IsCollide(Sprite first, Sprite second)
-        {
-            Vector2f firstRect = new Vector2f(first.TextureRect.Width, first.TextureRect.Width);
-            firstRect.X *= first.Scale.X;
-            firstRect.Y *= first.Scale.Y;
-
-            Vector2f secondRect = new Vector2f(second.TextureRect.Width, second.TextureRect.Width);
-            secondRect.X *= second.Scale.X;
-            secondRect.Y *= second.Scale.Y;
-
-            float r1 = (firstRect.X + firstRect.Y) / 4;
-            float r2 = (secondRect.X + secondRect.Y) / 4;
-            float xd = first.Position.X - second.Position.X;
-            float yd = first.Position.Y - second.Position.Y;
-
-            return (Math.Sqrt(xd* xd + yd* yd) <= r1 + r2);
-        }
-       */
-}
+  
+    }
 }

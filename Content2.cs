@@ -433,26 +433,26 @@ namespace ComicDefender
 
             #region ListUpButton
 
-            iListUp = new Image(CONTENT_DIRICTORY + "Interface\\button_circle3.png");
+            iListUp = new Image(CONTENT_DIRICTORY + "Interface\\button_up1.png");
             tListUp = new Texture(iListUp);
             tListUp.Smooth = true;
             sListUp = new Sprite(tListUp);
             //sListUp.Position = new Vector2f(900, 100);
 
-            MenuRectButtons ListUpButton = new MenuRectButtons(sListUp, "ButtonUp", new Vector2f(900, 100));
+            MenuRectButtons ListUpButton = new MenuRectButtons(sListUp, "ButtonUp", new Vector2f(1100, 35));
             Program.menu.RectButtons.Add(ListUpButton);
 
             #endregion
 
             #region ListDownButton
 
-            iListDown = new Image(CONTENT_DIRICTORY + "Interface\\button_circle3.png");
+            iListDown = new Image(CONTENT_DIRICTORY + "Interface\\button_down1.png");
             tListDown = new Texture(iListDown);
             tListDown.Smooth = true;
             sListDown = new Sprite(tListDown);
             //sListDown.Position = new Vector2f(900, 600);
 
-            MenuRectButtons ListDownButton = new MenuRectButtons(sListDown, "ButtonDown", new Vector2f(900, 600));
+            MenuRectButtons ListDownButton = new MenuRectButtons(sListDown, "ButtonDown", new Vector2f(1100, 685));
             Program.menu.RectButtons.Add(ListDownButton);
 
             #endregion
@@ -635,22 +635,22 @@ namespace ComicDefender
         public void LoadListShips1()
         {
             Program.menu.RectShips.Clear();
-            MenuRectShips Ship1Rect = new MenuRectShips(sShip1_lock, sShip1, "Ship1", new Vector2f(1000, 40));
+            MenuRectShips Ship1Rect = new MenuRectShips(sShip1_lock, sShip1, "Ship1", new Vector2f(1000, 75));
             Program.menu.RectShips.Add(Ship1Rect);
 
-            MenuRectShips Ship2Rect = new MenuRectShips(sShip2_lock, sShip2, "Ship2", new Vector2f(1000, 150));
+            MenuRectShips Ship2Rect = new MenuRectShips(sShip2_lock, sShip2, "Ship2", new Vector2f(1000, 175));
             Program.menu.RectShips.Add(Ship2Rect);
 
-            MenuRectShips Ship3Rect = new MenuRectShips(sShip3_lock, sShip3, "Ship3", new Vector2f(1000, 260));
+            MenuRectShips Ship3Rect = new MenuRectShips(sShip3_lock, sShip3, "Ship3", new Vector2f(1000, 275));
             Program.menu.RectShips.Add(Ship3Rect);
 
-            MenuRectShips Ship4Rect = new MenuRectShips(sShip4_lock, sShip4, "Ship4", new Vector2f(1000, 370));
+            MenuRectShips Ship4Rect = new MenuRectShips(sShip4_lock, sShip4, "Ship4", new Vector2f(1000, 375));
             Program.menu.RectShips.Add(Ship4Rect);
 
-            MenuRectShips Ship5Rect = new MenuRectShips(sShip5_lock, sShip5, "Ship5", new Vector2f(1000, 480));
+            MenuRectShips Ship5Rect = new MenuRectShips(sShip5_lock, sShip5, "Ship5", new Vector2f(1000, 475));
             Program.menu.RectShips.Add(Ship5Rect);
 
-            MenuRectShips Ship6Rect = new MenuRectShips(sShip6_lock, sShip6, "Ship6", new Vector2f(1000, 590));
+            MenuRectShips Ship6Rect = new MenuRectShips(sShip6_lock, sShip6, "Ship6", new Vector2f(1000, 575));
             Program.menu.RectShips.Add(Ship6Rect);
 
         }
@@ -659,13 +659,13 @@ namespace ComicDefender
         {
             Program.menu.RectShips.Clear();
 
-            MenuRectShips Ship7Rect = new MenuRectShips(sShip7_lock, sShip7, "Ship7", new Vector2f(1000, 40));
+            MenuRectShips Ship7Rect = new MenuRectShips(sShip7_lock, sShip7, "Ship7", new Vector2f(1000, 75));
             Program.menu.RectShips.Add(Ship7Rect);
 
-            MenuRectShips Ship8Rect = new MenuRectShips(sShip8_lock, sShip8, "Ship8", new Vector2f(1000, 150));
+            MenuRectShips Ship8Rect = new MenuRectShips(sShip8_lock, sShip8, "Ship8", new Vector2f(1000, 175));
             Program.menu.RectShips.Add(Ship8Rect);
 
-            MenuRectShips Ship9Rect = new MenuRectShips(sShip9_lock, sShip9, "Ship9", new Vector2f(1000, 260));
+            MenuRectShips Ship9Rect = new MenuRectShips(sShip9_lock, sShip9, "Ship9", new Vector2f(1000, 275));
             Program.menu.RectShips.Add(Ship9Rect);
 
         }

@@ -91,6 +91,8 @@ namespace ComicDefender
                 if (Contains(RectShip.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
                 {
                     Program.Window.Draw(RectShip.SpriteRect);
+                    
+
 
                     RectShip.SpriteRect.Color = Color.Red;
 
@@ -110,7 +112,14 @@ namespace ComicDefender
                 {
                     Program.Window.Draw(RectButtons.SpriteRect);
 
-                    RectButtons.SpriteRect.Color = new Color(0, 100, 255);
+                    if (RectButtons.Name == "ButtonUp" || RectButtons.Name == "ButtonDown")
+                    {
+                        RectButtons.SpriteRect.Color = Color.Red;
+                    }
+                    else
+                    {
+                        RectButtons.SpriteRect.Color = new Color(0, 100, 255);
+                    }
 
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))

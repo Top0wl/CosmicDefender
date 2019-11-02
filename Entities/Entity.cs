@@ -60,6 +60,29 @@ namespace ComicDefender
              Y += Dy/3;
         }
 
+        public void Settings(string file, string _name, float x, float y, float rotation, float size, float _speed, float x1, float x2)
+        {
+            image = new Image(CONTENT_DIRICTORY + file);
+            texture = new Texture(image);
+            texture.Smooth = true;
+            sprite = new Sprite(texture);
+            sprite.Scale = new Vector2f(size, size);
+            sprite.Origin = new Vector2f(image.Size.X / 2, image.Size.Y / 2);
+            Name = _name;
+            X = x;
+            Y = y;
+            Rotation = rotation;
+            Size = size;
+            Speed = _speed;
+            float deltaX = (float)Math.Cos(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
+            float deltaY = (float)Math.Sin(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
+            Dx = deltaX;
+            Dy = deltaY;
+            X += Dx / 3;
+            Y += Dy / 3;
+            
+        }
+
         public void Settings(Animation a, string _name, float x, float y, float rotation, float size, float _speed)
         {
             a.sprite.Scale = new Vector2f(size, size);

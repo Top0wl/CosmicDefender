@@ -58,7 +58,7 @@ namespace ComicDefender
                 for (int j = 0; j < entities.Count; j++)
                 {
                     if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "ShootShip" ||
-                        entities[i].GetName() == "Bomber" | entities[i].GetName() == "PlayerShip"))                                        //Найден косяк, урон для пули общий - урон нашего корабля.
+                        entities[i].GetName() == "Bomber" || entities[i].GetName() == "PlayerShip" || entities[i].GetName() == "MiniBoss"))                                        //Найден косяк, урон для пули общий - урон нашего корабля.
                                                                                                                                            //Если потом добавлять других врагов с уроном побольше, чем у обычных, то произойдёт бан
 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
@@ -77,7 +77,7 @@ namespace ComicDefender
 
                             entities[i].damage(Program.Ship.GetDamage()); entities[j].SetHealth(0);
                         }
-                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber")) 
+                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber" || entities[j].GetName() == "MiniBoss")) 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
@@ -90,6 +90,12 @@ namespace ComicDefender
 
                             if (entities[j].GetName() == "Bomber")
                                 entities[i].damage(100); entities[j].SetHealth(0);
+
+                            if (entities[j].GetName() == "MiniBoss")
+                            {
+                                entities[i].damage(100);
+                                entities[j].damage(70);
+                            }
 
                         }
 
@@ -175,7 +181,9 @@ namespace ComicDefender
                     string name;
                     if (b >= 1 && b <= 3)
                         name = "Bomber";
-                    else 
+                    else if (b == 4)
+                        name = "MiniBoss";
+                    else
                         name = "ShootShip";
 
                     EnemyShip a = new EnemyShip();
@@ -188,6 +196,12 @@ namespace ComicDefender
                     if (name == "Bomber")
                     { 
                         a = new EnemyShip(Program.content.GetsBomber(), a1, a2, 1.8f, name);
+                    }
+
+                    if (name == "MiniBoss")
+                    {
+                        a = new EnemyShip(Program.content.GetMiniBoss(), a1, a2, 0.3f, name);
+                        a.SetHealth(200);
                     }
 
                     entities.Add(a);

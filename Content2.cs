@@ -66,6 +66,7 @@ namespace ComicDefender
         private Sprite sTestButton;
         private Sprite sListUp;
         private Sprite sListDown;
+        private Sprite sMiniBoss;
 
 
         private Texture tExplosion;
@@ -118,7 +119,7 @@ namespace ComicDefender
         private Texture tShip9_unlock;
         private Texture tListUp;
         private Texture tListDown;
-
+        private Texture tMiniBoss;
 
         private Image iShootShip;
         private Image iBomber;
@@ -167,12 +168,12 @@ namespace ComicDefender
         private Image iShip7_unlock;
         private Image iShip8_unlock;
         private Image iShip9_unlock;
+        private Image iMiniBoss;
         private Image iListUp;
         private Image iListUp2;
         private Texture tListUp2;
         public Sprite sListUp2;
         private Image iListDown;
-
 
 
 
@@ -206,6 +207,15 @@ namespace ComicDefender
             sBomber = new Sprite(tBomber);
             sBomber.Origin = new Vector2f(iBomber.Size.X / 2, iBomber.Size.Y / 2);
             #endregion
+
+            #region Mini Boss Ship
+            iMiniBoss = new Image(CONTENT_DIRICTORY + "Enemy\\miniBoss.png");
+            tMiniBoss = new Texture(iMiniBoss);
+            tMiniBoss.Smooth = true;
+            sMiniBoss = new Sprite(tMiniBoss);
+            sMiniBoss.Origin = new Vector2f(iMiniBoss.Size.X / 2, iMiniBoss.Size.Y / 2);
+            #endregion
+
 
             #region Level
             iLevel1 = new Image(CONTENT_DIRICTORY + "Level1.jpg");
@@ -673,6 +683,11 @@ namespace ComicDefender
         public void UnLodaListShips1()
         {
             
+        }
+
+        public Sprite GetMiniBoss()
+        {
+            return sMiniBoss;
         }
 
         public Sprite GetsExplosion()

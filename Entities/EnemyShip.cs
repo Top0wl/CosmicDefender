@@ -23,6 +23,7 @@ namespace ComicDefender
         public int shooting_ready = 0;
         protected float VectorSpeed;                                  //Максимальная Cкорость корабля
         protected float bullet_cooldown_max = 0.5f;                     //Скоростельность
+        protected float bullet_cooldown_max_miniBoss = 0.4f;
         private float bullet_cooldown;
 
         //Пустой конструктор для последующей инициализации
@@ -56,6 +57,7 @@ namespace ComicDefender
             sprite.Rotation = rotat;
             sprite.Position = location;
             location += velocity * time; // Где находится корабль
+            Random rnd = new Random();
 
             velocity += v * direction;
             float constanta = (float)Math.Sqrt((VectorSpeed * VectorSpeed) / (velocity.X * velocity.X + velocity.Y * velocity.Y));
@@ -86,8 +88,26 @@ namespace ComicDefender
                 else shooting_ready = 0;
             }
             
-                if(Name == "Bomber")                        //бомбер не стреляет
-                shooting_ready = 0;
+            if(Name == "Bomber")                        //бомбер не стреляет
+            shooting_ready = 0;
+
+            if (Name == "MiniBoss")
+            {
+                if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 500)
+                {
+                    bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
+                    shooting_ready = 1;
+                    if (shooting_ready == 1 && bullet_cooldown >= bullet_cooldown_max_miniBoss)
+                    {
+                        bullet_clock.Restart();
+                        Bullet b = new Bullet((location.X + 500 * Rotate.X), (location.Y + 400 * Rotate.Y), rotat + 180, 0.3f, 1.5f);
+                        Program.entities.Add(b);
+
+                        shooting_ready = 0;
+                    }
+                }
+                else shooting_ready = 0;
+            }
 
 
             //Stop
@@ -99,9 +119,15 @@ namespace ComicDefender
                 }
             }
 
+            if (Name == "MiniBoss")                        //стрелок стреляет
+            {
+                if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 300) // ... и это корабль стрелок
+                {
+                    velocity = new Vector2f(0, 0);
+                }
+            }
 
-
-                Program.Window.Draw(sprite);
+            Program.Window.Draw(sprite);
         }
 
         private Vector2f Normalization(Vector2f vec, float X, float Y)

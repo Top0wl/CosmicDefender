@@ -331,6 +331,8 @@ namespace ComicDefender
             tShip8 = new Texture(iShip8);
             tShip8.Smooth = true;
             sShip8 = new Sprite(tShip8);
+            sShip8.Scale = new Vector2f(0.4F, 0.4F);
+            sShip8.Origin = new Vector2f(iShip8.Size.X / 2, iShip8.Size.Y / 2);
 
             #endregion
 
@@ -340,11 +342,13 @@ namespace ComicDefender
             tShip9 = new Texture(iShip9);
             tShip9.Smooth = true;
             sShip9 = new Sprite(tShip9);
+            sShip9.Scale = new Vector2f(0.4F, 0.4F);
+            sShip9.Origin = new Vector2f(iShip9.Size.X / 2, iShip9.Size.Y / 2);
 
             #endregion
 
             #region Menu
-           
+
             this.iMenuLevels = new Image(@"..\Content\Textures\Interface\form_levels.png");
             this.tMenuLevels = new Texture(this.iMenuLevels);
             this.tMenuLevels.Smooth = true;

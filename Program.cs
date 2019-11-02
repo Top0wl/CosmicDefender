@@ -52,7 +52,9 @@ namespace ComicDefender
             Game Logic = new Game();
             ParticleSystem particles = new ParticleSystem(5000);                                                         //Загружаем в память текстуры
             Content.Load();
-            Ship = new Ship("SpaceShip1.png", 500, 500, 106, 80);                  //Загружаем корабль
+            Ship = new Ship(content.GetShip1(), 500, 500);                  //Загружаем корабль
+            
+
             entities.Add(Ship);
             Clock clock = new Clock();
 

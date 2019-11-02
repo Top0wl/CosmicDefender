@@ -92,14 +92,13 @@ namespace ComicDefender
                 {
                     Program.Window.Draw(RectShip.SpriteRect);
                     
-
-
                     RectShip.SpriteRect.Color = Color.Red;
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
                         MainShip.SpriteShip = RectShip.SpriteShip;
                         MainShip.SpriteShip.Position = new Vector2f(640, 360);
+                        Program.Ship.Settings(MainShip.SpriteShip, 500, 500);
                     }
                 }
                 else RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;

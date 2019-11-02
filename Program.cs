@@ -20,6 +20,7 @@ namespace ComicDefender
         public static Content2 content;
         public static Ship Ship;
         public static Menu menu;
+        public static Level1 level1;
 
         static Game Logic = new Game();
 
@@ -46,7 +47,7 @@ namespace ComicDefender
             menu = new Menu();
             content.Load();
             menu.Load();
-            Level1 level1 = new Level1();
+            level1 = new Level1();
 
             Game Logic = new Game();
             ParticleSystem particles = new ParticleSystem(5000);                                                         //Загружаем в память текстуры

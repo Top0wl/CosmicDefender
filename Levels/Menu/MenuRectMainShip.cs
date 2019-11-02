@@ -13,7 +13,7 @@ namespace ComicDefender
         public MenuRectMainShip()
         {
             SpriteShip = Program.content.GetShip1();
-            SpriteShip.Position = new SFML.System.Vector2f(590, 320);
+            SpriteShip.Position = new SFML.System.Vector2f(640, 360);
         }
     }
 }

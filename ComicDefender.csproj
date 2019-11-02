@@ -71,7 +71,8 @@
     <Compile Include="Levels.cs" />
     <Compile Include="Levels\Menu\Menu.cs" />
     <Compile Include="Levels\Menu\MenuRectShips.cs" />
-    <Compile Include="MenuRectMainShip.cs" />
+    <Compile Include="Levels\Menu\MenuRectButtons.cs" />
+    <Compile Include="Levels\Menu\MenuRectMainShip.cs" />
     <Compile Include="ParticleSystem.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

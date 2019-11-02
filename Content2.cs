@@ -63,7 +63,9 @@ namespace ComicDefender
         private Sprite sShip7_unlock;
         private Sprite sShip8_unlock;
         private Sprite sShip9_unlock;
-
+        private Sprite sTestButton;
+        private Sprite sListUp;
+        private Sprite sListDown;
 
 
         private Texture tExplosion;
@@ -114,6 +116,8 @@ namespace ComicDefender
         private Texture tShip7_unlock;
         private Texture tShip8_unlock;
         private Texture tShip9_unlock;
+        private Texture tListUp;
+        private Texture tListDown;
 
 
         private Image iShootShip;
@@ -163,6 +167,14 @@ namespace ComicDefender
         private Image iShip7_unlock;
         private Image iShip8_unlock;
         private Image iShip9_unlock;
+        private Image iListUp;
+        private Image iListUp2;
+        private Texture tListUp2;
+        public Sprite sListUp2;
+        private Image iListDown;
+
+
+
 
         public void Load()
         {
@@ -372,7 +384,8 @@ namespace ComicDefender
             this.tMenuButton = new Texture(this.iMenuButton);
             this.tMenuButton.Smooth = true;
             this.sMenuButton = new Sprite(this.tMenuButton);
-            this.sMenuButton.Position = (new Vector2f(560f, 600f));
+            MenuRectButtons ListButtonPlay = new MenuRectButtons(sMenuButton, "ButtonPlay", new Vector2f(560f, 600f));
+            Program.menu.RectButtons.Add(ListButtonPlay);
             this.TextPlay = new Text();
             this.TextPlay.Font = this.font;
             this.TextPlay.DisplayedString = "Play";
@@ -416,7 +429,38 @@ namespace ComicDefender
             #region Test View ScrollBar
 
 
-           // sShip1.
+            #endregion
+
+            #region ListUpButton
+
+            iListUp = new Image(CONTENT_DIRICTORY + "Interface\\button_circle3.png");
+            tListUp = new Texture(iListUp);
+            tListUp.Smooth = true;
+            sListUp = new Sprite(tListUp);
+            //sListUp.Position = new Vector2f(900, 100);
+
+            MenuRectButtons ListUpButton = new MenuRectButtons(sListUp, "ButtonUp", new Vector2f(900, 100));
+            Program.menu.RectButtons.Add(ListUpButton);
+
+            #endregion
+
+            #region ListDownButton
+
+            iListDown = new Image(CONTENT_DIRICTORY + "Interface\\button_circle3.png");
+            tListDown = new Texture(iListDown);
+            tListDown.Smooth = true;
+            sListDown = new Sprite(tListDown);
+            //sListDown.Position = new Vector2f(900, 600);
+
+            MenuRectButtons ListDownButton = new MenuRectButtons(sListDown, "ButtonDown", new Vector2f(900, 600));
+            Program.menu.RectButtons.Add(ListDownButton);
+
+            #endregion
+
+            #region TestButton
+            //Нужен чтобы брать цвет
+
+            sTestButton = new Sprite(sListUp);
 
             #endregion
 
@@ -426,12 +470,7 @@ namespace ComicDefender
             tShip1_lock = new Texture(iShip1_lock);
             tShip1_lock.Smooth = true;
             sShip1_lock = new Sprite(tShip1_lock);
-
-            MenuRectShips Ship1Rect = new MenuRectShips(sShip1_lock, sShip1, "Ship1");
-            Program.menu.RectShips.Add(Ship1Rect);
-
-           // sShip1_lock.Scale = new Vector2f(1f, 0.9f);
-            sShip1_lock.Position = new Vector2f(1000, 40);
+            //sShip1_lock.Origin = new Vector2f(iShip1_lock.Size.X / 2, iShip1_lock.Size.Y / 2);
 
             #endregion
 
@@ -442,11 +481,6 @@ namespace ComicDefender
             tShip2_lock.Smooth = true;
             sShip2_lock = new Sprite(tShip2_lock);
 
-            sShip2_lock.Position = new Vector2f(1000, 150);
-
-            MenuRectShips Ship2Rect = new MenuRectShips(sShip2_lock, sShip2, "Ship2");
-            Program.menu.RectShips.Add(Ship2Rect);
-
             #endregion
 
             #region Ship3_lock
@@ -455,8 +489,6 @@ namespace ComicDefender
             tShip3_lock = new Texture(iShip3_lock);
             tShip3_lock.Smooth = true;
             sShip3_lock = new Sprite(tShip3_lock);
-
-            sShip3_lock.Position = new Vector2f(1000, 260);
 
             #endregion
 
@@ -467,7 +499,6 @@ namespace ComicDefender
             tShip4_lock.Smooth = true;
             sShip4_lock = new Sprite(tShip4_lock);
 
-            sShip4_lock.Position = new Vector2f(1000, 370);
             #endregion
 
             #region Ship5_lock
@@ -477,7 +508,6 @@ namespace ComicDefender
             tShip5_lock.Smooth = true;
             sShip5_lock = new Sprite(tShip5_lock);
 
-            sShip5_lock.Position = new Vector2f(1000, 480);
 
             #endregion
 
@@ -488,8 +518,6 @@ namespace ComicDefender
             tShip6_lock.Smooth = true;
             sShip6_lock = new Sprite(tShip6_lock);
 
-            sShip6_lock.Position = new Vector2f(1000, 800);
-
             #endregion
 
             #region Ship7_lock
@@ -498,8 +526,6 @@ namespace ComicDefender
             tShip7_lock = new Texture(iShip7_lock);
             tShip7_lock.Smooth = true;
             sShip7_lock = new Sprite(tShip7_lock);
-
-           // sShip7_lock.Position = new Vector2f(1000, 640);
 
             #endregion
 
@@ -605,6 +631,49 @@ namespace ComicDefender
 
         }
         #region Getters
+
+        public void LoadListShips1()
+        {
+            Program.menu.RectShips.Clear();
+            MenuRectShips Ship1Rect = new MenuRectShips(sShip1_lock, sShip1, "Ship1", new Vector2f(1000, 40));
+            Program.menu.RectShips.Add(Ship1Rect);
+
+            MenuRectShips Ship2Rect = new MenuRectShips(sShip2_lock, sShip2, "Ship2", new Vector2f(1000, 150));
+            Program.menu.RectShips.Add(Ship2Rect);
+
+            MenuRectShips Ship3Rect = new MenuRectShips(sShip3_lock, sShip3, "Ship3", new Vector2f(1000, 260));
+            Program.menu.RectShips.Add(Ship3Rect);
+
+            MenuRectShips Ship4Rect = new MenuRectShips(sShip4_lock, sShip4, "Ship4", new Vector2f(1000, 370));
+            Program.menu.RectShips.Add(Ship4Rect);
+
+            MenuRectShips Ship5Rect = new MenuRectShips(sShip5_lock, sShip5, "Ship5", new Vector2f(1000, 480));
+            Program.menu.RectShips.Add(Ship5Rect);
+
+            MenuRectShips Ship6Rect = new MenuRectShips(sShip6_lock, sShip6, "Ship6", new Vector2f(1000, 590));
+            Program.menu.RectShips.Add(Ship6Rect);
+
+        }
+
+        public void LoadListShips2()
+        {
+            Program.menu.RectShips.Clear();
+
+            MenuRectShips Ship7Rect = new MenuRectShips(sShip7_lock, sShip7, "Ship7", new Vector2f(1000, 40));
+            Program.menu.RectShips.Add(Ship7Rect);
+
+            MenuRectShips Ship8Rect = new MenuRectShips(sShip8_lock, sShip8, "Ship8", new Vector2f(1000, 150));
+            Program.menu.RectShips.Add(Ship8Rect);
+
+            MenuRectShips Ship9Rect = new MenuRectShips(sShip9_lock, sShip9, "Ship9", new Vector2f(1000, 260));
+            Program.menu.RectShips.Add(Ship9Rect);
+
+        }
+
+        public void UnLodaListShips1()
+        {
+            
+        }
 
         public Sprite GetsExplosion()
         {
@@ -827,6 +896,19 @@ namespace ComicDefender
         public Sprite GetShip9_unlock()
         {
             return sShip9_unlock;
+        }
+        public Sprite GetListUpButton()
+        {
+            return sListUp;
+        }
+        public Sprite GetListDownButton()
+        {
+            return sListDown;
+        }
+
+        public Sprite GetColorButtonUp()
+        {
+            return sTestButton;
         }
 
         #endregion

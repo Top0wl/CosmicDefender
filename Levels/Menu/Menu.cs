@@ -14,7 +14,11 @@ namespace ComicDefender
         // View view = new View(new FloatRect(0, 0, 1280, 720));
         Color CopyColor;
         public List<MenuRectShips> RectShips = new List<MenuRectShips>();
+
+        public List<MenuRectButtons> RectButtons = new List<MenuRectButtons>();
+
         public MenuRectMainShip MainShip;
+        private int listShips;
 
         public Menu()
         {
@@ -23,12 +27,14 @@ namespace ComicDefender
 
         public void Load()
         {
-            CopyColor = Program.content.GetShip1_lock().Color;
             MainShip = new MenuRectMainShip();
+            listShips = 1;
+            Program.content.LoadListShips1();
         }
 
         public void Update()
         {
+            CopyColor = Program.content.GetShip9_lock().Color;
             Program.Window.Draw(Program.content.GetMenuLevels());
             Program.Window.Draw(Program.content.GetMenuShips());
             Program.Window.Draw(Program.content.GetMenuTable());
@@ -38,17 +44,40 @@ namespace ComicDefender
             Program.Window.Draw(Program.content.GetCircle4());
             Program.Window.Draw(Program.content.GetMenuButton());
             Program.Window.Draw(Program.content.GetTextPlay());
-            Program.Window.Draw(Program.content.GetShip1_lock());
-            Program.Window.Draw(Program.content.GetShip2_lock());
-            Program.Window.Draw(Program.content.GetShip3_lock());
-            Program.Window.Draw(Program.content.GetShip4_lock());
-            Program.Window.Draw(Program.content.GetShip5_lock());
-            Program.Window.Draw(Program.content.GetShip6_lock());
-            Program.Window.Draw(Program.content.GetShip7_lock());
-            Program.Window.Draw(Program.content.GetShip8_lock());
-            Program.Window.Draw(Program.content.GetShip9_lock());
+            Program.Window.Draw(Program.content.GetListUpButton());
+            Program.Window.Draw(Program.content.GetListDownButton());
+
+            //Program.content.LoadListShips1();
+
+            if (listShips == 1)
+            {
+                Program.content.LoadListShips1();
+            }
+            if (listShips == 2)
+            {
+                Program.content.LoadListShips2();
+            }
+
+            if (listShips == 1)
+            {
+                // Program.content.LoadListShips1();
+                Program.Window.Draw(Program.content.GetShip1_lock());
+                Program.Window.Draw(Program.content.GetShip2_lock());
+                Program.Window.Draw(Program.content.GetShip3_lock());
+                Program.Window.Draw(Program.content.GetShip4_lock());
+                Program.Window.Draw(Program.content.GetShip5_lock());
+                Program.Window.Draw(Program.content.GetShip6_lock());
+
+            }
+            else
+            {
+                Program.Window.Draw(Program.content.GetShip7_lock());
+                Program.Window.Draw(Program.content.GetShip8_lock());
+                Program.Window.Draw(Program.content.GetShip9_lock());
+            }
 
             Program.Window.Draw(Program.menu.MainShip.SpriteShip);
+
 
             for (int i = 0; i < 3; i++)
             {
@@ -57,41 +86,58 @@ namespace ComicDefender
                 Program.Window.Draw(Program.content.sMenuRectSpd[i]);
             }
 
-
-
-
-                foreach (MenuRectShips RectShip in Program.menu.RectShips)
+            foreach (MenuRectShips RectShip in Program.menu.RectShips.ToList())
+            {
+                if (Contains(RectShip.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
                 {
-                    if (Contains(RectShip.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
+                    Program.Window.Draw(RectShip.SpriteRect);
+
+                    RectShip.SpriteRect.Color = Color.Red;
+
+                    if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
-                        RectShip.SpriteRect.Color = Color.Yellow;
-                        if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                        MainShip.SpriteShip = RectShip.SpriteShip;
+                        MainShip.SpriteShip.Position = new Vector2f(640, 360);
+                    }
+                }
+                else RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+            }
+
+
+            foreach (MenuRectButtons RectButtons in Program.menu.RectButtons.ToList())
+            {
+                if (Contains(RectButtons.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
+                {
+                    Program.Window.Draw(RectButtons.SpriteRect);
+
+                    RectButtons.SpriteRect.Color = new Color(0, 100, 255);
+
+
+                    if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                    {
+                        //Событие что нажалось в меню
+                        //Если нажалось кнопка смены листа то
+
+                        if (RectButtons.Name == "ButtonUp")
                         {
-                            MainShip.SpriteShip = RectShip.SpriteShip;
-                            MainShip.SpriteShip.Position = new Vector2f(590, 320);
+                            listShips = 1;
+                        }
+                        if (RectButtons.Name == "ButtonDown")
+                        {
+                            listShips = 2;
+                        }
+                        if (RectButtons.Name == "ButtonPlay")
+                        {
+                            Program.level1.IsOpen = true;
+                            Program.menu.IsOpen = false;
                         }
                     }
-                    else RectShip.SpriteRect.Color = Program.content.GetShip9_lock().Color;
+
                 }
-    
-
-
-
-           /* if (Contains(Program.content.GetShip1_lock(), Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
-            {
-            Program.content.GetShip1_lock().Color = Color.Yellow;
-            if (Mouse.IsButtonPressed(Mouse.Button.Left))
-            {
-
+                else RectButtons.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
             }
-            }
-            else Program.content.GetShip1_lock().Color = CopyColor;
-            */
-
-
-
         }
-        
+
         public bool Contains(Sprite sprite, int x, int y)
         {
             int num = (int)Math.Min(sprite.Position.X, sprite.Position.X + sprite.Texture.Size.X);

@@ -42,7 +42,9 @@ namespace ComicDefender
                 entity.Draw();
                 if (entity.GetName() == "PlayerShip" && entity.GetHealth() <= 0)
                 {
-                    Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500);                  //Загружаем корабль
+                    Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, Program.menu.MainShip.Damage, Program.menu.MainShip.Speed, Program.menu.MainShip.Shoot_speed, Program.menu.MainShip.Health);
+                    //Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, 25, 1.5f, .2f, 100);                  //Загружаем корабль
+
                     entities.Add(Ship);
                 }
 

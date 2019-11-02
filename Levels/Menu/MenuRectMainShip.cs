@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace ComicDefender
 {
-    class MenuRectMainShip
+    class MenuRectMainShip : MenuRectShips
     {
-        public Sprite SpriteShip;
         public MenuRectMainShip()
         {
             SpriteShip = Program.content.GetShip1();

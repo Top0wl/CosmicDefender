@@ -17,7 +17,7 @@ namespace ComicDefender
         private float Dx, Dy;               //Скорость объекта
         private float Rotation;             //Направление объекта
         private float Size;                 //Размер объекта
-        protected int health;                  //Здоровье
+        protected int Health;                  //Здоровье
         protected string Name;                //Имя объекта
         private float Speed;                //Скорость объекта
         public Sprite sprite;
@@ -27,12 +27,12 @@ namespace ComicDefender
 
         public Entity()
         {
-            health = 100;
+            Health = 100;
         }
 
         public Entity(int _health)
         {
-            health = _health;
+            Health = _health;
         }
 
 
@@ -82,7 +82,7 @@ namespace ComicDefender
         //Урон предмету
         public void damage(int _damage)
         {
-            health -= _damage;
+            Health -= _damage;
         }
 
 
@@ -141,11 +141,11 @@ namespace ComicDefender
         }
         public int GetHealth()
         {
-            return health;
+            return Health;
         }
         public void SetHealth(int _health)
         {
-            health = _health;
+            Health = _health;
         }
         public float GetSize()
         {

@@ -21,12 +21,15 @@ namespace ComicDefender
         //
         public int shooting_ready = 0;
         protected float VectorSpeed;                                  //Максимальная Cкорость корабля
-        protected float bullet_cooldown_max = .2f;                     //Скоростельность
+        protected float bullet_cooldown_max;                     //Скоростельность (была .2f)
         private float bullet_cooldown;
         private int dmg;
 
+        public Ship()
+        { 
+        }
 
-        public Ship(Sprite _sprite , float _X, float _Y)
+        public Ship(Sprite _sprite , float _X, float _Y, int damage, float speed, float shoot_speed, int health)
         {
             Name = "PlayerShip";
             sprite = new Sprite(_sprite);
@@ -34,12 +37,14 @@ namespace ComicDefender
             location = new Vector2f(_X, _Y);
             sprite.Position = location;
             sprite.Scale = new Vector2f(0.4F, 0.4F);
-            VectorSpeed = 1.5f;
-            dmg = 25;                                               //изменить попозже ????????????????????????????????????????
+            bullet_cooldown_max = shoot_speed;
+            VectorSpeed = speed;
+            dmg = damage;                                               //изменить попозже ????????????????????????????????????????
+            Health = health;
             X = _X;
             Y = _Y;
         }
-        public void Settings(Sprite _sprite, float _X, float _Y)
+        public void Settings(Sprite _sprite, float _X, float _Y, int damage, float speed, float shoot_speed, int health)
         {
             Name = "PlayerShip";
             sprite = new Sprite(_sprite);
@@ -47,8 +52,10 @@ namespace ComicDefender
             location = new Vector2f(_X, _Y);
             sprite.Position = location;
             sprite.Scale = new Vector2f(0.4F, 0.4F);
-            VectorSpeed = 1.5f;
-            dmg = 25;                                               //изменить попозже ????????????????????????????????????????
+            bullet_cooldown_max = shoot_speed;
+            VectorSpeed = speed;
+            dmg = damage;                                                   //изменить попозже ????????????????????????????????????????
+            Health = health;
             X = _X;
             Y = _Y;
         }

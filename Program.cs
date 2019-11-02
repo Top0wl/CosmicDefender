@@ -68,7 +68,7 @@ namespace ComicDefender
 
             #endregion
 
-            Ship = new Ship(content.GetShip1(), 500, 500);                      //Загружаем корабль
+            Ship = new Ship(content.GetShip1(), 500, 500, 25, 1.5f, .2f, 100);                      //Загружаем корабль(пока что только один корабль с дамагом 25)
             entities.Add(Ship);                                                 //Добавляем его в лист объектов
 
             Clock clock = new Clock();

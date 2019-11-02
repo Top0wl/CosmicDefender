@@ -721,6 +721,11 @@ namespace ComicDefender
             return sAnimAsteroid1;
         }
 
+        public Sprite GetMiniBoss()
+        {
+            return sMiniBoss;
+        }
+
         public Sprite GetsExplosion()
         {
             return sExplosion;

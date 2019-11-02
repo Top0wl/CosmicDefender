@@ -11,21 +11,16 @@ namespace ComicDefender
     class Animation : Entity
 
     {
-        private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
         public float Frame, Speed;
         public Sprite sprite;
         public List<IntRect> frames = new List<IntRect>();
 
         Animation() { }
 
-        public Animation(String file, int x, int y, int w, int h, int countX, int countY, float speed)
+        public Animation(Sprite _sprite, int x, int y, int w, int h, int countX, int countY, float speed)
         {
-            Image image = new Image(CONTENT_DIRICTORY + file);
-            Texture texture = new Texture(image);
-            texture.Smooth = true;
-            sprite = new Sprite(texture);
+            sprite = new Sprite(_sprite);
             sprite.Origin = new Vector2f(w / 2, h / 2);
-            //
             Frame = 0;
             Speed = speed;
             for (int i = 0; i < countY; i++) {
@@ -59,8 +54,6 @@ namespace ComicDefender
             if (Frame >= n) Frame -= n;
             if (n > 0)
                 sprite.TextureRect = frames[(int)Frame];
-
-           // Program.Window.Draw(sprite);
         }
 
         public bool isEnd()
@@ -72,7 +65,6 @@ namespace ComicDefender
         {
             sprite.Position = new Vector2f(X, Y);
             Program.Window.Draw(sprite);
-
         }
     }
 };

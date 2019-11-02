@@ -28,7 +28,8 @@ namespace ComicDefender
         public static Image iExplosion;
         public static Texture tExplosion;
 
-        public static Animation animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
+
+        //public static Animation animAsteroid = new Animation("animAsteroid.png", 0, 0, 85, 100, 6, 5, 0.15f);
 
 
 

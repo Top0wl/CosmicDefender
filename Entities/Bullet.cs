@@ -14,7 +14,7 @@ namespace ComicDefender
         public Animation animation;
         public Bullet(float _X, float _Y, float _Rotation, float _size, float _speed)
         {
-            this.Settings("Bullet.png","Bullet", _X, _Y, _Rotation, _size, _speed);
+            this.Settings(Program.content.GetBullet(),"Bullet", _X, _Y, _Rotation, _size, _speed);
             Vector2i pixelPos = Mouse.GetPosition(Program.Window);                                  //забираем коорд курсора
             Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);                               //переводим их в игровые (уходим от коорд окна
             float dX = pos.X - Ship.GetX();                                                       //вектор , колинеарный прямой, которая пересекает спрайт и курсор

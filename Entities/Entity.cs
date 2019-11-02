@@ -38,14 +38,11 @@ namespace ComicDefender
 
 
         //Настройки объекта
-        public void Settings(string file, string _name, float x, float y, float rotation, float size, float _speed)
+        public void Settings(Sprite _sprite, string _name, float x, float y, float rotation, float size, float _speed)
         {
-            image = new Image(CONTENT_DIRICTORY + file);
-            texture = new Texture(image);
-            texture.Smooth = true;
-            sprite = new Sprite(texture);
+            sprite = new Sprite(_sprite);
             sprite.Scale = new Vector2f(size, size);
-            sprite.Origin = new Vector2f(image.Size.X / 2, image.Size.Y / 2);
+            sprite.Origin = new Vector2f(sprite.Texture.Size.X/2, sprite.Texture.Size.Y / 2);
             Name = _name;
             X = x;
             Y = y;
@@ -56,8 +53,8 @@ namespace ComicDefender
             float deltaY = (float)Math.Sin(Math.PI * (rotation - 90) / 180.0f) * -1 * _speed;
             Dx = deltaX;
             Dy = deltaY;
-             X += Dx/3;
-             Y += Dy/3;
+            X += Dx/3;
+            Y += Dy/3;
         }
 
         public void Settings(Animation a, string _name, float x, float y, float rotation, float size, float _speed)

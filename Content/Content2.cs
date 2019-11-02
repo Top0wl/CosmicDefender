@@ -10,10 +10,22 @@ namespace ComicDefender
 {
     class Content2
     {
+        private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
+
         private Font font;
         private Text TextPlay;
         private RectangleShape RectangleHp1;
-        private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
+
+        #region Animation
+
+        private Animation aAnimAsteroid1;
+
+        #endregion
+
+        #region Sprites
+
+        private Sprite sAnimAsteroid1;
+
         private Sprite sExplosion;
         private Sprite sBackground;
         private Sprite cursorSprite;
@@ -67,6 +79,10 @@ namespace ComicDefender
         private Sprite sListUp;
         private Sprite sListDown;
 
+        #endregion
+
+        #region Textures
+        private Texture tAnimAsteroid1;
 
         private Texture tExplosion;
         private Texture tLevel1;
@@ -119,6 +135,11 @@ namespace ComicDefender
         private Texture tListUp;
         private Texture tListDown;
 
+        #endregion
+
+        #region Images
+
+        private Image iAnimAsteroid1;
 
         private Image iShootShip;
         private Image iBomber;
@@ -173,17 +194,30 @@ namespace ComicDefender
         public Sprite sListUp2;
         private Image iListDown;
 
-
+        #endregion
 
 
         public void Load()
         {
+            #region Font
 
             font = new Font(@"..\Content\Textures\Font\eng.ttf");
 
-            #region Animation Explosive Asteroid
+            #endregion
 
-            iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");
+            #region Animation Asteroid1
+
+            iAnimAsteroid1 = new Image(CONTENT_DIRICTORY + "Animation\\AnimAsteroid.png");
+            tAnimAsteroid1 = new Texture(iAnimAsteroid1);
+            tAnimAsteroid1.Smooth = true;
+            sAnimAsteroid1 = new Sprite(tAnimAsteroid1);
+            sAnimAsteroid1.Origin = new Vector2f(iAnimAsteroid1.Size.X / 2, iAnimAsteroid1.Size.Y / 2);
+
+        #endregion
+
+        #region Animation Explosive Asteroid
+
+        iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");
             tExplosion = new Texture(iExplosion);
             tExplosion.Smooth = true;
             sExplosion = new Sprite(tExplosion);
@@ -216,7 +250,7 @@ namespace ComicDefender
             #endregion
 
             #region Asteroid1
-            iAsteroid1 = new Image(CONTENT_DIRICTORY + "animAsteroid.png");
+            iAsteroid1 = new Image(CONTENT_DIRICTORY + "Animation\\animAsteroid.png");
             tAsteroid1 = new Texture(iAsteroid1);
             tAsteroid1.Smooth = true;
             sAsteroid1 = new Sprite(tAsteroid1);
@@ -674,9 +708,13 @@ namespace ComicDefender
 
         }
 
-        public void UnLodaListShips1()
+        public Sprite GetsAnimAsteroid1()
         {
-            
+            return sAnimAsteroid1;
+        }
+        public Animation GetAnimAsteroid1()
+        {
+            return aAnimAsteroid1;
         }
 
         public Sprite GetsExplosion()

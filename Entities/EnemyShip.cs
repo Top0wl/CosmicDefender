@@ -27,15 +27,18 @@ namespace ComicDefender
         protected float bullet_cooldown_max = 0.5f;                     //Скоростельность
         protected float bullet_cooldown_max_miniBoss = 2f;
         private float bullet_cooldown;
-
+        public Animation animEnemy;
         //Пустой конструктор для последующей инициализации
         public EnemyShip()
         { 
         
         }
 
+
         public EnemyShip(Sprite _sprite, float _X, float _Y, float MaxSpeed, string name, int countguns) // Параметр Name
         {
+            animEnemy = new Animation(_sprite, 0, 0, 338, 338, 3, 0.02f);   //ПАРАМЕТРЫ ДЛЯ КАЖДОГО БОССА ?????????????????????????????????????????????
+
             sprite = new Sprite(_sprite);
             location = new Vector2f(_X, _Y);
             sprite.Position = location;
@@ -45,7 +48,11 @@ namespace ComicDefender
             X = _X;
             Y = _Y;
             CountGuns = countguns;
+
+            Settings(animEnemy, "Boss1", 0, 100, 100, 1f, 0.3f);
         }
+
+
 
 
         public override void Update(float time)
@@ -161,7 +168,11 @@ namespace ComicDefender
                 }
             }
 
+            sprite = animEnemy.sprite;
+            animEnemy.update();
+
             Program.Window.Draw(sprite);
+
         }
 
         private Vector2f Normalization(Vector2f vec, float X, float Y)

@@ -21,10 +21,11 @@ namespace ComicDefender
         private Clock bullet_clock = new Clock();
         //
         public int shooting_ready = 0;
+        public int CountGuns;
         private int BulletToShip;                                       //Длина от корабля до спавна пули
         protected float VectorSpeed;                                    //Максимальная Cкорость корабля
         protected float bullet_cooldown_max = 0.5f;                     //Скоростельность
-        protected float bullet_cooldown_max_miniBoss = 0.4f;
+        protected float bullet_cooldown_max_miniBoss = 2f;
         private float bullet_cooldown;
 
         //Пустой конструктор для последующей инициализации
@@ -33,7 +34,7 @@ namespace ComicDefender
         
         }
 
-        public EnemyShip(Sprite _sprite, float _X, float _Y, float MaxSpeed, string name) // Параметр Name
+        public EnemyShip(Sprite _sprite, float _X, float _Y, float MaxSpeed, string name, int countguns) // Параметр Name
         {
             sprite = new Sprite(_sprite);
             location = new Vector2f(_X, _Y);
@@ -43,6 +44,7 @@ namespace ComicDefender
             Name = name; //  $$$$
             X = _X;
             Y = _Y;
+            CountGuns = countguns;
         }
 
 
@@ -51,8 +53,15 @@ namespace ComicDefender
             Vector2f pos = new Vector2f(Ship.GetX(), Ship.GetY());
             Vector2f Rotate = pos - location;
             RotateShoot = Rotate;
+
+            Vector2f RotateToGun;
+            RotateToGun.Y = 1;
+            RotateToGun.X = (((-1) * (Rotate.Y * RotateToGun.Y)) / (Rotate.X));
+            RotateToGun = Normalization(RotateToGun, pos.X, pos.Y);
+
             Rotate = Normalization(Rotate, pos.X, pos.Y);
             direction = Rotate;
+
             float v = 0.3f;
             rotat = (float)((Math.Atan2(Rotate.Y, Rotate.X) * 180 / Math.PI)+90);
             sprite.Rotation = rotat;
@@ -101,9 +110,33 @@ namespace ComicDefender
                     if (shooting_ready == 1 && bullet_cooldown >= bullet_cooldown_max_miniBoss)
                     {
                         bullet_clock.Restart();
-                        Bullet b = new Bullet((location.X + 500 * Rotate.X), (location.Y + 400 * Rotate.Y), rotat + 180, 0.3f, 1.5f);
-                        Program.entities.Add(b);
 
+                        if (CountGuns == 1)
+                        {
+                            Bullet b1 = new Bullet(location.X + sprite.Texture.Size.X * Rotate.X, location.Y + sprite.Texture.Size.X * Rotate.Y, rotat + 180, 0.3f, 1.5f);
+                            Program.entities.Add(b1);
+                        }
+
+                        if (CountGuns == 4)
+                        {
+                            int a = rnd.Next(1,3);
+
+                            if (a == 1)
+                            {
+                                Bullet b1 = new Bullet(location.X + 150 * RotateToGun.X + sprite.Texture.Size.X * 2 * Rotate.X, location.Y + 150 * RotateToGun.Y + sprite.Texture.Size.X * 2 * Rotate.Y, rotat + 180, 0.3f, 1.5f);
+                                Program.entities.Add(b1);
+
+                                Bullet b2 = new Bullet(location.X + (-150) * RotateToGun.X + sprite.Texture.Size.X * 2 * Rotate.X, location.Y + (-150) * RotateToGun.Y + sprite.Texture.Size.X * 2 * Rotate.Y, rotat + 180, 0.3f, 1.5f);
+                                Program.entities.Add(b2);
+                            }
+                            if (a == 2)
+                            {
+                                Bullet b3 = new Bullet(location.X + 300 * RotateToGun.X + sprite.Texture.Size.X * 1.5f * Rotate.X, location.Y + 300 * RotateToGun.Y + sprite.Texture.Size.X * 1.5f * Rotate.Y, rotat + 180, 0.3f, 1.5f);
+                                Program.entities.Add(b3);
+                                Bullet b4 = new Bullet(location.X + (-300) * RotateToGun.X + sprite.Texture.Size.X * 1.5f * Rotate.X, location.Y + (-300) * RotateToGun.Y + sprite.Texture.Size.X * 1.5f * Rotate.Y, rotat + 180, 0.3f, 1.5f);
+                                Program.entities.Add(b4);
+                            }
+                        }
                         shooting_ready = 0;
                     }
                 }

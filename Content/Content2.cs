@@ -681,22 +681,22 @@ namespace ComicDefender
         public void LoadListShips1()
         {
             Program.menu.RectShips.Clear();
-            MenuRectShips Ship1Rect = new MenuRectShips(sShip1_lock, sShip1, "Ship1", new Vector2f(1000, 75), 25, 1.5f, .2f, 100); //25 1.5f .2f 100
+            MenuRectShips Ship1Rect = new MenuRectShips(sShip1_lock, sShip1, "Ship1", new Vector2f(1000, 75), 25, 1.5f, .2f, 100, 1); //25 1.5f .2f 100
             Program.menu.RectShips.Add(Ship1Rect);
 
-            MenuRectShips Ship2Rect = new MenuRectShips(sShip2_lock, sShip2, "Ship2", new Vector2f(1000, 175), 25, 1.5f, .2f, 100); //15 1.7f .2f 100  2 пули за выстрел
+            MenuRectShips Ship2Rect = new MenuRectShips(sShip2_lock, sShip2, "Ship2", new Vector2f(1000, 175), 25, 1.5f, .2f, 100, 2); //15 1.7f .2f 100  2 пули за выстрел
             Program.menu.RectShips.Add(Ship2Rect);
 
-            MenuRectShips Ship3Rect = new MenuRectShips(sShip3_lock, sShip3, "Ship3", new Vector2f(1000, 275), 25, 1.5f, .2f, 100); //30 1.6f .25f 125
+            MenuRectShips Ship3Rect = new MenuRectShips(sShip3_lock, sShip3, "Ship3", new Vector2f(1000, 275), 25, 1.5f, .2f, 100, 1); //30 1.6f .25f 125
             Program.menu.RectShips.Add(Ship3Rect);
 
-            MenuRectShips Ship4Rect = new MenuRectShips(sShip4_lock, sShip4, "Ship4", new Vector2f(1000, 375), 25, 1.5f, .2f, 100); //45 1.8f .35f 75
+            MenuRectShips Ship4Rect = new MenuRectShips(sShip4_lock, sShip4, "Ship4", new Vector2f(1000, 375), 25, 1.5f, .2f, 100, 1); //45 1.8f .35f 75
             Program.menu.RectShips.Add(Ship4Rect);
 
-            MenuRectShips Ship5Rect = new MenuRectShips(sShip5_lock, sShip5, "Ship5", new Vector2f(1000, 475), 25, 1.5f, .2f, 100); //25 1.3f .15f 150
+            MenuRectShips Ship5Rect = new MenuRectShips(sShip5_lock, sShip5, "Ship5", new Vector2f(1000, 475), 25, 1.5f, .2f, 100, 1); //25 1.3f .15f 150
             Program.menu.RectShips.Add(Ship5Rect);
 
-            MenuRectShips Ship6Rect = new MenuRectShips(sShip6_lock, sShip6, "Ship6", new Vector2f(1000, 575), 25, 1.5f, .2f, 100); //2 1.3f 1f? 100  лазерный
+            MenuRectShips Ship6Rect = new MenuRectShips(sShip6_lock, sShip6, "Ship6", new Vector2f(1000, 575), 25, 1.5f, .2f, 100, 1); //2 1.3f 1f? 100  лазерный
             Program.menu.RectShips.Add(Ship6Rect);
 
         }
@@ -704,14 +704,14 @@ namespace ComicDefender
         public void LoadListShips2()
         {
             Program.menu.RectShips.Clear();
-
-            MenuRectShips Ship7Rect = new MenuRectShips(sShip7_lock, sShip7, "Ship7", new Vector2f(1000, 75), 25, 1.5f, .2f, 100); //25 1.8f .2f 150
+             
+            MenuRectShips Ship7Rect = new MenuRectShips(sShip7_lock, sShip7, "Ship7", new Vector2f(1000, 75), 25, 1.8f, .2f, 150, 2); //25 1.8f .2f 150
             Program.menu.RectShips.Add(Ship7Rect);
 
-            MenuRectShips Ship8Rect = new MenuRectShips(sShip8_lock, sShip8, "Ship8", new Vector2f(1000, 175), 25, 1.5f, .2f, 100); //50 1.3f .25f 200
+            MenuRectShips Ship8Rect = new MenuRectShips(sShip8_lock, sShip8, "Ship8", new Vector2f(1000, 175), 25, 1.2f, .25f, 200, 2); //50 1.3f .25f 200
             Program.menu.RectShips.Add(Ship8Rect);
 
-            MenuRectShips Ship9Rect = new MenuRectShips(sShip9_lock, sShip9, "Ship9", new Vector2f(1000, 275), 50, 2f, .1f, 300); //50 2f .1f 300
+            MenuRectShips Ship9Rect = new MenuRectShips(sShip9_lock, sShip9, "Ship9", new Vector2f(1000, 275), 50, 2f, .1f, 300, 2); //50 2f .1f 300
             Program.menu.RectShips.Add(Ship9Rect);
 
         }

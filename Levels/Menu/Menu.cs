@@ -100,9 +100,10 @@ namespace ComicDefender
                         MainShip.Speed = RectShip.Speed;
                         MainShip.Shoot_speed = RectShip.Shoot_speed;
                         MainShip.Health = RectShip.Health;
+                        MainShip.CountGuns = RectShip.CountGuns;
                         MainShip.SpriteShip = RectShip.SpriteShip;
                         MainShip.SpriteShip.Position = new Vector2f(640, 360);
-                        Program.Ship.Settings(MainShip.SpriteShip, 500, 500, RectShip.Damage, RectShip.Speed, RectShip.Shoot_speed, RectShip.Health);
+                        Program.Ship.Settings(MainShip.SpriteShip, 500, 500, RectShip.Damage, RectShip.Speed, RectShip.Shoot_speed, RectShip.Health, RectShip.CountGuns);
                     }
                 }
                 else RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;

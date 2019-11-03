@@ -42,7 +42,7 @@ namespace ComicDefender
                 entity.Draw();
                 if (entity.GetName() == "PlayerShip" && entity.GetHealth() <= 0)
                 {
-                    Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, Program.menu.MainShip.Damage, Program.menu.MainShip.Speed, Program.menu.MainShip.Shoot_speed, Program.menu.MainShip.Health);
+                    Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, Program.menu.MainShip.Damage, Program.menu.MainShip.Speed, Program.menu.MainShip.Shoot_speed, Program.menu.MainShip.Health, Program.menu.MainShip.CountGuns);
                     //Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, 25, 1.5f, .2f, 100);                  //Загружаем корабль
 
                     entities.Add(Ship);
@@ -109,8 +109,6 @@ namespace ComicDefender
                             }
 
                         }
-
-
                 }
             }
         }
@@ -201,18 +199,18 @@ namespace ComicDefender
 
                     if (name == "ShootShip")
                     {
-                         a = new EnemyShip(Program.content.GetsShootShip(), a1, a2, 0.5f, name);
+                         a = new EnemyShip(Program.content.GetsShootShip(), a1, a2, 0.5f, name, 1);
                     }
 
                     if (name == "Bomber")
                     { 
-                        a = new EnemyShip(Program.content.GetsBomber(), a1, a2, 1.8f, name);
+                        a = new EnemyShip(Program.content.GetsBomber(), a1, a2, 1.8f, name, 0);
                     }
 
                     if (name == "MiniBoss")
                     {
-                        a = new EnemyShip(Program.content.GetMiniBoss(), a1, a2, 0.3f, name);
-                        a.SetHealth(200);
+                        a = new EnemyShip(Program.content.GetMiniBoss(), a1, a2, 0.3f, name, 4);
+                        a.SetHealth(400);
                     }
 
                     entities.Add(a);

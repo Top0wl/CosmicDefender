@@ -20,6 +20,7 @@ namespace ComicDefender
         private Clock bullet_clock = new Clock();
         //
         public int shooting_ready = 0;
+        public int CountGuns = 0;
         protected float VectorSpeed;                                  //Максимальная Cкорость корабля
         protected float bullet_cooldown_max;                     //Скоростельность (была .2f)
         private float bullet_cooldown;
@@ -29,7 +30,7 @@ namespace ComicDefender
         { 
         }
 
-        public Ship(Sprite _sprite , float _X, float _Y, int damage, float speed, float shoot_speed, int health)
+        public Ship(Sprite _sprite , float _X, float _Y, int damage, float speed, float shoot_speed, int health, int countguns)
         {
             Name = "PlayerShip";
             sprite = new Sprite(_sprite);
@@ -41,10 +42,11 @@ namespace ComicDefender
             VectorSpeed = speed;
             dmg = damage;                                               //изменить попозже ????????????????????????????????????????
             Health = health;
+            CountGuns = countguns;
             X = _X;
             Y = _Y;
         }
-        public void Settings(Sprite _sprite, float _X, float _Y, int damage, float speed, float shoot_speed, int health)
+        public void Settings(Sprite _sprite, float _X, float _Y, int damage, float speed, float shoot_speed, int health, int countguns)
         {
             Name = "PlayerShip";
             sprite = new Sprite(_sprite);
@@ -56,6 +58,7 @@ namespace ComicDefender
             VectorSpeed = speed;
             dmg = damage;                                                   //изменить попозже ????????????????????????????????????????
             Health = health;
+            CountGuns = countguns;
             X = _X;
             Y = _Y;
         }
@@ -67,6 +70,11 @@ namespace ComicDefender
             Vector2i pixelPos = Mouse.GetPosition(Program.Window);//забираем коорд курсора
             Vector2f pos = Program.Window.MapPixelToCoords(pixelPos);//переводим их в игровые (уходим от коорд окна
             Vector2f Rotate = pos - location;
+            Vector2f RotateToGun;
+            RotateToGun.Y = 1;
+            RotateToGun.X = (((-1) * (Rotate.Y * RotateToGun.Y)) / (Rotate.X));
+            RotateToGun = Normalization(RotateToGun, pos.X, pos.Y);
+
             Rotate = Normalization(Rotate, pos.X, pos.Y);
             direction = Rotate;
             float v = 0.3f;
@@ -124,8 +132,21 @@ namespace ComicDefender
             if (shooting_ready == 1 && bullet_cooldown >= .2f)
             {
                 bullet_clock.Restart();
-                Bullet b = new Bullet(GetX() + sprite.Texture.Size.X * Rotate.X / 2, GetY() + sprite.Texture.Size.X * Rotate.Y / 2, GetRotation(), 0.2f, 20f);
-                Program.entities.Add(b);
+
+                if (CountGuns == 1)
+                {
+                    Bullet b1 = new Bullet(GetX() + sprite.Texture.Size.X * Rotate.X, GetY() + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, 20f);
+                    Program.entities.Add(b1);
+                }
+
+                if (CountGuns == 2)
+                {
+                    Bullet b1 = new Bullet(GetX() + 100 * RotateToGun.X + sprite.Texture.Size.X * Rotate.X, GetY() + 100 * RotateToGun.Y + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, 20f);
+                    Program.entities.Add(b1);
+
+                    Bullet b2 = new Bullet(GetX() + (-100) * RotateToGun.X + sprite.Texture.Size.X * Rotate.X, GetY() + (-100) * RotateToGun.Y + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, 20f);
+                    Program.entities.Add(b2);
+                }
                 shooting_ready = 0;
             }
 

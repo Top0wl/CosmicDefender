@@ -18,12 +18,13 @@ namespace ComicDefender
         public float Speed;
         public float Shoot_speed;
         public int Health;
+        public int CountGuns;
 
         public MenuRectShips()
         {
             
         }
-        public MenuRectShips(Sprite _SpriteRect, Sprite _SpriteShip, String _Name, Vector2f _Position, int damage, float speed, float shoot_speed, int health)
+        public MenuRectShips(Sprite _SpriteRect, Sprite _SpriteShip, String _Name, Vector2f _Position, int damage, float speed, float shoot_speed, int health, int countguns)
         {
             SpriteRect = _SpriteRect;
             SpriteShip = _SpriteShip;
@@ -34,6 +35,8 @@ namespace ComicDefender
             Speed = speed;
             Shoot_speed = shoot_speed;
             Health = health;
+            CountGuns = countguns;
+
         }
 
         public MenuRectShips(Sprite _SpriteRect, String _Name, Vector2f _Position)

@@ -19,6 +19,7 @@ namespace ComicDefender
         #region Animation
 
         private Animation aAnimAsteroid1;
+        private Animation aBoss1;
 
         #endregion
 
@@ -79,6 +80,7 @@ namespace ComicDefender
         private Sprite sListUp;
         private Sprite sListDown;
         private Sprite sMiniBoss;
+        private Sprite sBoss1;
 
         #endregion
 
@@ -136,6 +138,7 @@ namespace ComicDefender
         private Texture tListUp;
         private Texture tListDown;
         private Texture tMiniBoss;
+        private Texture tBoss1;
 
         #endregion
 
@@ -196,6 +199,7 @@ namespace ComicDefender
         private Texture tListUp2;
         public Sprite sListUp2;
         private Image iListDown;
+        private Image iBoss1;
 
         #endregion
 
@@ -216,11 +220,21 @@ namespace ComicDefender
             sAnimAsteroid1 = new Sprite(tAnimAsteroid1);
             sAnimAsteroid1.Origin = new Vector2f(iAnimAsteroid1.Size.X / 2, iAnimAsteroid1.Size.Y / 2);
 
-        #endregion
+            #endregion
 
-        #region Animation Explosive Asteroid
+            #region Animation Boss1
 
-        iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");
+            iBoss1 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss1.png");
+            tBoss1 = new Texture(iBoss1);
+            tBoss1.Smooth = true;
+            sBoss1 = new Sprite(tBoss1);
+            sBoss1.Origin = new Vector2f(iBoss1.Size.X / 2, iBoss1.Size.Y / 2);
+
+            #endregion
+
+            #region Animation Explosive Asteroid
+
+            iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");
             tExplosion = new Texture(iExplosion);
             tExplosion.Smooth = true;
             sExplosion = new Sprite(tExplosion);
@@ -251,7 +265,6 @@ namespace ComicDefender
             sMiniBoss = new Sprite(tMiniBoss);
             sMiniBoss.Origin = new Vector2f(iMiniBoss.Size.X / 2, iMiniBoss.Size.Y / 2);
             #endregion
-
 
             #region Level
             iLevel1 = new Image(CONTENT_DIRICTORY + "Level1.jpg");
@@ -719,6 +732,11 @@ namespace ComicDefender
         public Sprite GetsAnimAsteroid1()
         {
             return sAnimAsteroid1;
+        }
+
+        public Sprite GetBoss1()
+        {
+            return sBoss1;
         }
 
         public Sprite GetMiniBoss()

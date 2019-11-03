@@ -13,6 +13,7 @@ namespace ComicDefender
     {
         private static int CountAsteroids = 0;
         private static int CountEnemies = 0;
+        private static bool isBoss = false;
         Clock bullet_clock = new Clock();
         Clock clock = new Clock();
         //private float bullet_cooldown;
@@ -60,7 +61,7 @@ namespace ComicDefender
                 for (int j = 0; j < entities.Count; j++)
                 {
                     if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "ShootShip" ||
-                        entities[i].GetName() == "Bomber" || entities[i].GetName() == "PlayerShip" || entities[i].GetName() == "MiniBoss"))                                        //Найден косяк, урон для пули общий - урон нашего корабля.
+                        entities[i].GetName() == "Bomber" || entities[i].GetName() == "PlayerShip" || entities[i].GetName() == "MiniBoss" || entities[i].GetName() == "Boss1"))                                        //Найден косяк, урон для пули общий - урон нашего корабля.
                                                                                                                                            //Если потом добавлять других врагов с уроном побольше, чем у обычных, то произойдёт бан
 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
@@ -88,7 +89,7 @@ namespace ComicDefender
 
 
                         }
-                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber" || entities[j].GetName() == "MiniBoss")) 
+                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber" || entities[j].GetName() == "MiniBoss" || entities[j].GetName() == "Boss1")) 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
@@ -96,19 +97,30 @@ namespace ComicDefender
                             e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
                             entities.Add(e);
 
-                            if(entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid")
-                            entities[i].damage(50); entities[j].SetHealth(0);                                    //Урон при столкновении нашему кораблю 50!!!!!! Можно изменить
+                            if (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid")
+                            {
+                                entities[i].damage(50);
+                                entities[j].SetHealth(0);
+                            }                                   //Урон при столкновении нашему кораблю 50!!!!!! Можно изменить
 
                             if (entities[j].GetName() == "Bomber")
-                                entities[i].damage(100); entities[j].SetHealth(0);
+                            {
+                                entities[i].damage(100);
+                                entities[j].SetHealth(0);
+                            }
 
                             if (entities[j].GetName() == "MiniBoss")
                             {
                                 entities[i].damage(100);
                                 entities[j].damage(70);
                             }
+                            if (entities[j].GetName() == "Boss1")
+                            {
+                                entities[i].damage(300);
+                            }
 
                         }
+                    
                 }
             }
         }
@@ -151,40 +163,41 @@ namespace ComicDefender
 
         public void Enemy(List<Entity> entities, int count)
         {
-            
+            count = 0;
             int b = rnd.Next(1, 100);
             if (b == 1)
             {
+                int Choose1, Choose2, a1, a2;
+                Choose1 = rnd.Next(0, 2);
+                if (Choose1 == 1)
+                {
+                    a1 = rnd.Next(1, Program.WindowWidth);
+                    Choose2 = rnd.Next(0, 2);
+                    if (Choose2 == 1)                       //Если 1 то сверху
+                    {
+                        a2 = 0;
+                    }
+                    else                                    //Если 2 то снизу
+                    {
+                        a2 = Program.WindowHeight;
+                    }
+                }
+                else
+                {
+                    a2 = rnd.Next(1, Program.WindowHeight);
+                    Choose2 = rnd.Next(0, 2);
+                    if (Choose2 == 1)                       //Если 1 то слева
+                    {
+                        a1 = 0;
+                    }
+                    else                                    //Если 2 то справа
+                    {
+                        a1 = Program.WindowWidth;
+                    }
+                }
                 if (CountEnemies != count)
                 {
-                    int Choose1, Choose2, a1, a2;
-                    Choose1 = rnd.Next(0, 2);
-                    if (Choose1 == 1)
-                    {
-                        a1 = rnd.Next(1, Program.WindowWidth);
-                        Choose2 = rnd.Next(0, 2);
-                        if (Choose2 == 1)                       //Если 1 то сверху
-                        {
-                            a2 = 0;
-                        }
-                        else                                    //Если 2 то снизу
-                        {
-                            a2 = Program.WindowHeight;
-                        }
-                    }
-                    else
-                    {
-                        a2 = rnd.Next(1, Program.WindowHeight);
-                        Choose2 = rnd.Next(0, 2);
-                        if (Choose2 == 1)                       //Если 1 то слева
-                        {
-                            a1 = 0;
-                        }
-                        else                                    //Если 2 то справа
-                        {
-                            a1 = Program.WindowWidth;
-                        }
-                    }
+
 
                     b = rnd.Next(1, 10);
                     string name;
@@ -215,6 +228,19 @@ namespace ComicDefender
 
                     entities.Add(a);
                     CountEnemies++;
+
+                }
+                else
+                {
+                    if (CountEnemies == 0 && isBoss == false)
+                    {
+                        
+                        EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4);
+                        Boss.SetHealth(1000);
+                        entities.Add(Boss);
+                        isBoss = true;
+                    }
+
                 }
             }
         }

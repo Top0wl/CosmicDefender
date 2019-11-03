@@ -67,8 +67,7 @@
     <Compile Include="Entities\EnemyShip.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="GameLogica\Game.cs" />
-    <Compile Include="Levels\Level1\Level1.cs" />
-    <Compile Include="Levels\Levels.cs" />
+    <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\Menu\Menu.cs" />
     <Compile Include="Levels\Menu\MenuRectShips.cs" />
     <Compile Include="Levels\Menu\MenuRectButtons.cs" />

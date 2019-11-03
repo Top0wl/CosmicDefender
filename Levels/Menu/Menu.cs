@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ComicDefender
 {
-    class Menu : Levels
+    class Menu : Level
     {
         // View view = new View(new FloatRect(0, 0, 1280, 720));
         Color CopyColor;

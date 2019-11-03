@@ -146,9 +146,6 @@ namespace ComicDefender
                 }
             }
         }
-
-
-
         public void Enemy(List<Entity> entities, int count)
         {
             

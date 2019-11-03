@@ -21,7 +21,8 @@ namespace ComicDefender
         public static Content2 content;
         public static Ship Ship;
         public static Menu menu;
-        public static Level1 level1;
+        public static List<Level> levels = new List<Level>();
+        public static Level level1;
         static Game Logic = new Game();
         #endregion
 
@@ -55,7 +56,7 @@ namespace ComicDefender
 
             #region Levels
 
-            level1 = new Level1();
+            level1 = new Level();
 
             #endregion
 
@@ -68,8 +69,10 @@ namespace ComicDefender
 
             #endregion
 
+
             Ship = new Ship(content.GetShip1(), 500, 500, 25, 1.5f, .2f, 100, 1);                      //Загружаем корабль(пока что только один корабль с дамагом 25)
-            entities.Add(Ship);                                                 //Добавляем его в лист объектов
+            entities.Add(Ship);                                                                        //Добавляем его в лист объектов
+
 
             Clock clock = new Clock();
 
@@ -111,8 +114,8 @@ namespace ComicDefender
 
                 #region Logic
                 Logic.Update(Ship, entities);
-                Logic.CreateAsteroid(entities, 0);
-                Logic.Enemy(entities, 10);
+                Logic.CreateAsteroid(entities, 10);
+                Logic.Enemy(entities, 0);
                 #endregion
                 }
 

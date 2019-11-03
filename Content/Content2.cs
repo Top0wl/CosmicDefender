@@ -218,7 +218,7 @@ namespace ComicDefender
 
         #endregion
 
-        #region Animation Explosive Asteroid
+            #region Animation Explosive Asteroid
 
         iExplosion = new Image(CONTENT_DIRICTORY + "Explosive\\type_B.png");
             tExplosion = new Texture(iExplosion);

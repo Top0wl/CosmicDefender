@@ -84,7 +84,14 @@ namespace ComicDefender
                             {
                                 Animation AnimationExplosive2 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
                                 Entity q = new Entity();
-                                q.Settings(AnimationExplosive2, "Explosion", entities[j].GetX(), entities[j].GetY(), 0, 0.4F, 0.15f);
+
+                                if (entities[i].GetName() == "Boss1")
+                                {
+                                    q.Settings(AnimationExplosive2, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 1f, 0.15f);
+                                }
+                                else {
+                                    q.Settings(AnimationExplosive2, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
+                                }
                                 entities.Add(q);
                             }
 

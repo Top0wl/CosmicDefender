@@ -81,6 +81,7 @@ namespace ComicDefender
         private Sprite sListDown;
         private Sprite sMiniBoss;
         private Sprite sBoss1;
+        private Sprite sShield;
 
         #endregion
 
@@ -139,6 +140,7 @@ namespace ComicDefender
         private Texture tListDown;
         private Texture tMiniBoss;
         private Texture tBoss1;
+        private Texture tShield;
 
         #endregion
 
@@ -200,6 +202,7 @@ namespace ComicDefender
         public Sprite sListUp2;
         private Image iListDown;
         private Image iBoss1;
+        private Image iShield;
 
         #endregion
 
@@ -286,6 +289,15 @@ namespace ComicDefender
             tAsteroid2 = new Texture(iAsteroid2);
             tAsteroid2.Smooth = true;
             sAsteroid2 = new Sprite(tAsteroid2);
+            #endregion
+
+            #region Shield
+
+            iShield = new Image(CONTENT_DIRICTORY + "Ugrade\\Shield.png");
+            tShield = new Texture(iShield);
+            tShield.Smooth = true;
+            sShield = new Sprite(tShield);
+
             #endregion
 
             #region Bullet
@@ -752,6 +764,11 @@ namespace ComicDefender
         public Sprite GetsShootShip()
         {
             return sShootShip;
+        }
+
+        public Sprite GetShield()
+        {
+            return sShield;
         }
 
       //Спрайт бомбера

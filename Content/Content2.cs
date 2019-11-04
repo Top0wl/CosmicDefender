@@ -224,7 +224,7 @@ namespace ComicDefender
 
             #region Animation Boss1
 
-            iBoss1 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss1.png");
+            iBoss1 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss1_Shield.png");
             tBoss1 = new Texture(iBoss1);
             tBoss1.Smooth = true;
             sBoss1 = new Sprite(tBoss1);

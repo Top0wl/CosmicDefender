@@ -241,6 +241,12 @@ namespace ComicDefender
                 }
             }
         }
+
+        public int GetCountEnemies()
+        {
+            return CountEnemies;
+        }
+
     }
 
 }

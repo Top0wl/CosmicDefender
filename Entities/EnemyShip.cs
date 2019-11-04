@@ -48,7 +48,6 @@ namespace ComicDefender
             X = _X;
             Y = _Y;
             CountGuns = countguns;
-
             Settings(animEnemy, "Boss1", 0, 100, 100, 1f, 0.3f);
         }
 

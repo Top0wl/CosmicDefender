@@ -231,16 +231,23 @@ namespace ComicDefender
                 {
                     if (CountEnemies == 0 && isBoss == false)
                     {
-                        
-                        EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4);
-                        Boss.SetHealth(1000);
-                        entities.Add(Boss);
+
+                        //EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4);
+                        Boss boss = new Boss(Program.content.GetBoss1(), a1, a2, 30, 1.3f, 2f, 3000, 3, "Boss1");
+                        //boss.SetHealth(1000);
+                        entities.Add(boss);
                         isBoss = true;
                     }
 
                 }
             }
         }
+
+        public int GetCountEnemies()
+        {
+            return CountEnemies;
+        }
+
     }
 
 }

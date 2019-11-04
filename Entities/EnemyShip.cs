@@ -11,6 +11,7 @@ namespace ComicDefender
 {
     class EnemyShip : Entity
     {
+
         protected Vector2f location = new Vector2f(0, 0);
         protected Vector2f velocity = new Vector2f(0, 0);
         protected Vector2f velocity2 = new Vector2f(0, 0);
@@ -28,6 +29,7 @@ namespace ComicDefender
         protected float bullet_cooldown_max_miniBoss = 2f;
         private float bullet_cooldown;
         public Animation animEnemy;
+        public bool IsAnimation;
         //Пустой конструктор для последующей инициализации
         public EnemyShip()
         { 
@@ -35,21 +37,28 @@ namespace ComicDefender
         }
 
 
-        public EnemyShip(Sprite _sprite, float _X, float _Y, float MaxSpeed, string name, int countguns) // Параметр Name
+        public EnemyShip(Sprite _sprite, float _X, float _Y, float MaxSpeed, string name, int countguns, bool _animation, float size) // Параметр Name
         {
-            animEnemy = new Animation(_sprite, 0, 0, 338, 338, 3, 0.02f);   //ПАРАМЕТРЫ ДЛЯ КАЖДОГО БОССА ?????????????????????????????????????????????
+            if (_animation == true)
+            {
+                animEnemy = new Animation(_sprite, 0, 0, 338, 338, 3, 0.02f);   //ПАРАМЕТРЫ ДЛЯ КАЖДОГО БОССА ?????????????????????????????????????????????
+            }
 
+            IsAnimation = _animation;
             sprite = new Sprite(_sprite);
             location = new Vector2f(_X, _Y);
             sprite.Position = location;
-            sprite.Scale = new Vector2f(0.4F, 0.4F);
+            sprite.Scale = new Vector2f(size, size);
             VectorSpeed = MaxSpeed;
             Name = name; //  $$$$
             X = _X;
             Y = _Y;
             CountGuns = countguns;
 
-            Settings(animEnemy, "Boss1", 0, 100, 100, 1f, 0.3f);
+            if (_animation == true)
+            {
+                Settings(animEnemy, "Boss1", 0, 100, 100, 0.5f, 0.3f);
+            }
         }
 
 
@@ -168,8 +177,11 @@ namespace ComicDefender
                 }
             }
 
-            sprite = animEnemy.sprite;
-            animEnemy.update();
+            if (IsAnimation == true)
+            {
+                sprite = animEnemy.sprite;
+                animEnemy.update();
+            }
 
             Program.Window.Draw(sprite);
 

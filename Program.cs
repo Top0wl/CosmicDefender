@@ -114,7 +114,7 @@ namespace ComicDefender
 
                 #region Logic
                 Logic.Update(Ship, entities);
-                Logic.CreateAsteroid(entities, 10);
+                Logic.CreateAsteroid(entities, 0);
                 Logic.Enemy(entities, 0);
                 #endregion
                 }

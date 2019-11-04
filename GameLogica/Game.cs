@@ -64,14 +64,15 @@ namespace ComicDefender
                         entities[i].GetName() == "Bomber" || entities[i].GetName() == "PlayerShip" || entities[i].GetName() == "MiniBoss" || entities[i].GetName() == "Boss1"))                                        //Найден косяк, урон для пули общий - урон нашего корабля.
                                                                                                                                            //Если потом добавлять других врагов с уроном побольше, чем у обычных, то произойдёт бан
 
+                        //if(entities.Global)
+
+
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 2f);
                             Entity e = new Entity();
-                            e.Settings(AnimationExplosive1, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.15F, 0.15f);
+                            e.Settings(AnimationExplosive1, "Explosion", entities[j].GetX(), entities[j].GetY(), 0, 0.15F, 0.15f);
                             entities.Add(e);
-
-
 
                             //Новый астероид
                             //
@@ -86,7 +87,6 @@ namespace ComicDefender
                                 q.Settings(AnimationExplosive2, "Explosion", entities[j].GetX(), entities[j].GetY(), 0, 0.4F, 0.15f);
                                 entities.Add(q);
                             }
-
 
                         }
                     if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber" || entities[j].GetName() == "MiniBoss" || entities[j].GetName() == "Boss1")) 
@@ -160,7 +160,7 @@ namespace ComicDefender
         }
         public void Enemy(List<Entity> entities, int count)
         {
-            count = 0;
+           // count = 0;
             int b = rnd.Next(1, 100);
             if (b == 1)
             {
@@ -209,17 +209,17 @@ namespace ComicDefender
 
                     if (name == "ShootShip")
                     {
-                         a = new EnemyShip(Program.content.GetsShootShip(), a1, a2, 0.5f, name, 1);
+                         a = new EnemyShip(Program.content.GetsShootShip(), a1, a2, 0.5f, name, 1, false, 0.4f);
                     }
 
                     if (name == "Bomber")
                     { 
-                        a = new EnemyShip(Program.content.GetsBomber(), a1, a2, 1.8f, name, 0);
+                        a = new EnemyShip(Program.content.GetsBomber(), a1, a2, 1.8f, name, 0, false, 0.4f);
                     }
 
                     if (name == "MiniBoss")
                     {
-                        a = new EnemyShip(Program.content.GetMiniBoss(), a1, a2, 0.3f, name, 4);
+                        a = new EnemyShip(Program.content.GetMiniBoss(), a1, a2, 0.3f, name, 4, false, 1f);
                         a.SetHealth(400);
                     }
 
@@ -232,7 +232,7 @@ namespace ComicDefender
                     if (CountEnemies == 0 && isBoss == false)
                     {
                         
-                        EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4);
+                        EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4, true, 0.4f);
                         Boss.SetHealth(1000);
                         entities.Add(Boss);
                         isBoss = true;

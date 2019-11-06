@@ -62,7 +62,7 @@ namespace ComicDefender
                 {
                     if (entities[j].GetName() == "Bullet" && (entities[i].GetName() == "Asteroid" || entities[i].GetName() == "ShootShip" ||
                         entities[i].GetName() == "Bomber" || entities[i].GetName() == "PlayerShip" || entities[i].GetName() == "MiniBoss" || entities[i].GetName() == "Boss1"))                                        //Найден косяк, урон для пули общий - урон нашего корабля.
-                                                                                                                                           //Если потом добавлять других врагов с уроном побольше, чем у обычных, то произойдёт бан
+                                                                                                                                                                                                                       //Если потом добавлять других врагов с уроном побольше, чем у обычных, то произойдёт бан
 
                         //if(entities.Global)
 
@@ -80,6 +80,18 @@ namespace ComicDefender
 
                             entities[i].damage(Program.Ship.GetDamage()); entities[j].SetHealth(0);
 
+                            //Выпадение бонуса
+                            if (entities[i].GetName() == "Asteroid" && entities[i].GetHealth() == 0)
+                            {
+                                int b = rnd.Next(1, 100);
+                                if (b >= 1 && b <= 100)
+                                {
+                                    Bonus a = new Bonus(Program.content.GetsB_Health(), entities[j].GetX(), entities[j].GetY(), "B_Health");
+                                    entities.Add(a);
+                                }
+                                
+                            }
+
                             if (entities[i].GetHealth() <= 0)
                             {
                                 Animation AnimationExplosive2 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
@@ -89,14 +101,15 @@ namespace ComicDefender
                                 {
                                     q.Settings(AnimationExplosive2, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 1f, 0.15f);
                                 }
-                                else {
+                                else
+                                {
                                     q.Settings(AnimationExplosive2, "Explosion", entities[i].GetX(), entities[i].GetY(), 0, 0.4F, 0.15f);
                                 }
                                 entities.Add(q);
                             }
 
                         }
-                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber" || entities[j].GetName() == "MiniBoss" || entities[j].GetName() == "Boss1")) 
+                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "ShootShip" || entities[j].GetName() == "Asteroid" || entities[j].GetName() == "Bomber" || entities[j].GetName() == "MiniBoss" || entities[j].GetName() == "Boss1"))
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 0.8f);
@@ -108,6 +121,17 @@ namespace ComicDefender
                             {
                                 entities[i].damage(50);
                                 entities[j].SetHealth(0);
+
+                                //Выпадение бонуса
+                                if (entities[j].GetName() == "Asteroid")
+                                {
+                                    int b = rnd.Next(1, 100);
+                                    if (b >= 1 && b <= 100)
+                                    {
+                                        Bonus a = new Bonus(Program.content.GetsB_Health(), entities[j].GetX(), entities[j].GetY(), "B_Health");
+                                        entities.Add(a);
+                                    }
+                                }
                             }                                   //Урон при столкновении нашему кораблю 50!!!!!! Можно изменить
 
                             if (entities[j].GetName() == "Bomber")
@@ -127,10 +151,21 @@ namespace ComicDefender
                             }
 
                         }
-                    
+                    //Поднятие бонуса
+                    if (entities[i].GetName() == "PlayerShip" && (entities[j].GetName() == "B_Health"))
+                        if (IsCollide(entities[i].sprite, entities[j].sprite))
+                        {
+                            if (entities[j].GetName() == "B_Health")
+                            {
+                                entities[i].SetHealth(100);                             //max HP ????????
+                            }
+
+                            entities[j].SetHealth(0);
+                        }
                 }
             }
         }
+
 
         private static bool IsCollide(Sprite first, Sprite second)
         {

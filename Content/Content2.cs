@@ -35,6 +35,7 @@ namespace ComicDefender
         private Sprite sShootShip;
         private Sprite sBomber;
         private Sprite sBullet;
+        private Sprite sB_Health;
         private Sprite sShip1;
         private Sprite sShip2;
         private Sprite sShip3;
@@ -96,6 +97,7 @@ namespace ComicDefender
         private Texture tShootShip;
         private Texture tBomber;
         private Texture tBullet;
+        private Texture tB_Health;
         private Texture tShip1;
         private Texture tShip2;
         private Texture tShip3;
@@ -149,12 +151,13 @@ namespace ComicDefender
         private Image iAnimAsteroid1;
 
         private Image iShootShip;
-        private Image iBomber;
         private Image iExplosion;
         private Image iAsteroid2;
         private Image iAsteroid1;
         private Image iLevel1;
         private Image iBullet;
+        private Image iBomber;
+        private Image iB_Health;
         private Image iShip1;
         private Image iShip2;
         private Image iShip3;
@@ -261,6 +264,14 @@ namespace ComicDefender
             sBomber.Origin = new Vector2f(iBomber.Size.X / 2, iBomber.Size.Y / 2);
             #endregion
 
+            #region Bonus_Health
+            iB_Health = new Image(CONTENT_DIRICTORY + "Bonuses\\HP_Bonus.png");
+            tB_Health = new Texture(iB_Health);
+            tB_Health.Smooth = true;
+            sB_Health = new Sprite(tB_Health);
+            sB_Health.Origin = new Vector2f(iB_Health.Size.X / 2, iB_Health.Size.Y / 2);
+            #endregion
+
             #region Mini Boss Ship
             iMiniBoss = new Image(CONTENT_DIRICTORY + "Enemy\\miniBoss.png");
             tMiniBoss = new Texture(iMiniBoss);
@@ -293,7 +304,7 @@ namespace ComicDefender
 
             #region Shield
 
-            iShield = new Image(CONTENT_DIRICTORY + "Ugrade\\Shield.png");
+            iShield = new Image(CONTENT_DIRICTORY + "Upgrade\\Shield.png");
             tShield = new Texture(iShield);
             tShield.Smooth = true;
             sShield = new Sprite(tShield);
@@ -771,10 +782,14 @@ namespace ComicDefender
             return sShield;
         }
 
-      //Спрайт бомбера
         public Sprite GetsBomber()
         {
             return sBomber;
+        }
+
+        public Sprite GetsB_Health()
+        {
+            return sB_Health;
         }
 
         public Sprite GetLevel1()

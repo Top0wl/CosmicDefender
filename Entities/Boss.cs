@@ -76,7 +76,7 @@ namespace ComicDefender
 
             float v = 0.3f;
             rotat = (float)((Math.Atan2(Rotate.Y, Rotate.X) * 180 / Math.PI) + 90);
-            sprite.Rotation = rotat;
+            sprite.Rotation = rotat + 70;
             sprite.Position = location;
             location += velocity * time; // Где находится корабль
             Random rnd = new Random();

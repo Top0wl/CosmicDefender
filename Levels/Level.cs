@@ -9,17 +9,16 @@ namespace ComicDefender
 {
     class Level
     {
-        public Sprite BackGround;
+        public Sprite Background;
         public Sprite Boss;
-
-
         
-
-
-
-
-
         public bool IsOpen = false;
+
+        public Level(Sprite _Background, Sprite _Boss)
+        {
+            Background = _Background;
+            Boss = _Boss;
+        }
 
     }
 }

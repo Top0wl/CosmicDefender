@@ -14,11 +14,12 @@ namespace ComicDefender
         // View view = new View(new FloatRect(0, 0, 1280, 720));
         Color CopyColor;
         public List<MenuRectShips> RectShips = new List<MenuRectShips>();
-
+        public List<MenuRectShips> RectLevels = new List<MenuRectShips>();
         public List<MenuRectButtons> RectButtons = new List<MenuRectButtons>();
 
         public MenuRectMainShip MainShip;
         private int listShips;
+        private int listLevels;
 
         public Menu()
         {
@@ -29,12 +30,15 @@ namespace ComicDefender
         {
             MainShip = new MenuRectMainShip();
             listShips = 1;
+            listLevels = 1;
             Program.content.LoadListShips1();
+            Program.content.BackGround = new Sprite(Program.content.GetBackgroundLevel1());
         }
 
         public void Update()
         {
             CopyColor = Program.content.GetShip9_lock().Color;
+
             Program.Window.Draw(Program.content.GetMenuLevels());
             Program.Window.Draw(Program.content.GetMenuShips());
             Program.Window.Draw(Program.content.GetMenuTable());
@@ -47,15 +51,19 @@ namespace ComicDefender
             Program.Window.Draw(Program.content.GetListUpButton());
             Program.Window.Draw(Program.content.GetListDownButton());
 
-            //Program.content.LoadListShips1();
-
             if (listShips == 1)
             {
                 Program.content.LoadListShips1();
             }
+
             if (listShips == 2)
             {
                 Program.content.LoadListShips2();
+            }
+
+            if (listLevels == 1)
+            {
+                Program.content.LoadListLevels1();
             }
 
             if (listShips == 1)
@@ -76,6 +84,17 @@ namespace ComicDefender
                 Program.Window.Draw(Program.content.GetShip9_lock());
             }
 
+            if (listLevels == 1)
+            {
+                Program.Window.Draw(Program.content.GetLevel1());
+                Program.Window.Draw(Program.content.GetLevel2());
+                Program.Window.Draw(Program.content.GetLevel3());
+                Program.Window.Draw(Program.content.GetLevel4());
+                Program.Window.Draw(Program.content.GetLevel5());
+                Program.Window.Draw(Program.content.GetLevel6());
+            }
+
+
             Program.Window.Draw(Program.menu.MainShip.SpriteShip);
 
 
@@ -85,6 +104,8 @@ namespace ComicDefender
                 Program.Window.Draw(Program.content.sMenuRectDmg[i]);
                 Program.Window.Draw(Program.content.sMenuRectSpd[i]);
             }
+
+            #region Colide with Buttons on Menu
 
             foreach (MenuRectShips RectShip in Program.menu.RectShips.ToList())
             {
@@ -108,7 +129,6 @@ namespace ComicDefender
                 }
                 else RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
             }
-
 
             foreach (MenuRectButtons RectButtons in Program.menu.RectButtons.ToList())
             {
@@ -149,7 +169,28 @@ namespace ComicDefender
                 }
                 else RectButtons.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
             }
+
+            foreach (MenuRectLevels RectLevels in Program.menu.RectLevels.ToList())
+            {
+                if (Contains(RectLevels.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
+                {
+                    Program.Window.Draw(RectLevels.SpriteRect);
+
+                    RectLevels.SpriteRect.Color = Color.Red;
+
+                    if (Mouse.IsButtonPressed(Mouse.Button.Left))
+                    {
+                        if (RectLevels.Name == "Level1")
+                        {
+                            Program.content.BackGround = new Sprite(RectLevels.Background);
+                        }
+                    }
+                }
+                else RectLevels.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+            }
+            #endregion
         }
+
 
         public bool Contains(Sprite sprite, int x, int y)
         {

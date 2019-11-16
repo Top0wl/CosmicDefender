@@ -41,7 +41,6 @@ namespace ComicDefender
         public static void Load()
         {
 
-
             Texture0_Level1 = new Texture(CONTENT_DIRICTORY + "Level1.jpg");
             Texture0_Level1.Smooth = true;
             sBackground = new Sprite(Texture0_Level1);

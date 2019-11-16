@@ -105,7 +105,7 @@ namespace ComicDefender
 
                 if (level1.IsOpen == true)
                 { 
-                Window.Draw(Content.GetTextureLevel1(0.3F, 0.3F));
+                Window.Draw(content.BackGround);
 
                 #region Particles
                 particles.Update();

@@ -11,10 +11,12 @@ namespace ComicDefender
     class Content2
     {
         private const string CONTENT_DIRICTORY = "..\\Content\\Textures\\";
-
         private Font font;
         private Text TextPlay;
         private RectangleShape RectangleHp1;
+
+        public Sprite BackGround;
+
 
         #region Animation
 
@@ -26,9 +28,7 @@ namespace ComicDefender
         #region Sprites
 
         private Sprite sAnimAsteroid1;
-
         private Sprite sExplosion;
-        private Sprite sBackground;
         private Sprite cursorSprite;
         private Sprite sAsteroid1;
         private Sprite sAsteroid2;
@@ -83,6 +83,21 @@ namespace ComicDefender
         private Sprite sMiniBoss;
         private Sprite sBoss1;
         private Sprite sShield;
+
+        private Sprite sLevel1;
+        private Sprite sLevel2;
+        private Sprite sLevel3;
+        private Sprite sLevel4;
+        private Sprite sLevel5;
+        private Sprite sLevel6;
+
+        private Sprite sBackgroundLevel1;
+        private Sprite sBackgroundLevel2;
+        private Sprite sBackgroundLevel3;
+        private Sprite sBackgroundLevel4;
+        private Sprite sBackgroundLevel5;
+        private Sprite sBackgroundLevel6;
+
 
         #endregion
 
@@ -144,6 +159,19 @@ namespace ComicDefender
         private Texture tBoss1;
         private Texture tShield;
 
+        private Texture tLevel2;
+        private Texture tLevel3;
+        private Texture tLevel4;
+        private Texture tLevel5;
+        private Texture tLevel6;
+
+        private Texture tBackgroundLevel1;
+        private Texture tBackgroundLevel2;
+        private Texture tBackgroundLevel3;
+        private Texture tBackgroundLevel4;
+        private Texture tBackgroundLevel5;
+        private Texture tBackgroundLevel6;
+
         #endregion
 
         #region Images
@@ -154,7 +182,6 @@ namespace ComicDefender
         private Image iExplosion;
         private Image iAsteroid2;
         private Image iAsteroid1;
-        private Image iLevel1;
         private Image iBullet;
         private Image iBomber;
         private Image iB_Health;
@@ -207,6 +234,19 @@ namespace ComicDefender
         private Image iBoss1;
         private Image iShield;
 
+        private Image iLevel1;
+        private Image iLevel2;
+        private Image iLevel3;
+        private Image iLevel4;
+        private Image iLevel5;
+        private Image iLevel6;
+
+        private Image iBackgroundLevel1;
+        private Image iBackgroundLevel2;
+        private Image iBackgroundLevel3;
+        private Image iBackgroundLevel4;
+        private Image iBackgroundLevel5;
+        private Image iBackgroundLevel6;
         #endregion
 
 
@@ -278,14 +318,6 @@ namespace ComicDefender
             tMiniBoss.Smooth = true;
             sMiniBoss = new Sprite(tMiniBoss);
             sMiniBoss.Origin = new Vector2f(iMiniBoss.Size.X / 2, iMiniBoss.Size.Y / 2);
-            #endregion
-
-            #region Level
-            iLevel1 = new Image(CONTENT_DIRICTORY + "Level1.jpg");
-            tLevel1 = new Texture(iLevel1);
-            tLevel1.Smooth = true;
-            sBackground = new Sprite(tLevel1);
-            cursorSprite = new Sprite(tCursor);
             #endregion
 
             #region Asteroid1
@@ -546,6 +578,8 @@ namespace ComicDefender
 
             #endregion
 
+            #region RectShipsForMenu
+
             #region Ship1_lock
 
             iShip1_lock = new Image(CONTENT_DIRICTORY + "Interface\\ship1_lock.png");
@@ -710,6 +744,95 @@ namespace ComicDefender
 
             #endregion
 
+            #region Ship9_unlock
+
+            iShip9_unlock = new Image(CONTENT_DIRICTORY + "Interface\\ship9_unlock.png");
+            tShip9_unlock = new Texture(iShip9_unlock);
+            tShip9_unlock.Smooth = true;
+            sShip9_unlock = new Sprite(tShip9_unlock);
+
+            #endregion
+
+            #endregion
+
+            #region RectLevelsForMenu
+
+            #region Level1
+
+            iLevel1 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            tLevel1 = new Texture(iLevel1);
+            tLevel1.Smooth = true;
+            sLevel1 = new Sprite(tLevel1);
+
+            #endregion
+
+            #region Level2
+
+            iLevel2 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            tLevel2 = new Texture(iLevel2);
+            tLevel2.Smooth = true;
+            sLevel2 = new Sprite(tLevel2);
+
+            #endregion
+
+            #region Level3
+
+            iLevel3 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            tLevel3 = new Texture(iLevel3);
+            tLevel3.Smooth = true;
+            sLevel3 = new Sprite(tLevel3);
+
+            #endregion
+
+            #region Level4
+
+            iLevel4 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            tLevel4 = new Texture(iLevel4);
+            tLevel4.Smooth = true;
+            sLevel4 = new Sprite(tLevel4);
+
+            #endregion
+
+            #region Level5
+
+            iLevel5 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            tLevel5 = new Texture(iLevel5);
+            tLevel5.Smooth = true;
+            sLevel5 = new Sprite(tLevel5);
+
+            #endregion
+
+            #region Level6
+
+            iLevel6 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            tLevel6 = new Texture(iLevel6);
+            tLevel6.Smooth = true;
+            sLevel6 = new Sprite(tLevel6);
+
+            #endregion
+
+            #endregion
+
+            #region Levels
+
+            #region Level1
+            iBackgroundLevel1 = new Image(CONTENT_DIRICTORY + "Levels\\Level1.jpg");
+            tBackgroundLevel1 = new Texture(iBackgroundLevel1);
+            tBackgroundLevel1.Smooth = true;
+            sBackgroundLevel1 = new Sprite(tBackgroundLevel1);
+            sBackgroundLevel1.Scale = new Vector2f(0.4f, 0.4f);
+            #endregion
+
+            #region Level2
+            iBackgroundLevel2 = new Image(CONTENT_DIRICTORY + "Levels\\Level2.jpg");
+            tBackgroundLevel2 = new Texture(iBackgroundLevel2);
+            tBackgroundLevel2.Smooth = true;
+            sBackgroundLevel2 = new Sprite(tBackgroundLevel2);
+            sBackgroundLevel2.Scale = new Vector2f(0.4f, 0.4f);
+            #endregion
+
+
+            #endregion
 
         }
         #region Getters
@@ -751,6 +874,30 @@ namespace ComicDefender
             Program.menu.RectShips.Add(Ship9Rect);
 
         }
+
+        public void LoadListLevels1()
+        {
+            Program.menu.RectLevels.Clear();
+
+            MenuRectLevels Level1Rect = new MenuRectLevels(sLevel1, "Level1", new Vector2f(20, 75), sBackgroundLevel1);
+            Program.menu.RectLevels.Add(Level1Rect);
+
+            MenuRectLevels Level2Rect = new MenuRectLevels(sLevel2, "Level1", new Vector2f(20, 175), sBackgroundLevel2);            //Поменять sLvl
+            Program.menu.RectLevels.Add(Level2Rect);
+
+            MenuRectLevels Level3Rect = new MenuRectLevels(sLevel3, "Level1", new Vector2f(20, 275));
+            Program.menu.RectLevels.Add(Level3Rect);
+
+            MenuRectLevels Level4Rect = new MenuRectLevels(sLevel4, "Level1", new Vector2f(20, 375));
+            Program.menu.RectLevels.Add(Level4Rect);
+
+            MenuRectLevels Level5Rect = new MenuRectLevels(sLevel5, "Level1", new Vector2f(20, 475));
+            Program.menu.RectLevels.Add(Level5Rect);
+
+            MenuRectLevels Level6Rect = new MenuRectLevels(sLevel6, "Level1", new Vector2f(20, 575));
+            Program.menu.RectLevels.Add(Level6Rect);
+        }
+
 
         public Sprite GetsAnimAsteroid1()
         {
@@ -794,7 +941,7 @@ namespace ComicDefender
 
         public Sprite GetLevel1()
         {
-            return sBackground;
+            return sLevel1;
         }
 
         public Sprite GetAsteroid1()
@@ -873,6 +1020,30 @@ namespace ComicDefender
         }
 
         #region Menu
+
+        public Sprite GetLevel2()
+        {
+            return this.sLevel2;
+        }
+        public Sprite GetLevel3()
+        {
+            return this.sLevel3;
+        }
+        public Sprite GetLevel4()
+        {
+            return this.sLevel4;
+        }
+        public Sprite GetLevel5()
+        {
+            return this.sLevel5;
+        }
+
+        public Sprite GetLevel6()
+        {
+            return this.sLevel6;
+        }
+
+
         public Sprite GetCircle1()
         {
             return this.sCircle1;
@@ -1014,6 +1185,14 @@ namespace ComicDefender
 
         #endregion
 
+        #region Levels
+
+        public Sprite GetBackgroundLevel1()
+        {
+            return sBackgroundLevel1;
+        }
+
+        #endregion
 
         #endregion
 

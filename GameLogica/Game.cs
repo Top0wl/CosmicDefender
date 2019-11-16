@@ -29,6 +29,7 @@ namespace ComicDefender
             {
 
                 entity.Update(time);
+
                 if (entity.animation != null)
                 {
                     if (entity.GetName() == "Explosion")
@@ -40,7 +41,9 @@ namespace ComicDefender
                    // entity.animation.update();
                    // entity.animation.Draw();
                 }
+
                 entity.Draw();
+
                 if (entity.GetName() == "PlayerShip" && entity.GetHealth() <= 0)
                 {
                     Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, Program.menu.MainShip.Damage, Program.menu.MainShip.Speed, Program.menu.MainShip.Shoot_speed, Program.menu.MainShip.Health, Program.menu.MainShip.CountGuns);
@@ -166,7 +169,6 @@ namespace ComicDefender
             }
         }
 
-
         private static bool IsCollide(Sprite first, Sprite second)
         {
             Vector2f firstRect = new Vector2f(first.TextureRect.Width, first.TextureRect.Width);
@@ -185,6 +187,9 @@ namespace ComicDefender
             return (Math.Sqrt(xd * xd + yd * yd) <= r1 + r2);
         }
 
+        #region Create Objects
+
+        #region Asteroids
 
         public void CreateAsteroid(List<Entity> entities, int count)
         {
@@ -200,6 +205,11 @@ namespace ComicDefender
                 }
             }
         }
+
+        #endregion
+
+        #region Enemies
+
         public void Enemy(List<Entity> entities, int count)
         {
            // count = 0;
@@ -283,6 +293,10 @@ namespace ComicDefender
                 }
             }
         }
+
+        #endregion
+
+        #endregion
 
         public int GetCountEnemies()
         {

@@ -836,7 +836,7 @@ namespace ComicDefender
             tBackgroundLevel3 = new Texture(iBackgroundLevel3);
             tBackgroundLevel3.Smooth = true;
             sBackgroundLevel3 = new Sprite(tBackgroundLevel3);
-            sBackgroundLevel3.Scale = new Vector2f(0.4f, 0.4f);
+            sBackgroundLevel3.Scale = new Vector2f(0.7f, 0.7f);
             #endregion
 
             #region Level4
@@ -844,7 +844,7 @@ namespace ComicDefender
             tBackgroundLevel4 = new Texture(iBackgroundLevel4);
             tBackgroundLevel4.Smooth = true;
             sBackgroundLevel4 = new Sprite(tBackgroundLevel4);
-            sBackgroundLevel4.Scale = new Vector2f(0.4f, 0.4f);
+            sBackgroundLevel4.Scale = new Vector2f(0.5f, 0.5f);
             #endregion
 
             #region Level5
@@ -852,17 +852,17 @@ namespace ComicDefender
             tBackgroundLevel5 = new Texture(iBackgroundLevel5);
             tBackgroundLevel5.Smooth = true;
             sBackgroundLevel5 = new Sprite(tBackgroundLevel5);
-            sBackgroundLevel5.Scale = new Vector2f(0.4f, 0.4f);
+            sBackgroundLevel5.Scale = new Vector2f(0.5f, 0.5f);
             #endregion
-            /*
+            
             #region Level6
             iBackgroundLevel6 = new Image(CONTENT_DIRICTORY + "Levels\\Level6.jpg");
             tBackgroundLevel6 = new Texture(iBackgroundLevel6);
             tBackgroundLevel6.Smooth = true;
             sBackgroundLevel6 = new Sprite(tBackgroundLevel6);
-            sBackgroundLevel6.Scale = new Vector2f(0.4f, 0.4f);
+            sBackgroundLevel6.Scale = new Vector2f(0.7f, 0.7f);
             #endregion
-            */
+            
 
             #endregion
 
@@ -914,19 +914,19 @@ namespace ComicDefender
             MenuRectLevels Level1Rect = new MenuRectLevels(sLevel1, "Level1", new Vector2f(20, 75), sBackgroundLevel1);
             Program.menu.RectLevels.Add(Level1Rect);
 
-            MenuRectLevels Level2Rect = new MenuRectLevels(sLevel2, "Level1", new Vector2f(20, 175), sBackgroundLevel2);            //Поменять sLvl
+            MenuRectLevels Level2Rect = new MenuRectLevels(sLevel2, "Level2", new Vector2f(20, 175), sBackgroundLevel2);            //Поменять sLvl
             Program.menu.RectLevels.Add(Level2Rect);
 
-            MenuRectLevels Level3Rect = new MenuRectLevels(sLevel3, "Level1", new Vector2f(20, 275));
+            MenuRectLevels Level3Rect = new MenuRectLevels(sLevel3, "Level3", new Vector2f(20, 275), sBackgroundLevel3);
             Program.menu.RectLevels.Add(Level3Rect);
 
-            MenuRectLevels Level4Rect = new MenuRectLevels(sLevel4, "Level1", new Vector2f(20, 375));
+            MenuRectLevels Level4Rect = new MenuRectLevels(sLevel4, "Level4", new Vector2f(20, 375), sBackgroundLevel4);
             Program.menu.RectLevels.Add(Level4Rect);
 
-            MenuRectLevels Level5Rect = new MenuRectLevels(sLevel5, "Level1", new Vector2f(20, 475));
+            MenuRectLevels Level5Rect = new MenuRectLevels(sLevel5, "Level5", new Vector2f(20, 475), sBackgroundLevel5);
             Program.menu.RectLevels.Add(Level5Rect);
 
-            MenuRectLevels Level6Rect = new MenuRectLevels(sLevel6, "Level1", new Vector2f(20, 575));
+            MenuRectLevels Level6Rect = new MenuRectLevels(sLevel6, "Level6", new Vector2f(20, 575), sBackgroundLevel6);
             Program.menu.RectLevels.Add(Level6Rect);
         }
 

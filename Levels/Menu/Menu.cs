@@ -184,6 +184,28 @@ namespace ComicDefender
                         {
                             Program.content.BackGround = new Sprite(RectLevels.Background);
                         }
+                        if (RectLevels.Name == "Level2")
+                        {
+                            Program.content.BackGround = new Sprite(RectLevels.Background);
+                        }
+                        if (RectLevels.Name == "Level3")
+                        {
+                            Program.content.BackGround = new Sprite(RectLevels.Background);
+                        }
+                        if (RectLevels.Name == "Level4")
+                        {
+                            Program.content.BackGround = new Sprite(RectLevels.Background);
+                        }
+                        if (RectLevels.Name == "Level5")
+                        {
+                            Program.content.BackGround = new Sprite(RectLevels.Background);
+                        }
+                        if (RectLevels.Name == "Level6")
+                        {
+                            Program.content.BackGround = new Sprite(RectLevels.Background);
+                        }
+
+
                     }
                 }
                 else RectLevels.SpriteRect.Color = Program.content.GetColorButtonUp().Color;

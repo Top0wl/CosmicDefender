@@ -860,7 +860,7 @@ namespace ComicDefender
             tBackgroundLevel6 = new Texture(iBackgroundLevel6);
             tBackgroundLevel6.Smooth = true;
             sBackgroundLevel6 = new Sprite(tBackgroundLevel6);
-            sBackgroundLevel6.Scale = new Vector2f(0.7f, 0.7f);
+            sBackgroundLevel6.Scale = new Vector2f(0.45f, 0.45f);
             #endregion
             
 

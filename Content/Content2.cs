@@ -759,7 +759,7 @@ namespace ComicDefender
 
             #region Level1
 
-            iLevel1 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            iLevel1 = new Image(CONTENT_DIRICTORY + "Levels\\Level1_unlock.png");
             tLevel1 = new Texture(iLevel1);
             tLevel1.Smooth = true;
             sLevel1 = new Sprite(tLevel1);
@@ -768,7 +768,7 @@ namespace ComicDefender
 
             #region Level2
 
-            iLevel2 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            iLevel2 = new Image(CONTENT_DIRICTORY + "Levels\\Level2_unlock.png");
             tLevel2 = new Texture(iLevel2);
             tLevel2.Smooth = true;
             sLevel2 = new Sprite(tLevel2);
@@ -777,7 +777,7 @@ namespace ComicDefender
 
             #region Level3
 
-            iLevel3 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            iLevel3 = new Image(CONTENT_DIRICTORY + "Levels\\Level3_unlock.png");
             tLevel3 = new Texture(iLevel3);
             tLevel3.Smooth = true;
             sLevel3 = new Sprite(tLevel3);
@@ -786,7 +786,7 @@ namespace ComicDefender
 
             #region Level4
 
-            iLevel4 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            iLevel4 = new Image(CONTENT_DIRICTORY + "Levels\\Level4_unlock.png");
             tLevel4 = new Texture(iLevel4);
             tLevel4.Smooth = true;
             sLevel4 = new Sprite(tLevel4);
@@ -795,7 +795,7 @@ namespace ComicDefender
 
             #region Level5
 
-            iLevel5 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            iLevel5 = new Image(CONTENT_DIRICTORY + "Levels\\Level5_unlock.png");
             tLevel5 = new Texture(iLevel5);
             tLevel5.Smooth = true;
             sLevel5 = new Sprite(tLevel5);
@@ -804,7 +804,7 @@ namespace ComicDefender
 
             #region Level6
 
-            iLevel6 = new Image(CONTENT_DIRICTORY + "Interface\\Level1.png");
+            iLevel6 = new Image(CONTENT_DIRICTORY + "Levels\\Level6_unlock.png");
             tLevel6 = new Texture(iLevel6);
             tLevel6.Smooth = true;
             sLevel6 = new Sprite(tLevel6);
@@ -828,9 +828,41 @@ namespace ComicDefender
             tBackgroundLevel2 = new Texture(iBackgroundLevel2);
             tBackgroundLevel2.Smooth = true;
             sBackgroundLevel2 = new Sprite(tBackgroundLevel2);
-            sBackgroundLevel2.Scale = new Vector2f(0.4f, 0.4f);
+            sBackgroundLevel2.Scale = new Vector2f(0.5f, 0.4f);
             #endregion
 
+            #region Level3
+            iBackgroundLevel3 = new Image(CONTENT_DIRICTORY + "Levels\\Level3.jpg");
+            tBackgroundLevel3 = new Texture(iBackgroundLevel3);
+            tBackgroundLevel3.Smooth = true;
+            sBackgroundLevel3 = new Sprite(tBackgroundLevel3);
+            sBackgroundLevel3.Scale = new Vector2f(0.4f, 0.4f);
+            #endregion
+
+            #region Level4
+            iBackgroundLevel4 = new Image(CONTENT_DIRICTORY + "Levels\\Level4.jpg");
+            tBackgroundLevel4 = new Texture(iBackgroundLevel4);
+            tBackgroundLevel4.Smooth = true;
+            sBackgroundLevel4 = new Sprite(tBackgroundLevel4);
+            sBackgroundLevel4.Scale = new Vector2f(0.4f, 0.4f);
+            #endregion
+
+            #region Level5
+            iBackgroundLevel5 = new Image(CONTENT_DIRICTORY + "Levels\\Level5.jpg");
+            tBackgroundLevel5 = new Texture(iBackgroundLevel5);
+            tBackgroundLevel5.Smooth = true;
+            sBackgroundLevel5 = new Sprite(tBackgroundLevel5);
+            sBackgroundLevel5.Scale = new Vector2f(0.4f, 0.4f);
+            #endregion
+            /*
+            #region Level6
+            iBackgroundLevel6 = new Image(CONTENT_DIRICTORY + "Levels\\Level6.jpg");
+            tBackgroundLevel6 = new Texture(iBackgroundLevel6);
+            tBackgroundLevel6.Smooth = true;
+            sBackgroundLevel6 = new Sprite(tBackgroundLevel6);
+            sBackgroundLevel6.Scale = new Vector2f(0.4f, 0.4f);
+            #endregion
+            */
 
             #endregion
 
@@ -1190,6 +1222,31 @@ namespace ComicDefender
         public Sprite GetBackgroundLevel1()
         {
             return sBackgroundLevel1;
+        }
+
+        public Sprite GetBackgroundLevel2()
+        {
+            return sBackgroundLevel2;
+        }
+
+        public Sprite GetBackgroundLevel3()
+        {
+            return sBackgroundLevel3;
+        }
+
+        public Sprite GetBackgroundLevel4()
+        {
+            return sBackgroundLevel4;
+        }
+
+        public Sprite GetBackgroundLevel5()
+        {
+            return sBackgroundLevel5;
+        }
+
+        public Sprite GetBackgroundLevel6()
+        {
+            return sBackgroundLevel6;
         }
 
         #endregion

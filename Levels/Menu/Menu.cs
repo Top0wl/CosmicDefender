@@ -38,7 +38,7 @@ namespace ComicDefender
         public void Update()
         {
             CopyColor = Program.content.GetShip9_lock().Color;
-
+            Program.Window.Draw(Program.content.BackGround);
             Program.Window.Draw(Program.content.GetMenuLevels());
             Program.Window.Draw(Program.content.GetMenuShips());
             Program.Window.Draw(Program.content.GetMenuTable());
@@ -112,8 +112,8 @@ namespace ComicDefender
                 if (Contains(RectShip.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
                 {
                     Program.Window.Draw(RectShip.SpriteRect);
-                    
-                    RectShip.SpriteRect.Color = Color.Red;
+
+                    RectShip.SpriteRect.Color = new Color(255,0,0,100);
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
@@ -176,7 +176,7 @@ namespace ComicDefender
                 {
                     Program.Window.Draw(RectLevels.SpriteRect);
 
-                    RectLevels.SpriteRect.Color = Color.Red;
+                    RectLevels.SpriteRect.Color = new Color(255, 0, 0, 100);
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {

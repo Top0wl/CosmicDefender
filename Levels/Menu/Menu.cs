@@ -112,8 +112,10 @@ namespace ComicDefender
                 if (Contains(RectShip.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
                 {
                     Program.Window.Draw(RectShip.SpriteRect);
-                    
+
                     RectShip.SpriteRect.Color = Color.Red;
+
+                    RectShip.SpriteRect.Scale = new Vector2f(1.05f, 1.05f);
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
@@ -127,7 +129,12 @@ namespace ComicDefender
                         Program.Ship.Settings(MainShip.SpriteShip, 500, 500, RectShip.Damage, RectShip.Speed, RectShip.Shoot_speed, RectShip.Health, RectShip.CountGuns);
                     }
                 }
-                else RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+                else
+                {
+                    RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+                    RectShip.SpriteRect.Scale = new Vector2f(1.0f, 1.0f);
+
+                }
             }
 
             foreach (MenuRectButtons RectButtons in Program.menu.RectButtons.ToList())
@@ -178,6 +185,13 @@ namespace ComicDefender
 
                     RectLevels.SpriteRect.Color = Color.Red;
 
+                    RectLevels.SpriteRect.Scale = new Vector2f(1.05f, 1.05f);
+
+
+                    //RectLevels.SpriteRect.Position = new Vector2f(RectLevels.SpriteRect.Position.X - 10f, RectLevels.SpriteRect.Position.Y);
+                    
+                    //Program.Window.Draw(RectLevels.SpriteRect);
+
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
                         if (RectLevels.Name == "Level1")
@@ -208,10 +222,15 @@ namespace ComicDefender
 
                     }
                 }
-                else RectLevels.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+                else
+                {
+                    RectLevels.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+                    RectLevels.SpriteRect.Scale = new Vector2f(1.0f, 1.0f);
+                    //RectLevels.SpriteRect.Position = new Vector2f(RectLevels.SpriteRect.Position.X + 10f, RectLevels.SpriteRect.Position.Y);
+                }
             }
-            #endregion
-        }
+                #endregion
+            }
 
 
         public bool Contains(Sprite sprite, int x, int y)

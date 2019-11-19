@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation\Animation.cs" />
+    <Compile Include="Content\Constants.cs" />
     <Compile Include="Entities\Asteroid.cs" />
     <Compile Include="Entities\Bonus.cs" />
     <Compile Include="Entities\Boss.cs" />

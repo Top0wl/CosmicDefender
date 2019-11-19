@@ -87,7 +87,7 @@ namespace ComicDefender
                             if (entities[i].GetName() == "Asteroid" && entities[i].GetHealth() == 0)
                             {
                                 int b = rnd.Next(1, 100);
-                                if (b >= 1 && b <= 100)
+                                if (b >= 1 && b <= 20)
                                 {
                                     Bonus a = new Bonus(Program.content.GetsB_Health(), entities[j].GetX(), entities[j].GetY(), "B_Health");
                                     entities.Add(a);
@@ -285,6 +285,7 @@ namespace ComicDefender
                     {
                         
                         EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4, true, 0.4f);
+                        //EnemyShip Boss = new EnemyShip(Level.GetSpriteBoss, ...);
                         Boss.SetHealth(1000);
                         entities.Add(Boss);
                         isBoss = true;

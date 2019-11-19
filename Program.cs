@@ -57,6 +57,7 @@ namespace ComicDefender
             #region Levels
 
             level1 = new Level();
+            //level1 = new level(Content2.GetSpriteBoss, harakterist);
 
             #endregion
 
@@ -71,6 +72,7 @@ namespace ComicDefender
 
 
             Ship = new Ship(content.GetShip1(), 500, 500, 25, 1.5f, .2f, 100, 1);                      //Загружаем корабль(пока что только один корабль с дамагом 25)
+            //Ship = new Ship();
             entities.Add(Ship);                                                                        //Добавляем его в лист объектов
 
 

@@ -38,7 +38,7 @@ namespace ComicDefender
         public void Update()
         {
             CopyColor = Program.content.GetShip9_lock().Color;
-
+            Program.Window.Draw(Program.content.BackGround);
             Program.Window.Draw(Program.content.GetMenuLevels());
             Program.Window.Draw(Program.content.GetMenuShips());
             Program.Window.Draw(Program.content.GetMenuTable());
@@ -113,7 +113,7 @@ namespace ComicDefender
                 {
                     Program.Window.Draw(RectShip.SpriteRect);
 
-                    RectShip.SpriteRect.Color = Color.Red;
+                    RectShip.SpriteRect.Color = new Color(255,0,0,100);
 
                     RectShip.SpriteRect.Scale = new Vector2f(1.05f, 1.05f);
 
@@ -183,7 +183,7 @@ namespace ComicDefender
                 {
                     Program.Window.Draw(RectLevels.SpriteRect);
 
-                    RectLevels.SpriteRect.Color = Color.Red;
+                    RectLevels.SpriteRect.Color = new Color(255, 0, 0, 100);
 
                     RectLevels.SpriteRect.Scale = new Vector2f(1.05f, 1.05f);
 

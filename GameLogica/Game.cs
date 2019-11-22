@@ -87,7 +87,7 @@ namespace ComicDefender
                             if (entities[i].GetName() == "Asteroid" && entities[i].GetHealth() == 0)
                             {
                                 int b = rnd.Next(1, 100);
-                                if (b >= 1 && b <= 20)
+                                if (b >= 1 && b <= 10)
                                 {
                                     Bonus a = new Bonus(Program.content.GetsB_Health(), entities[j].GetX(), entities[j].GetY(), "B_Health");
                                     entities.Add(a);
@@ -129,7 +129,7 @@ namespace ComicDefender
                                 if (entities[j].GetName() == "Asteroid")
                                 {
                                     int b = rnd.Next(1, 100);
-                                    if (b >= 1 && b <= 100)
+                                    if (b >= 1 && b <= 10)
                                     {
                                         Bonus a = new Bonus(Program.content.GetsB_Health(), entities[j].GetX(), entities[j].GetY(), "B_Health");
                                         entities.Add(a);

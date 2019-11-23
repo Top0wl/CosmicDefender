@@ -20,23 +20,28 @@ namespace ComicDefender
         public int Health;
         public int CountGuns;
 
+        public Ship ship;
+
         public MenuRectShips()
         {
             
         }
-        public MenuRectShips(Sprite _SpriteRect, Sprite _SpriteShip, String _Name, Vector2f _Position, int damage, float speed, float shoot_speed, int health, int countguns)
+        public MenuRectShips(Sprite _SpriteRect, Sprite _SpriteShip, String _Name, Vector2f _Position, Ship s)
         {
             SpriteRect = _SpriteRect;
             SpriteShip = _SpriteShip;
             SpriteShip.Origin = new Vector2f(_SpriteShip.Texture.Size.X/2, _SpriteShip.Texture.Size.Y/2);
             Name = _Name;
             SpriteRect.Position = _Position;
+            /*
             Damage = damage;
             Speed = speed;
             Shoot_speed = shoot_speed;
             Health = health;
             CountGuns = countguns;
-
+            */
+            ship = s;
+            
         }
 
         public MenuRectShips(Sprite _SpriteRect, String _Name, Vector2f _Position)

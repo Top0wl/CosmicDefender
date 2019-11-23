@@ -51,8 +51,8 @@ namespace ComicDefender
             content = new Content2();
             menu = new Menu();
             content.Load();
-            menu.Load();
             Constants = new Constants();
+            menu.Load();
 
             #endregion
 

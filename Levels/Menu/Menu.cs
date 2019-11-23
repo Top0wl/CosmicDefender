@@ -120,14 +120,16 @@ namespace ComicDefender
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
-                        MainShip.Damage = RectShip.Damage;
-                        MainShip.Speed = RectShip.Speed;
-                        MainShip.Shoot_speed = RectShip.Shoot_speed;
-                        MainShip.Health = RectShip.Health;
-                        MainShip.CountGuns = RectShip.CountGuns;
-                        MainShip.SpriteShip = RectShip.SpriteShip;
+                        MainShip.Damage = RectShip.ship.dmg;
+                        MainShip.Speed = RectShip.ship.VectorSpeed;
+                        MainShip.Shoot_speed = RectShip.ship.Shoot_Speed;
+                        MainShip.Health = RectShip.ship.GetHealth();
+                        MainShip.CountGuns = RectShip.ship.CountGuns;
+                        MainShip.SpriteShip = RectShip.ship.sprite;
                         MainShip.SpriteShip.Position = new Vector2f(640, 360);
-                        Program.Ship.Settings(MainShip.SpriteShip, 500, 500, RectShip.Damage, RectShip.Speed, RectShip.Shoot_speed, RectShip.Health, RectShip.CountGuns);
+                        MainShip.SpriteShip.Scale = new Vector2f(1f, 1f);
+                        
+                        Program.Ship.Settings(MainShip.SpriteShip, 500, 500, MainShip.Damage, MainShip.Speed, MainShip.Shoot_speed, MainShip.Health, MainShip.CountGuns);
                     }
                 }
                 else

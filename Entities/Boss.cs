@@ -50,6 +50,20 @@ namespace ComicDefender
             Settings(_animation, "Boss1", 0, 100, 100, 1f, 0.3f);
         }
 
+        public Boss(Sprite _sprite, float _X, float _Y, int damage, float speed, float shoot_speed, int health, int countguns, string name)
+        {
+            sprite = new Sprite(_sprite);
+            location = new Vector2f(_X, _Y);
+            sprite.Position = location;
+            sprite.Scale = new Vector2f(0.4F, 0.4F);
+            SetHealth(health);
+            VectorSpeed = speed;
+            Name = name; //  $$$$
+            X = _X;
+            Y = _Y;
+            CountGuns = countguns;
+        }
+
 
 
         public override void Update(float time)

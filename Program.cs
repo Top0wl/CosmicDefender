@@ -22,7 +22,7 @@ namespace ComicDefender
         public static Ship Ship;
         public static Menu menu;
         public static List<Level> levels = new List<Level>();
-        public static Level level1;
+       // public static Level level;
         static Game Logic = new Game();
         public static Constants Constants;
         #endregion
@@ -58,7 +58,12 @@ namespace ComicDefender
 
             #region Levels
 
-            level1 = new Level();
+            Level level1 = new Level(content.GetBackgroundLevel1(), Constants.Boss1, "Level1");
+            levels.Add(level1);
+            Level level2 = new Level(content.GetBackgroundLevel2(), Constants.Boss2, "Level2");
+            levels.Add(level2);
+
+
             //level1 = new level(Content2.GetSpriteBoss, harakterist);
             //level1 = new level(Const.Boss1Hp, , harakterist);
 
@@ -94,7 +99,6 @@ namespace ComicDefender
 
                 #endregion
 
-
                 Window.DispatchEvents();                                            //Cобираем ивенты
                 Window.Clear();                                                     //Чистим экран  
 
@@ -107,25 +111,27 @@ namespace ComicDefender
 
                 #endregion
 
-                #region If Open LVL 1
 
-                if (level1.IsOpen == true)
-                { 
-                Window.Draw(content.BackGround);
+                foreach (Level level in levels.ToList())
+                {
+                    if (level.IsOpen == true)
+                    {
+                        Window.Draw(level.Background);
 
-                #region Particles
-                particles.Update();
-                Window.Draw(particles);
-                #endregion
+                        #region Particles
+                        particles.Update();
+                        Window.Draw(particles);
+                        #endregion
 
-                #region Logic
-                Logic.Update(Ship, entities);
-                Logic.CreateAsteroid(entities, 1000);
-                Logic.Enemy(entities, 0);
-                #endregion
+                        #region Logic
+                        Logic.Update(Ship, entities);
+                        Logic.CreateAsteroid(entities, 1000);
+                        Logic.Enemy(entities, 0, level.LevelBoss);
+                        #endregion
+                    }
+
                 }
 
-                #endregion
 
                 Window.Display();                                                   //Выводит всё на дисплей
             }

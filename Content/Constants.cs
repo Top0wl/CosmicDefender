@@ -27,11 +27,14 @@ namespace ComicDefender
 
 
         Animation AnimationBoss1;
+        public Boss Boss2;
 
         public Constants()
         {
             AnimationBoss1 = new Animation(Program.content.GetBoss1(), 0, 0, 338, 338, 3, 0.02f);
             Boss1 = new Boss(Program.content.GetBoss1(), AnimationBoss1, 0, 0, 0, 0.3f, 0, 10000, 0, "Boss1");
+            Boss2 = new Boss(Program.content.GetBoss2(), 0, 0, 0, 0.3f, 0, 10000, 0, "Boss2");
+
 
             Ship1 = new Ship(Program.content.GetShip1(), X, Y, 25, 1.5f, .2f, 100, 1);
             Ship2 = new Ship(Program.content.GetShip2(), X, Y, 15, 1.2f, .4f, 100, 2);

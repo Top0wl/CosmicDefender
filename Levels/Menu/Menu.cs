@@ -20,6 +20,7 @@ namespace ComicDefender
         public MenuRectMainShip MainShip;
         private int listShips;
         private int listLevels;
+        public String CurrentLevel = "Level1";
 
         public Menu()
         {
@@ -168,8 +169,14 @@ namespace ComicDefender
                         }
                         if (RectButtons.Name == "ButtonPlay")
                         {
-                            Program.level1.IsOpen = true;
-                            Program.menu.IsOpen = false;
+                            foreach (Level level in Program.levels.ToList())
+                            {
+                                if (level.Name == CurrentLevel)
+                                {
+                                    level.IsOpen = true;
+                                    Program.menu.IsOpen = false;
+                                }
+                            }
                         }
                     }
 
@@ -181,41 +188,40 @@ namespace ComicDefender
             {
                 if (Contains(RectLevels.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
                 {
-                    //Program.Window.Draw(RectLevels.SpriteRect);
-
-                    //RectLevels.SpriteRect.Color = new Color(255, 0, 0, 100);
-
                     RectLevels.SpriteRect.Scale = new Vector2f(1.05f, 1.05f);
 
-
-                    //RectLevels.SpriteRect.Position = new Vector2f(RectLevels.SpriteRect.Position.X - 10f, RectLevels.SpriteRect.Position.Y);
-                    
                     Program.Window.Draw(RectLevels.SpriteRect);
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
                         if (RectLevels.Name == "Level1")
                         {
+                            CurrentLevel = "Level1";
                             Program.content.BackGround = new Sprite(RectLevels.Background);
                         }
                         if (RectLevels.Name == "Level2")
                         {
+                            CurrentLevel = "Level2";
                             Program.content.BackGround = new Sprite(RectLevels.Background);
                         }
                         if (RectLevels.Name == "Level3")
                         {
+                            CurrentLevel = "Level3";
                             Program.content.BackGround = new Sprite(RectLevels.Background);
                         }
                         if (RectLevels.Name == "Level4")
                         {
+                            CurrentLevel = "Level4";
                             Program.content.BackGround = new Sprite(RectLevels.Background);
                         }
                         if (RectLevels.Name == "Level5")
                         {
+                            CurrentLevel = "Level5";
                             Program.content.BackGround = new Sprite(RectLevels.Background);
                         }
                         if (RectLevels.Name == "Level6")
                         {
+                            CurrentLevel = "Level6";
                             Program.content.BackGround = new Sprite(RectLevels.Background);
                         }
 

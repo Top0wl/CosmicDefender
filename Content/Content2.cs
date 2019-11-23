@@ -82,6 +82,12 @@ namespace ComicDefender
         private Sprite sListDown;
         private Sprite sMiniBoss;
         private Sprite sBoss1;
+        private Sprite sBoss2;
+        private Sprite sBoss3;
+        private Sprite sBoss4;
+        private Sprite sBoss5;
+        private Sprite sBoss6;
+
         private Sprite sShield;
 
         private Sprite sLevel1;
@@ -157,6 +163,11 @@ namespace ComicDefender
         private Texture tListDown;
         private Texture tMiniBoss;
         private Texture tBoss1;
+        private Texture tBoss2;
+        private Texture tBoss3;
+        private Texture tBoss4;
+        private Texture tBoss5;
+        private Texture tBoss6;
         private Texture tShield;
 
         private Texture tLevel2;
@@ -231,7 +242,14 @@ namespace ComicDefender
         private Texture tListUp2;
         public Sprite sListUp2;
         private Image iListDown;
+
         private Image iBoss1;
+        private Image iBoss2;
+        private Image iBoss3;
+        private Image iBoss4;
+        private Image iBoss5;
+        private Image iBoss6;
+
         private Image iShield;
 
         private Image iLevel1;
@@ -268,6 +286,8 @@ namespace ComicDefender
 
             #endregion
 
+            #region Bosses
+
             #region Animation Boss1
 
             iBoss1 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss1_Shield.png");
@@ -275,6 +295,19 @@ namespace ComicDefender
             tBoss1.Smooth = true;
             sBoss1 = new Sprite(tBoss1);
             sBoss1.Origin = new Vector2f(iBoss1.Size.X / 2, iBoss1.Size.Y / 2);
+
+            #endregion
+
+            #region Boss2
+
+            iBoss2 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss2.png");
+            tBoss2 = new Texture(iBoss2);
+            tBoss2.Smooth = true;
+            sBoss2 = new Sprite(tBoss2);
+            sBoss2.Origin = new Vector2f(iBoss2.Size.X / 2, iBoss2.Size.Y / 2);
+
+            #endregion
+
 
             #endregion
 
@@ -537,11 +570,6 @@ namespace ComicDefender
                 this.sMenuRectDmg[num3].Position = new Vector2f((float)(0x25b + num4), 201f);
                 num4 += 60;
             }
-
-            #endregion
-
-            #region Test View ScrollBar
-
 
             #endregion
 
@@ -939,6 +967,10 @@ namespace ComicDefender
         public Sprite GetBoss1()
         {
             return sBoss1;
+        }
+        public Sprite GetBoss2()
+        {
+            return sBoss2;
         }
 
         public Sprite GetMiniBoss()

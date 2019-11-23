@@ -10,8 +10,7 @@ namespace ComicDefender
     class Level
     {
         public Sprite Background;
-        public Sprite Boss;
-
+        public String Name;
         public Boss LevelBoss;
 
         public bool IsOpen = false;
@@ -21,17 +20,17 @@ namespace ComicDefender
 
         }
 
-        public Level(Sprite _Background, Sprite _Boss)
+        public Level(Sprite _Background, Boss _boss, String _Name)
         {
             Background = _Background;
-            Boss = _Boss;
-            
+            LevelBoss = _boss;
+            Name = _Name;
         }
 
-        public void Settings(Sprite _Background, Sprite _Boss)
+        public void Settings(Sprite _Background, Boss _boss)
         {
             Background = _Background;
-            Boss = _Boss;
+            LevelBoss = _boss;
         }
 
     }

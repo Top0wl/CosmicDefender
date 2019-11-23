@@ -11,7 +11,9 @@ namespace ComicDefender
     {
         public Sprite Background;
         public Sprite Boss;
-        
+
+        public Boss LevelBoss;
+
         public bool IsOpen = false;
 
         public Level()
@@ -23,6 +25,7 @@ namespace ComicDefender
         {
             Background = _Background;
             Boss = _Boss;
+            
         }
 
         public void Settings(Sprite _Background, Sprite _Boss)

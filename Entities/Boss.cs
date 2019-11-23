@@ -34,10 +34,8 @@ namespace ComicDefender
 
         }
 
-        public Boss(Sprite _sprite, float _X, float _Y, int damage, float speed, float shoot_speed, int health, int countguns, string name)
+        public Boss(Sprite _sprite, Animation _animation, float _X, float _Y, int damage, float speed, float shoot_speed, int health, int countguns, string name)
         {
-            animEnemy = new Animation(_sprite, 0, 0, 338, 338, 3, 0.02f);   //ПАРАМЕТРЫ ДЛЯ КАЖДОГО БОССА ?????????????????????????????????????????????
-
             sprite = new Sprite(_sprite);
             location = new Vector2f(_X, _Y);
             sprite.Position = location;
@@ -48,21 +46,15 @@ namespace ComicDefender
             X = _X;
             Y = _Y;
             CountGuns = countguns;
-            Settings(animEnemy, "Boss1", 0, 100, 100, 1f, 0.3f);
-
+            animEnemy = _animation;
+            Settings(_animation, "Boss1", 0, 100, 100, 1f, 0.3f);
         }
 
 
 
         public override void Update(float time)
         {
-            Vector2f pos = new Vector2f();
-            if (Name == "Boss1")
-            {
-                pos = new Vector2f(1280 / 2, 720 / 2);
-
-            }
-
+            Vector2f pos = new Vector2f(Ship.GetX(), Ship.GetY());
             Vector2f Rotate = pos - location;
             RotateShoot = Rotate;
 
@@ -76,7 +68,7 @@ namespace ComicDefender
 
             float v = 0.3f;
             rotat = (float)((Math.Atan2(Rotate.Y, Rotate.X) * 180 / Math.PI) + 90);
-            sprite.Rotation = rotat + 70;
+            sprite.Rotation = rotat;
             sprite.Position = location;
             location += velocity * time; // Где находится корабль
             Random rnd = new Random();
@@ -93,13 +85,12 @@ namespace ComicDefender
             X = location.X;
             Y = location.Y;
 
-
-
-            sprite = animEnemy.sprite;
-            animEnemy.update();
-
+            if (animEnemy != null)
+            {
+                sprite = animEnemy.sprite;
+                animEnemy.update();
+            }
             Program.Window.Draw(sprite);
-
         }
 
 

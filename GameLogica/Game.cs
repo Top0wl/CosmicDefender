@@ -284,10 +284,10 @@ namespace ComicDefender
                     if (CountEnemies == 0 && isBoss == false)
                     {
                         
-                        EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4, true, 0.4f);
+                       // EnemyShip Boss = new EnemyShip(Program.content.GetBoss1(), a1, a2, 0.3f, "Boss1", 4, true, 0.4f);
                         //EnemyShip Boss = new EnemyShip(Level.GetSpriteBoss, ...);
-                        Boss.SetHealth(1000);
-                        entities.Add(Boss);
+                      // Boss.SetHealth(1000);
+                        entities.Add(Program.Constants.Boss1);
                         isBoss = true;
                     }
 

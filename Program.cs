@@ -24,6 +24,7 @@ namespace ComicDefender
         public static List<Level> levels = new List<Level>();
         public static Level level1;
         static Game Logic = new Game();
+        public static Constants Constants;
         #endregion
 
         static void Main(string[] args)
@@ -51,6 +52,7 @@ namespace ComicDefender
             menu = new Menu();
             content.Load();
             menu.Load();
+            Constants = new Constants();
 
             #endregion
 
@@ -58,6 +60,8 @@ namespace ComicDefender
 
             level1 = new Level();
             //level1 = new level(Content2.GetSpriteBoss, harakterist);
+            //level1 = new level(Const.Boss1Hp, , harakterist);
+
 
             #endregion
 
@@ -117,7 +121,7 @@ namespace ComicDefender
                 #region Logic
                 Logic.Update(Ship, entities);
                 Logic.CreateAsteroid(entities, 1000);
-                Logic.Enemy(entities, 10);
+                Logic.Enemy(entities, 0);
                 #endregion
                 }
 

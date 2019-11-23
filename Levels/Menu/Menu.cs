@@ -106,14 +106,14 @@ namespace ComicDefender
             }
 
             #region Colide with Buttons on Menu
-
+            
             foreach (MenuRectShips RectShip in Program.menu.RectShips.ToList())
             {
                 if (Contains(RectShip.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
                 {
                     Program.Window.Draw(RectShip.SpriteRect);
 
-                    RectShip.SpriteRect.Color = new Color(255,0,0,100);
+                    //RectShip.SpriteRect.Color = new Color(255,0,0,100);
 
                     RectShip.SpriteRect.Scale = new Vector2f(1.05f, 1.05f);
 
@@ -131,12 +131,12 @@ namespace ComicDefender
                 }
                 else
                 {
-                    RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+                    //RectShip.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
                     RectShip.SpriteRect.Scale = new Vector2f(1.0f, 1.0f);
 
                 }
             }
-
+            
             foreach (MenuRectButtons RectButtons in Program.menu.RectButtons.ToList())
             {
                 if (Contains(RectButtons.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
@@ -181,16 +181,16 @@ namespace ComicDefender
             {
                 if (Contains(RectLevels.SpriteRect, Mouse.GetPosition(Program.Window).X, Mouse.GetPosition(Program.Window).Y))
                 {
-                    Program.Window.Draw(RectLevels.SpriteRect);
+                    //Program.Window.Draw(RectLevels.SpriteRect);
 
-                    RectLevels.SpriteRect.Color = new Color(255, 0, 0, 100);
+                    //RectLevels.SpriteRect.Color = new Color(255, 0, 0, 100);
 
                     RectLevels.SpriteRect.Scale = new Vector2f(1.05f, 1.05f);
 
 
                     //RectLevels.SpriteRect.Position = new Vector2f(RectLevels.SpriteRect.Position.X - 10f, RectLevels.SpriteRect.Position.Y);
                     
-                    //Program.Window.Draw(RectLevels.SpriteRect);
+                    Program.Window.Draw(RectLevels.SpriteRect);
 
                     if (Mouse.IsButtonPressed(Mouse.Button.Left))
                     {
@@ -224,7 +224,7 @@ namespace ComicDefender
                 }
                 else
                 {
-                    RectLevels.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
+                    //RectLevels.SpriteRect.Color = Program.content.GetColorButtonUp().Color;
                     RectLevels.SpriteRect.Scale = new Vector2f(1.0f, 1.0f);
                     //RectLevels.SpriteRect.Position = new Vector2f(RectLevels.SpriteRect.Position.X + 10f, RectLevels.SpriteRect.Position.Y);
                 }

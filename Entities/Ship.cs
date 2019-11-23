@@ -21,10 +21,11 @@ namespace ComicDefender
         //
         public int shooting_ready = 0;
         public int CountGuns = 0;
-        protected float VectorSpeed;                                  //Максимальная Cкорость корабля
-        protected float bullet_cooldown_max;                     //Скоростельность (была .2f)
-        private float bullet_cooldown;
-        private int dmg;
+        public float VectorSpeed;                                  //Максимальная Cкорость корабля
+        public float bullet_cooldown_max;                     //Скоростельность (была .2f)
+        public float bullet_cooldown;
+        public int dmg;
+        public float Shoot_Speed = 20f;
 
         public Ship()
         { 
@@ -135,16 +136,16 @@ namespace ComicDefender
 
                 if (CountGuns == 1)
                 {
-                    Bullet b1 = new Bullet(GetX() + sprite.Texture.Size.X * Rotate.X, GetY() + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, 20f);
+                    Bullet b1 = new Bullet(GetX() + sprite.Texture.Size.X * Rotate.X, GetY() + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, Shoot_Speed);
                     Program.entities.Add(b1);
                 }
 
                 if (CountGuns == 2)
                 {
-                    Bullet b1 = new Bullet(GetX() + 100 * RotateToGun.X + sprite.Texture.Size.X * Rotate.X, GetY() + 100 * RotateToGun.Y + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, 20f);
+                    Bullet b1 = new Bullet(GetX() + 100 * RotateToGun.X + sprite.Texture.Size.X * Rotate.X, GetY() + 100 * RotateToGun.Y + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, Shoot_Speed);
                     Program.entities.Add(b1);
 
-                    Bullet b2 = new Bullet(GetX() + (-100) * RotateToGun.X + sprite.Texture.Size.X * Rotate.X, GetY() + (-100) * RotateToGun.Y + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, 20f);
+                    Bullet b2 = new Bullet(GetX() + (-100) * RotateToGun.X + sprite.Texture.Size.X * Rotate.X, GetY() + (-100) * RotateToGun.Y + sprite.Texture.Size.X * Rotate.Y, GetRotation(), 0.2f, Shoot_Speed);
                     Program.entities.Add(b2);
                 }
                 shooting_ready = 0;

@@ -62,6 +62,9 @@ namespace ComicDefender
             levels.Add(level1);
             Level level2 = new Level(content.GetBackgroundLevel2(), Constants.Boss2, "Level2");
             levels.Add(level2);
+            Level level3 = new Level(content.GetBackgroundLevel3(), Constants.Boss3, "Level3");
+            levels.Add(level3);
+
 
 
             //level1 = new level(Content2.GetSpriteBoss, harakterist);

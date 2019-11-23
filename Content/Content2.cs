@@ -308,6 +308,17 @@ namespace ComicDefender
 
             #endregion
 
+            #region Boss3
+
+            iBoss3 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss3.png");
+            tBoss3 = new Texture(iBoss3);
+            tBoss3.Smooth = true;
+            sBoss3 = new Sprite(tBoss3);
+            sBoss3.Origin = new Vector2f(iBoss3.Size.X / 2, iBoss3.Size.Y / 2);
+
+            #endregion
+
+
 
             #endregion
 
@@ -968,9 +979,15 @@ namespace ComicDefender
         {
             return sBoss1;
         }
+
         public Sprite GetBoss2()
         {
             return sBoss2;
+        }
+
+        public Sprite GetBoss3()
+        {
+            return sBoss3;
         }
 
         public Sprite GetMiniBoss()

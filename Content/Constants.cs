@@ -13,7 +13,6 @@ namespace ComicDefender
         const int X = 500;
         const int Y = 500;
 
-        public Boss Boss1;
 
         public Ship Ship1;
         public Ship Ship2;
@@ -27,13 +26,20 @@ namespace ComicDefender
 
 
         Animation AnimationBoss1;
+        public Boss Boss1;
         public Boss Boss2;
+        public Boss Boss3;
+        public Boss Boss4;
+        public Boss Boss5;
+        public Boss Boss6;
+
 
         public Constants()
         {
             AnimationBoss1 = new Animation(Program.content.GetBoss1(), 0, 0, 338, 338, 3, 0.02f);
             Boss1 = new Boss(Program.content.GetBoss1(), AnimationBoss1, 0, 0, 0, 0.3f, 0, 10000, 0, "Boss1");
             Boss2 = new Boss(Program.content.GetBoss2(), 0, 0, 0, 0.3f, 0, 10000, 0, "Boss2");
+            Boss3 = new Boss(Program.content.GetBoss3(), 0, 0, 0, 0.3f, 0, 10000, 0, "Boss3");
 
 
             Ship1 = new Ship(Program.content.GetShip1(), X, Y, 25, 1.5f, .2f, 100, 1);

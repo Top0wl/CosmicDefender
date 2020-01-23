@@ -38,8 +38,6 @@ namespace ComicDefender
                         entity.animation.Draw();
                         if (entity.animation.isEnd()) entity.SetHealth(0);
                     }
-                   // entity.animation.update();
-                   // entity.animation.Draw();
                 }
 
                 entity.Draw();
@@ -72,6 +70,8 @@ namespace ComicDefender
 
                         if (IsCollide(entities[i].sprite, entities[j].sprite))
                         {
+
+
                             Animation AnimationExplosive1 = new Animation(Program.content.GetsExplosion(), 0, 0, 192, 192, 64, 2f);
                             Entity e = new Entity();
                             e.Settings(AnimationExplosive1, "Explosion", entities[j].GetX(), entities[j].GetY(), 0, 0.15F, 0.15f);
@@ -87,7 +87,7 @@ namespace ComicDefender
                             if (entities[i].GetName() == "Asteroid" && entities[i].GetHealth() == 0)
                             {
                                 int b = rnd.Next(1, 100);
-                                if (b >= 1 && b <= 10)
+                                if (b >= 1 && b <= 30)
                                 {
                                     Bonus a = new Bonus(Program.content.GetsB_Health(), entities[j].GetX(), entities[j].GetY(), "B_Health");
                                     entities.Add(a);
@@ -246,7 +246,6 @@ namespace ComicDefender
                 if (CountEnemies != count)
                 {
 
-
                     b = rnd.Next(1, 10);
                     string name;
                     if (b >= 1 && b <= 3)
@@ -270,7 +269,7 @@ namespace ComicDefender
 
                     if (name == "MiniBoss")
                     {
-                        a = new EnemyShip(Program.content.GetMiniBoss(), a1, a2, 0.3f, name, 4, false, 1f);
+                        a = new EnemyShip(Program.content.GetMiniBoss(), a1, a2, 0.3f, name, 4, false, 0.4f);
                         a.SetHealth(400);
                     }
 
@@ -280,7 +279,7 @@ namespace ComicDefender
                 }
                 else
                 {
-                    if (CountEnemies == 0 && isBoss == false)
+                    if (CountEnemies == count && isBoss == false)
                     {
                         entities.Add(boss);
                         isBoss = true;

@@ -87,6 +87,23 @@ namespace ComicDefender
             location += velocity * time; // Где находится корабль
             Random rnd = new Random();
 
+            if (CountGuns > 0)
+            {   
+            if ((Math.Sqrt(RotateShoot.X * RotateShoot.X + RotateShoot.Y * RotateShoot.Y)) < 500) // ... и это корабль стрелок
+            {
+                bullet_cooldown = bullet_clock.ElapsedTime.AsSeconds();
+                shooting_ready = 1;
+                if (shooting_ready == 1 && bullet_cooldown >= bullet_cooldown_max)
+                {
+                    bullet_clock.Restart();
+                    Bullet b = new Bullet((location.X + 600 * Rotate.X), (location.Y + 600 * Rotate.Y), rotat + 180, 0.2f, 2f);
+                    Program.entities.Add(b);
+                    shooting_ready = 0;
+                }
+            }
+            else shooting_ready = 0;
+            }
+
             velocity += v * direction;
             float constanta = (float)Math.Sqrt((VectorSpeed * VectorSpeed) / (velocity.X * velocity.X + velocity.Y * velocity.Y));
             velocity2 = velocity * constanta;

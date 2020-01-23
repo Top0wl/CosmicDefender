@@ -40,6 +40,10 @@ namespace ComicDefender
             Boss1 = new Boss(Program.content.GetBoss1(), AnimationBoss1, 0, 0, 0, 0.3f, 0, 10000, 0, "Boss1");
             Boss2 = new Boss(Program.content.GetBoss2(), 0, 0, 0, 0.3f, 0, 10000, 0, "Boss2");
             Boss3 = new Boss(Program.content.GetBoss3(), 0, 0, 0, 0.3f, 0, 10000, 0, "Boss3");
+            Boss4 = new Boss(Program.content.GetBoss4(), 0, 0, 0, 0.3f, 0, 10000, 1, "Boss4");
+            Boss5 = new Boss(Program.content.GetBoss5(), 0, 0, 0, 0.3f, 0, 10000, 0, "Boss5");
+            Boss6 = new Boss(Program.content.GetBoss6(), 0, 0, 0, 0.3f, 0, 10000, 0, "Boss6");
+
 
 
             Ship1 = new Ship(Program.content.GetShip1(), X, Y, 25, 1.5f, .2f, 100, 1);

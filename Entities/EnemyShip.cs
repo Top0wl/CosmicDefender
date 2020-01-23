@@ -139,10 +139,10 @@ namespace ComicDefender
 
                             if (a == 1)
                             {
-                                Bullet b1 = new Bullet(location.X + 150 * RotateToGun.X + sprite.Texture.Size.X * 2 * Rotate.X, location.Y + 150 * RotateToGun.Y + sprite.Texture.Size.X * 2 * Rotate.Y, rotat + 180, 0.3f, 1.5f);
+                                Bullet b1 = new Bullet(location.X + 150 * RotateToGun.X + sprite.Texture.Size.X * 3 * Rotate.X, location.Y + 150 * RotateToGun.Y + sprite.Texture.Size.X * 3 * Rotate.Y, rotat + 180, 0.3f, 1.5f);
                                 Program.entities.Add(b1);
 
-                                Bullet b2 = new Bullet(location.X + (-150) * RotateToGun.X + sprite.Texture.Size.X * 2 * Rotate.X, location.Y + (-150) * RotateToGun.Y + sprite.Texture.Size.X * 2 * Rotate.Y, rotat + 180, 0.3f, 1.5f);
+                                Bullet b2 = new Bullet(location.X + (-150) * RotateToGun.X + sprite.Texture.Size.X * 3 * Rotate.X, location.Y + (-150) * RotateToGun.Y + sprite.Texture.Size.X * 2 * Rotate.Y, rotat + 180, 0.3f, 1.5f);
                                 Program.entities.Add(b2);
                             }
                             if (a == 2)

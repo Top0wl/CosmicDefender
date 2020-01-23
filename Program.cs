@@ -64,6 +64,12 @@ namespace ComicDefender
             levels.Add(level2);
             Level level3 = new Level(content.GetBackgroundLevel3(), Constants.Boss3, "Level3");
             levels.Add(level3);
+            Level level4 = new Level(content.GetBackgroundLevel4(), Constants.Boss4, "Level4");
+            levels.Add(level4);
+            Level level5 = new Level(content.GetBackgroundLevel5(), Constants.Boss5, "Level5");
+            levels.Add(level5);
+            Level level6 = new Level(content.GetBackgroundLevel6(), Constants.Boss6, "Level6");
+            levels.Add(level6);
 
 
 
@@ -129,7 +135,7 @@ namespace ComicDefender
                         #region Logic
                         Logic.Update(Ship, entities);
                         Logic.CreateAsteroid(entities, 1000);
-                        Logic.Enemy(entities, 100, level.LevelBoss);
+                        Logic.Enemy(entities, 3, level.LevelBoss);
                         #endregion
                     }
 

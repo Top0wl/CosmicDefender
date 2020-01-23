@@ -177,6 +177,8 @@ namespace ComicDefender
                                 {
                                     level.IsOpen = true;
                                     Program.menu.IsOpen = false;
+                                    Game.CountEnemies = 0;
+                                    Game.isBoss = false;
                                 }
                             }
                         }

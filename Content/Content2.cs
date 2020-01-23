@@ -318,6 +318,37 @@ namespace ComicDefender
 
             #endregion
 
+            #region Boss4
+
+            iBoss4 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss4.png");
+            tBoss4 = new Texture(iBoss4);
+            tBoss4.Smooth = true;
+            sBoss4 = new Sprite(tBoss4);
+            sBoss4.Origin = new Vector2f(iBoss4.Size.X / 2, iBoss4.Size.Y / 2);
+
+            #endregion
+
+            #region Boss5
+
+            iBoss5 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss5.png");
+            tBoss5 = new Texture(iBoss5);
+            tBoss5.Smooth = true;
+            sBoss5 = new Sprite(tBoss5);
+            sBoss5.Origin = new Vector2f(iBoss5.Size.X / 2, iBoss5.Size.Y / 2);
+
+            #endregion
+
+
+            #region Boss6
+
+            iBoss6 = new Image(CONTENT_DIRICTORY + "Bosses\\Boss6.png");
+            tBoss6 = new Texture(iBoss6);
+            tBoss6.Smooth = true;
+            sBoss6 = new Sprite(tBoss6);
+            sBoss6.Origin = new Vector2f(iBoss6.Size.X / 2, iBoss6.Size.Y / 2);
+
+            #endregion
+
 
 
             #endregion
@@ -988,6 +1019,18 @@ namespace ComicDefender
         public Sprite GetBoss3()
         {
             return sBoss3;
+        }
+        public Sprite GetBoss4()
+        {
+            return sBoss4;
+        }
+        public Sprite GetBoss5()
+        {
+            return sBoss5;
+        }
+        public Sprite GetBoss6()
+        {
+            return sBoss6;
         }
 
         public Sprite GetMiniBoss()

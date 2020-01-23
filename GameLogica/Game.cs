@@ -11,9 +11,9 @@ namespace ComicDefender
 {
     class Game : Rand
     {
-        private static int CountAsteroids = 0;
-        private static int CountEnemies = 0;
-        private static bool isBoss = false;
+        public static int CountAsteroids = 0;
+        public static int CountEnemies = 0;
+        public static bool isBoss = false;
         Clock bullet_clock = new Clock();
         Clock clock = new Clock();
         //private float bullet_cooldown;
@@ -44,10 +44,31 @@ namespace ComicDefender
 
                 if (entity.GetName() == "PlayerShip" && entity.GetHealth() <= 0)
                 {
+                    Program.menu.IsOpen = true;
+
+                    foreach (Level level in Program.levels.ToList())
+                    {
+                        if (level.IsOpen == true)
+                        {
+                            level.IsOpen = false;
+                        }
+                    }
+
+                    foreach (Level level in Program.levels.ToList())
+                    {
+                        if (level.IsOpen == true)
+                        {
+                            level.IsOpen = false;
+                        }
+                    }
+
+                    entities.Clear();
+
+
+
                     Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, Program.menu.MainShip.Damage, Program.menu.MainShip.Speed, Program.menu.MainShip.Shoot_speed, Program.menu.MainShip.Health, Program.menu.MainShip.CountGuns);
                     //Ship Ship = new Ship(Program.menu.MainShip.SpriteShip, 500, 500, 25, 1.5f, .2f, 100);                  //Загружаем корабль
-
-                    entities.Add(Ship);
+                  entities.Add(Ship);
                 }
 
 
